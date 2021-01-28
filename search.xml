@@ -1176,41 +1176,6 @@ $ .&#x2F;insert_dylib [dylib的路径] [原来的二进制文件的路径]<span 
       </tags>
   </entry>
   <entry>
-    <title>小技巧：看视频的真正方式</title>
-    <url>/posts/5714/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>有一种软件叫破解，也有一种视频叫解析。<del>买着庆余年，躺在床上看电视剧</del>刻苦学习，看网上讲解视频的你，是否觉得一天到晚非常疲惫？今天我将教大家怎样<strong>临时</strong>躲避这个问题。那就是——视频解析。</p>
-<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="打开网址"><a href="#打开网址" class="headerlink" title="打开网址"></a>打开网址</h2><p>打开你要解析的网址。我给你搞一个：<a class="link"   href="https://www.iqiyi.com/v_19ruzj9ny0.html" >链接<i class="fas fa-external-link-alt"></i></a><br>等等，这不就是要钱的庆余年吗？没错。就是这个。把它复制粘贴到浏览器输入框里。</p>
-<h2 id="开始解析"><a href="#开始解析" class="headerlink" title="开始解析"></a>开始解析</h2><p>别急着回车。我们现在<strong>整个网址的前面</strong>加上<code>wn.run</code>，也就是：</p>
-<pre><code>wn.run/https://www.iqiyi.com/v_19ruzj9ny0.html
-</code></pre>
-<p>回车！</p>
-<h2 id="完成观看"><a href="#完成观看" class="headerlink" title="完成观看"></a>完成观看</h2><p>回车后，会出现万能工具的界面。应该长这样：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/1/29/video-parsed.png" alt="解析后"></p>
-<p>万能工具是什么呢？看看官方的回答：</p>
-<blockquote>
-<p>wn万能命令是一个在线工具效率平台，将各种高质量的在线工具按应用站点聚合起来，让你以方便快捷好记的方式寻找和使用各类在线工具。浏览任意网页时，输入这个万能命令 wn.run/ 或点击一下固定的书签，就会展示出用于该网页的各种附加在线工具，比如 快速查看该网页历史存档(网页被删了找回)、下载该网页的视频音乐文件(默认无法下载或需要安装app登陆等)、快速网页翻译(默认手机端网页翻译会比较繁琐)、快速网页长截图、查看电商历史价格等，并且点击工具时一般会直达针对该网页的功能详情页。<br>特点：  </p>
-</blockquote>
-<ol>
-<li> 方便快捷，只需输入一个命令或点击一下书签；</li>
-<li> 无需下载、即用即走；</li>
-<li> 无平台限制，PC、Android、iOS等都可使用；</li>
-<li> 按应用站点分类，快捷寻找到可用的工具，过滤掉无关的工具；</li>
-<li> 一般直接到达用于该网页的工具详情页；</li>
-<li> 收录了很多高质量的工具。</li>
-</ol>
-<p>我们了解到，万能工具是一个工具收录组织。<br>回到主题。在刚才你打开的界面，视频解析里面随意选择一个工具。单击打开——</p>
-<p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/1/29/video-parse-result.png" alt="解析结果"></p>
-<p>等等，我竟然免费看了《庆余年》？是啊！</p>
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>最后撂一句话：这是一个所有视频网站都具备的漏洞（你可以去看万能工具官网，许多视频网站都支持）。它既为我们提供了生活的临时便利，又给不法分子留下了渠道。希望众多视频网站早早修复此漏洞！同时，也希望网站们不要过于收费，造成“VIP上VIP”的“超前点播”乱象。</p>
-]]></content>
-      <categories>
-        <category>计算机</category>
-      </categories>
-      <tags>
-        <tag>软件</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>小镇的桥</title>
     <url>/posts/1372/</url>
     <content><![CDATA[<p>土门关驿道小镇是个古香古色的地方。在驿道小镇，我被一座“桥”定住了神经，它有一个动人的名字，“同情桥”。</p>
@@ -1948,87 +1913,6 @@ if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
       </categories>
       <tags>
         <tag>反编译</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>网站 Changelog</title>
-    <url>/posts/e92d57c7/</url>
-    <content><![CDATA[<h1 id="2020-5-6"><a href="#2020-5-6" class="headerlink" title="2020.5.6"></a>2020.5.6</h1><ul>
-<li>已经<ul>
-<li>更换图床为<code>GitHub</code>图床，使用<code>jsDelivr</code>加速</li>
-</ul>
-</li>
-<li>准备<ul>
-<li>从 icarus 更换主题为它的改编版：hexo-theme-amazing</li>
-</ul>
-</li>
-</ul>
-<h1 id="2020-4-15"><a href="#2020-4-15" class="headerlink" title="2020.4.15"></a>2020.4.15</h1><ul>
-<li><p>已经</p>
-<ul>
-<li>更改网站主题为：hexo-theme-icarus</li>
-<li>恢复评论系统</li>
-</ul>
-</li>
-<li><p>准备</p>
-<ul>
-<li>更换图床为<a class="link"   href="https://www.superbed.cn/" >聚合图床<i class="fas fa-external-link-alt"></i></a><h1 id="2020-4-13"><a href="#2020-4-13" class="headerlink" title="2020.4.13"></a>2020.4.13</h1></li>
-</ul>
-</li>
-<li><p>已经</p>
-<ul>
-<li>更改网站主题为：hexo-theme-matery</li>
-<li>升级网站系统</li>
-</ul>
-</li>
-<li><p>准备</p>
-<ul>
-<li>恢复评论系统</li>
-<li>再换图床（SM.MS 图床越来越慢了）</li>
-</ul>
-</li>
-</ul>
-<h1 id="2020-1-30"><a href="#2020-1-30" class="headerlink" title="2020.1.30"></a>2020.1.30</h1><ul>
-<li><p>已经</p>
-<ul>
-<li>添加评论系统</li>
-</ul>
-</li>
-<li><p>准备</p>
-<ul>
-<li>尝试新增镜像</li>
-<li>自定义域名</li>
-</ul>
-</li>
-</ul>
-<h1 id="2020-1-29"><a href="#2020-1-29" class="headerlink" title="2020.1.29"></a>2020.1.29</h1><ul>
-<li><p>已经</p>
-<ul>
-<li>将图床更换为 <a class="link"   href="https://sm.ms/" >SM.MS<i class="fas fa-external-link-alt"></i></a></li>
-<li>加快网页浏览速度</li>
-<li>增加文章</li>
-</ul>
-</li>
-<li><p>准备</p>
-<ul>
-<li>添加评论系统</li>
-</ul>
-</li>
-</ul>
-<h1 id="2020-1-28"><a href="#2020-1-28" class="headerlink" title="2020.1.28"></a>2020.1.28</h1><ul>
-<li>已经<ul>
-<li>建站</li>
-<li>使用 <a class="link"   href="https://postimages.org/" >Postimages<i class="fas fa-external-link-alt"></i></a> 图床</li>
-<li>导入并发布若干文章</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>其它</category>
-      </categories>
-      <tags>
-        <tag>说明文</tag>
       </tags>
   </entry>
   <entry>
