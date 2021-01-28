@@ -27,93 +27,512 @@
 
 
 <body>
-.page-container {
-  position: relative;
-keep-tablet()
-}
-.page-container .page-main-content {
-  padding-top: $header-height;
-  position: relative;
-keep-tablet()
-keep-mobile()
-}
-.header-shrink .page-container .page-main-content {
-  padding-top: $header-shrink-height;
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-top {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: $header-height;
-  z-index: $z-index-5;
-  box-sizing: border-box;
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-top.hide {
-  transform: translateY(-105%);
-}
-.header-shrink .page-container .page-main-content .page-main-content-top {
-  height: $header-shrink-height;
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-middle {
-  box-sizing: border-box;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: $component-spacing-value 0;
-  background: var(--background-color);
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-middle .main-content {
-  position: relative;
-  box-sizing: border-box;
-  width: $main-content-width;
-  max-width: $content-max-width;
-  height: 100%;
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-bottom {
-  width: 100%;
-}
-.page-container .page-aside {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: -260px;
-  width: 260px;
-  height: 100%;
-  z-index: $z-index-6;
-  overflow-y: auto;
-  padding: 20px;
-  box-sizing: border-box;
-  background: var(--background-color);
-keep-tablet()
-}
-.page-container .post-tools {
-  position: fixed;
-  top: $header-height$component-spacing-value;
-  right: $component-spacing-value;
-keep-tablet()
-keep-mobile()
-}
-.header-shrink .page-container .post-tools {
-  top: $header-shrink-height$component-spacing-value;
-keep-tablet()
-keep-mobile()
-}
-.page-container .right-bottom-side-tools {
-  position: fixed;
-  bottom: 5%;
-  right: 0;
-}
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                🐴 慎独阁
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >
+                                更新日志
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog">更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">一次意外的 CleanMyMac X 破解</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">TLHorse</span>
+                        <span class="level">Lv3</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2020-03-15 09:16:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/">反编译</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>576 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>2 分钟</span>
+        </span>
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h1><p><code>CleanMyMac X</code>应该是每个Mac用户耳熟能详的电脑清洁软件，以下简称<code>CMM</code>。我几天前用的是<code>CMM 4.5.3</code>版本，是在xx破解网站上搜索的TNT版本，结果今天一打开CMM发现，已经有了4.6.0版本的更新。与其到xx破解网站上搜破解版，不如自己再动手破解一遍，于是就有了这篇文章。我真的……一开始我也没想到这次破解会这么顺……</p>
+<a id="more"></a>
+<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><ul>
+<li><code>CMM 4.6.0</code>一枚；</li>
+<li><code>Hopper Disassembler v4</code>一枚。</li>
+</ul>
+<h1 id="破解"><a href="#破解" class="headerlink" title="破解"></a>破解</h1><h2 id="查找线索"><a href="#查找线索" class="headerlink" title="查找线索"></a>查找线索</h2><p>首先将CMM拖进Hopper。我先搜索了一波UI中的Strings。搜索无果后，尝试搜索<code>vip</code> <code>register</code> <code>activate</code>关键词，发现<code>activate</code>关键词有很多激活相关项。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2020/3/15/hop-cmm-search-str.jpg" alt="搜索字符串"></p>
+<p>我找到了四个方法，名为<code>isAppActivated</code>。我想，相比其他复杂的函数与方法，那是不是把这四个方法patch了，整个CMM就能用了呢？</p>
+<p>然而我又发现了第一个方法<code> -[CMActivationManager isAppActivated]</code>的伪代码调用了一个函数<code>_mLyGsJNgru0iJKGfhK</code>，并将这个函数的返回值（是<code>int</code>类型）赋予给了<code>rax</code>，而这个函数的内部逻辑很复杂，很可能就是验证激活的过程。</p>
+<h2 id="修改程序"><a href="#修改程序" class="headerlink" title="修改程序"></a>修改程序</h2><p>接着上一个步骤，双击进入<code>_mLyGsJNgru0iJKGfhK</code>，打开伪代码模式，看着一长串的代码别着急，从程序入口开始，按照程序的<code>goto</code>走，顺藤摸瓜，最后<code>return</code>了一个<code>rax</code>——那简单，跳到汇编模式，直接：</p>
+<pre class="line-numbers language-asm" data-language="asm"><code class="language-asm">mov rax, 0x1
+ret<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>再打开伪代码，你会发现这个方法的伪代码已经变成：</p>
+<pre class="line-numbers language-objc" data-language="objc"><code class="language-objc">int _mLyGsJNgru0iJKGfhK(int arg0) &#123;
+    return 0x1;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>这就对了！</p>
+<h1 id="留下足迹"><a href="#留下足迹" class="headerlink" title="留下足迹"></a>留下足迹</h1><p>为什么要有这一步，在我的<a class="link"   target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1126808-1-1.html" >CrossOver 19<i class="fas fa-external-link-alt"></i></a>破解文章里已经说明了。在CMM中，我们要达到这样的效果：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2020/3/15/hop-cmm-mod-credits.png" alt="留下足迹"></p>
+<blockquote>
+<p>注：这个窗口可以在程序顶栏 CleanMyMac X &gt; 关于CleanMyMac里找到。</p>
+</blockquote>
+<p>这段文字是一个<code>.rtf</code>，在<code>/Applications/CleanMyMac X.app/Contents/Resources/zh-Hans.lproj/Credits.rtf</code>。打开这个文件，在开头按格式添加上你的Credit，注意一点，这个文件开头的几个空行要保留，否则达不到CMM的滚动效果。</p>
+<p>之后，就大功告成了！</p>
+<h1 id="BUG"><a href="#BUG" class="headerlink" title="BUG"></a>BUG</h1><ol>
+<li>使用时，应用缺少权限，即使已经在设置里设置了磁盘完全访问。</li>
+</ol>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：一次意外的 CleanMyMac X 破解</li>
+        <li>本文作者：TLHorse</li>
+        <li>创建时间：2020-03-15 09:16:00</li>
+        <li>
+            本文链接：https://tlhorse.github.io/posts/16190/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh">BY-NC-ND</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/posts/15507/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">一个故事讲懂 CPU 的工作原理</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/posts/16189/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Hopper 之 CrossOver 19 破解</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+        
+    <div id="gitalk-container"></div>
+    <script 
+            src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+    <script >
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: '88d770a805d27a98e780',
+                    clientSecret: 'c1c798735d6221391048e9225ae064e5e06ecdc8',
+                    repo: 'TLBlogComments',
+                    owner: 'TLHorse',
+                    admin: ['TLHorse'],
+                    id: __gitalk__pathname,
+                    language: 'zh-CN'
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('false') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">TLHorse</a>
+        </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.3.2</a>
+        </div> -->
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%98%E8%B5%B7"><span class="nav-text">缘起</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%86%E5%A4%87"><span class="nav-text">准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A0%B4%E8%A7%A3"><span class="nav-text">破解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E7%BA%BF%E7%B4%A2"><span class="nav-text">查找线索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E7%A8%8B%E5%BA%8F"><span class="nav-text">修改程序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%95%99%E4%B8%8B%E8%B6%B3%E8%BF%B9"><span class="nav-text">留下足迹</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BUG"><span class="nav-text">BUG</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
 
 <script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/header-shrink.js"></script><script src="/js/back2top.js"></script><script src="/js/dark-light-toggle.js"></script>
 

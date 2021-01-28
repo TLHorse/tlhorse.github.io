@@ -27,93 +27,495 @@
 
 
 <body>
-.page-container {
-  position: relative;
-keep-tablet()
-}
-.page-container .page-main-content {
-  padding-top: $header-height;
-  position: relative;
-keep-tablet()
-keep-mobile()
-}
-.header-shrink .page-container .page-main-content {
-  padding-top: $header-shrink-height;
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-top {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: $header-height;
-  z-index: $z-index-5;
-  box-sizing: border-box;
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-top.hide {
-  transform: translateY(-105%);
-}
-.header-shrink .page-container .page-main-content .page-main-content-top {
-  height: $header-shrink-height;
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-middle {
-  box-sizing: border-box;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: $component-spacing-value 0;
-  background: var(--background-color);
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-middle .main-content {
-  position: relative;
-  box-sizing: border-box;
-  width: $main-content-width;
-  max-width: $content-max-width;
-  height: 100%;
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-bottom {
-  width: 100%;
-}
-.page-container .page-aside {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: -260px;
-  width: 260px;
-  height: 100%;
-  z-index: $z-index-6;
-  overflow-y: auto;
-  padding: 20px;
-  box-sizing: border-box;
-  background: var(--background-color);
-keep-tablet()
-}
-.page-container .post-tools {
-  position: fixed;
-  top: $header-height$component-spacing-value;
-  right: $component-spacing-value;
-keep-tablet()
-keep-mobile()
-}
-.header-shrink .page-container .post-tools {
-  top: $header-shrink-height$component-spacing-value;
-keep-tablet()
-keep-mobile()
-}
-.page-container .right-bottom-side-tools {
-  position: fixed;
-  bottom: 5%;
-  right: 0;
-}
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                🐴 慎独阁
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >
+                                更新日志
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog">更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">小镇的桥</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">TLHorse</span>
+                        <span class="level">Lv3</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2020-01-29 09:16:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E4%BD%9C%E6%96%87/">作文</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E6%B8%B8%E8%AE%B0/">游记</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>668 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>2 分钟</span>
+        </span>
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>土门关驿道小镇是个古香古色的地方。在驿道小镇，我被一座“桥”定住了神经，它有一个动人的名字，“同情桥”。</p>
+<a id="more"></a>
+<p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/1/29/yidao-town-bridge-thumb.png" alt="同情桥"></p>
+<p>桥由绳索与木板搭成，像一条晃晃悠悠的长长纽带，中间微微下垂，两头分别被系在小镇两边高起的地势上。桥上系着密密麻麻的红色祈愿丝缎，远望去“同情桥”就像天空上飘着一条红丝带。小桥身材很苗条且修长，只能同时容下两三个人并行的它，从这头延伸到那边，好长！</p>
+<p>当我来到桥边，正是游客最多的时候，人在桥上走，桥在空中摇。长桥上整齐地塞满了人，不见空隙；人们前胸贴后背，一步一探，缓慢移动着。看着摇摇欲坠不堪重负的长桥，我没有上前凑热闹，静静地坐在一边欣赏驿道小镇的桥。</p>
+<p>各种各样的人——胖的、瘦的、高的、矮的、男的、女的、老的、少的，在桥上走。老爷爷脸上带着一丝淡定的微笑，远望着桥对岸；年轻妈妈俯身刻意与小儿谈天讲故事，驱散孩子的恐惧；小孩子们时而露齿嬉笑，时而紧张地张着大嘴；小不点的婴儿不管那一套，想哭就哭想闹就闹。人们在空中的“红布条”上，在烈日下享受着惊险和刺激。</p>
+<p>此时，“桥先生”看到了自己身上有那么多勇敢的大朋友和小朋友，也许想再添点佐料和大家逗乐？只见桥身微微荡漾，一阵惊叫，桥上的行人赶忙紧握绳索，停步不前，屏住呼吸；爸爸搀扶着爷爷奶奶；妈妈紧抱着哇哇大叫的婴儿；孩子大呼爸爸妈妈，再不敢淘气调皮……</p>
+<p>桥上步子慢了下来，桥身晃动也随之变轻，过桥人和我心里都松了口气。孩子们恢复了生气，大人们表情不再紧张，桥上说笑声又响起。</p>
+<p>桥先生用缓慢优雅的摆幅安抚着桥上紧张的心，用桥板吱呀呀的响声合着桥上有节奏的步伐。</p>
+<p>一切都是那么地和谐——危险是假的，刺激是真的；害怕是假的，快乐是真的；通过桥是假的，通过心里的挑战是真的。</p>
+<p>驿道小镇的桥，我在静静地读你，如果我给你起名，会叫你“同心桥”。有人行，才有你摇曳的优雅；长桥在，才有穿行的渴望和欢乐。</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：小镇的桥</li>
+        <li>本文作者：TLHorse</li>
+        <li>创建时间：2020-01-29 09:16:00</li>
+        <li>
+            本文链接：https://tlhorse.github.io/posts/1372/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh">BY-NC-ND</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/posts/40635/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">夏季中的一点凉</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/posts/30893/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">挑战</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+        
+    <div id="gitalk-container"></div>
+    <script 
+            src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+    <script >
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: '88d770a805d27a98e780',
+                    clientSecret: 'c1c798735d6221391048e9225ae064e5e06ecdc8',
+                    repo: 'TLBlogComments',
+                    owner: 'TLHorse',
+                    admin: ['TLHorse'],
+                    id: __gitalk__pathname,
+                    language: 'zh-CN'
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('false') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">TLHorse</a>
+        </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.3.2</a>
+        </div> -->
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
 
 <script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/header-shrink.js"></script><script src="/js/back2top.js"></script><script src="/js/dark-light-toggle.js"></script>
 

@@ -27,93 +27,589 @@
 
 
 <body>
-.page-container {
-  position: relative;
-keep-tablet()
-}
-.page-container .page-main-content {
-  padding-top: $header-height;
-  position: relative;
-keep-tablet()
-keep-mobile()
-}
-.header-shrink .page-container .page-main-content {
-  padding-top: $header-shrink-height;
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-top {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: $header-height;
-  z-index: $z-index-5;
-  box-sizing: border-box;
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-top.hide {
-  transform: translateY(-105%);
-}
-.header-shrink .page-container .page-main-content .page-main-content-top {
-  height: $header-shrink-height;
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-middle {
-  box-sizing: border-box;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: $component-spacing-value 0;
-  background: var(--background-color);
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-middle .main-content {
-  position: relative;
-  box-sizing: border-box;
-  width: $main-content-width;
-  max-width: $content-max-width;
-  height: 100%;
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-bottom {
-  width: 100%;
-}
-.page-container .page-aside {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: -260px;
-  width: 260px;
-  height: 100%;
-  z-index: $z-index-6;
-  overflow-y: auto;
-  padding: 20px;
-  box-sizing: border-box;
-  background: var(--background-color);
-keep-tablet()
-}
-.page-container .post-tools {
-  position: fixed;
-  top: $header-height$component-spacing-value;
-  right: $component-spacing-value;
-keep-tablet()
-keep-mobile()
-}
-.header-shrink .page-container .post-tools {
-  top: $header-shrink-height$component-spacing-value;
-keep-tablet()
-keep-mobile()
-}
-.page-container .right-bottom-side-tools {
-  position: fixed;
-  bottom: 5%;
-  right: 0;
-}
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                🐴 慎独阁
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >
+                                更新日志
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog">更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">使用 PocketSphinx 进行真正的语音识别</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">TLHorse</span>
+                        <span class="level">Lv3</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2020-05-06 17:06:56
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Python/">Python</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.3k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>5 分钟</span>
+        </span>
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>@<a href="%E7%9B%AE%E5%BD%95">TOC</a></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我最近一直在搞一个名叫 A. N. N. A. 的 <code>Python</code> 语音机器人项目（Anna 是什么单词的缩写我就不说了，自己猜去），需要用的强大的语音识别技术。翻看全网教程，没有一篇说的通的，要么就是教会如何购买百度AI会员，要么就是教如何翻墙使用谷歌语音……</p>
+<p>我最近发现<code>PocketSphinx</code>语音识别很不错，但是全网还是没有哪篇文章会告诉你，如何从头到尾下载这个库，用这个库进行语音识别，<strong>并且不在电脑上留下任何垃圾</strong>，可以随时删除的安装方法。然后你又会抱怨<code>PocketSphinx</code>有多么垃圾。</p>
+<p>在这篇文章里，我将告诉你如何安装<code>pocketsphinx</code>，并将其嵌入<code>speech_recognition</code>库，来更好地实现最终的语音转文字。</p>
+<h1 id="电脑环境"><a href="#电脑环境" class="headerlink" title="电脑环境"></a>电脑环境</h1><ul>
+<li>系统：<code>macOS Catalina</code> v10.15.3；</li>
+<li>软件<ul>
+<li><code>Xcode</code> v11（版本其实无所谓）；</li>
+<li><code>Homebrew</code> （安装命令：<code>/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&quot;</code>）</li>
+<li><code>Python 3</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="安装PocketSphinx"><a href="#安装PocketSphinx" class="headerlink" title="安装PocketSphinx"></a>安装<code>PocketSphinx</code></h1><p>我们先来看一下<code>PocketSphinx</code>的依赖关系图：</p>
+<pre class="line-numbers language-none"><code class="language-none">PocketSphinx
+    |
+    |-- SphinxBase
+    |  |--libogg
+    |  |--libvorbis
+    |  |--flac
+    |  |--libsamplerate
+    |  &#96;--libsndfile
+    &#96;-- Swig
+         &#96;--PCRE<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li><p>打开终端，运行如下<code>brew</code>命令：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ brew install pcre
+$ brew install swig<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>其中，<code>swig</code>是<code>pocketsphinx</code>的依赖，<code>pcre</code>是<code>swig</code>的依赖。别听网上瞎说什么<code>swig</code>要自己编译，根本不用，直接用<code>brew</code>安装即可</p>
+</li>
+<li><p>再使用<code>brew</code>安装<code>SphinxBase</code>：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ brew install SphinxBase<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这个命令会将<code>SphinxBase</code>及其所有依赖安装到电脑上。现在，<code>brew list</code>应该如下：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">index_out_of_range@imac ~ % brew list
+cmu-sphinxbase	libogg		libvorbis	portaudio
+flac		libsamplerate	openssl@1.1	swig
+ldid		libsndfile	pcre<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>注：<code>portaudio</code>、<code>ldid</code>和<code>openssl</code>是我自己安装的，不用安装。</p>
+</blockquote>
+</li>
+<li><p>克隆<code>PocketSphinx</code>仓库，我们要在之后的步骤手动安装仓库，别问我为什么：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">git clone git@github.com:cmusphinx&#x2F;pocketsphinx.git
+# 或者（推荐）
+git clone --recursive https:&#x2F;&#x2F;github.com&#x2F;cmusphinx&#x2F;pocketsphinx.git
+# cd 到仓库
+cd pocketsphinx-python<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>注意：必须<code>clone</code>，直接下载仓库会有文件缺失，因为这个库引用了其它仓库代码。如果网速太慢，可以fq或者把仓库导入<code>gitee</code>。</p>
+</li>
+<li><p>==使用<code>vim</code>更改关键文件==（如果直接用<code>pip</code>安装，会有文件出错<a class="link"   target="_blank" rel="noopener" href="https://github.com/bambocher/pocketsphinx-python/issues/28" >^1<i class="fas fa-external-link-alt"></i></a>）：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vim deps&#x2F;sphinxbase&#x2F;src&#x2F;libsphinxad&#x2F;ad_openal.c<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>接下来用<code>vim</code>把</p>
+<pre class="line-numbers language-objc" data-language="objc"><code class="language-objc">#include &lt;al.h&gt;
+#include &lt;alc.h&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>改为</p>
+<pre class="line-numbers language-objc" data-language="objc"><code class="language-objc">#include &lt;OpenAL&#x2F;al.h&gt;
+#include &lt;OpenAL&#x2F;alc.h&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li><p>使用<code>setup.py</code>安装（至关重要的一步，仔细看命令！）：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python3 setup.py install<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>注意是<code>python3</code>而不是<code>python</code>。我一开始没加3，结果安装到<code>python2</code>系统目录去了。</p>
+</li>
+</ol>
+<h2 id="测试安装"><a href="#测试安装" class="headerlink" title="测试安装"></a>测试安装</h2><p>使用如下命令测试<code>PocketSphinx</code>是否安装成功：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">index_out_of_range@imac ~ % python3
+Python 3.8.2 (v3.8.2:7b3ab5921f, Feb 24 2020, 17:52:18)
+[Clang 6.0 (clang-600.0.57)] on darwin
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; import pocketsphinx
+&gt;&gt;&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如果像我一样<code>import</code>没有报错，就是安装成功了！</p>
+<h1 id="语音识别"><a href="#语音识别" class="headerlink" title="语音识别"></a>语音识别</h1><h2 id="英文识别"><a href="#英文识别" class="headerlink" title="英文识别"></a>英文识别</h2><p>安装完<code>PocketSphinx</code>后，就进入到我们的第二个阶段，嵌入<code>speech_recognition</code>模块进行语音识别了。你可以将<code>speech_recognition</code>模块理解为众多语音识别SDK与API的一个高层封装模块。使用<code>pip install SpeechRecognition</code>安装即可。</p>
+<p>接下来，新建一个<code>.py</code>文件，输入如下代码：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># 注：安装时用的是 SpeechRecognition 这一名称，但是注意 import 时要用 speech_recognition 这一名称。
+import speech_recognition as sr
+
+r &#x3D; sr.Recognizer()
+mic &#x3D; sr.Microphone()
+
+def recognize(r, mic, lang&#x3D;&quot;en-US&quot;):
+    print(&quot;Please wait...&quot;, end&#x3D;&quot;&quot;) # 在开始录音前等待
+    
+    with mic as source:
+        r.adjust_for_ambient_noise(source)
+        backspace &#x3D; &quot;\r&quot; * 14 # 退格字符
+        print(f&#39;&#123;backspace&#125;Say something: &#39;, end&#x3D;&quot;&quot;)
+        audio &#x3D; r.listen(source)
+    
+    # 调用识别函数（这个函数只有安装了 PocketSphinx 才能调用），具体方法看官方文档
+    result &#x3D; r.recognize_sphinx(audio, language&#x3D;lang)
+    
+    # 打印并返回结果
+    print(result)
+    return result
+
+if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
+    recognize(r, mic)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>使用终端运行代码（我用<code>VSCode</code>不知为何打不开麦克风）：程序首先会打印<code>Please wait...</code>，等待一会<code>Please wait...</code>会变成<code>Say something:</code>，之后说一句英文（比如<code>hello</code>），程序就会打印出<code>hello</code>。</p>
+<p>但是问题来了，我们是中国人啊！于是你把<code>recognize(r, mic)</code>改成了<code>recognize(r, mic, lang=&quot;zh-CN&quot;)</code>，程序报错了。</p>
+<h2 id="中文识别"><a href="#中文识别" class="headerlink" title="中文识别"></a>中文识别</h2><p>说白了，程序的报错原因就是你没有中文语言模型，<code>PocketSphinx</code>是默认只有英文的。接下来我们添加中文模型：</p>
+<ol>
+<li>到 SourceForge 的<a class="link"   target="_blank" rel="noopener" href="https://sourceforge.net/projects/cmusphinx/files/Acoustic%20and%20Language%20Models" >这个项目<i class="fas fa-external-link-alt"></i></a>里，找到 Mandarin（普通话），点进去有个<code>tar</code>包，下载下来并解压。</li>
+<li>将解压出的目录改名为<code>zh-CN</code>，拖动到<code>/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/speech_recognition/pocketsphinx-data/</code>目录下。</li>
+<li>按图中方式，将<code>zh-CN</code>目录里的文件按<code>en-US</code>目录里文件的命名规律改名：<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/4/30/py-sphinx-chname.jpg" alt="改名"></li>
+</ol>
+<p>现在把程序里<code>recognize(r, mic)</code>改成<code>recognize(r, mic, lang=&quot;zh-CN&quot;)</code>，程序成功运行！不过通过实验发现，这个模型识别出来的中文貌似很垃圾……只能自己训练模型了……</p>
+<h1 id="END"><a href="#END" class="headerlink" title="END"></a>END</h1>
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：使用 PocketSphinx 进行真正的语音识别</li>
+        <li>本文作者：TLHorse</li>
+        <li>创建时间：2020-05-06 17:06:56</li>
+        <li>
+            本文链接：https://tlhorse.github.io/posts/7ab4abc/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh">BY-NC-ND</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/posts/ed6c4c67/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">制作一个 Deepin Linux 启动盘</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/posts/42d3b274/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">执行一个优美的并行程序</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+        
+    <div id="gitalk-container"></div>
+    <script 
+            src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+    <script >
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: '88d770a805d27a98e780',
+                    clientSecret: 'c1c798735d6221391048e9225ae064e5e06ecdc8',
+                    repo: 'TLBlogComments',
+                    owner: 'TLHorse',
+                    admin: ['TLHorse'],
+                    id: __gitalk__pathname,
+                    language: 'zh-CN'
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('false') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">TLHorse</a>
+        </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.3.2</a>
+        </div> -->
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%B5%E8%84%91%E7%8E%AF%E5%A2%83"><span class="nav-text">电脑环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85PocketSphinx"><span class="nav-text">安装PocketSphinx</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E5%AE%89%E8%A3%85"><span class="nav-text">测试安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB"><span class="nav-text">语音识别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8B%B1%E6%96%87%E8%AF%86%E5%88%AB"><span class="nav-text">英文识别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AD%E6%96%87%E8%AF%86%E5%88%AB"><span class="nav-text">中文识别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#END"><span class="nav-text">END</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
 
 <script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/header-shrink.js"></script><script src="/js/back2top.js"></script><script src="/js/dark-light-toggle.js"></script>
 

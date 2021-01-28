@@ -27,93 +27,368 @@
 
 
 <body>
-.page-container {
-  position: relative;
-keep-tablet()
-}
-.page-container .page-main-content {
-  padding-top: $header-height;
-  position: relative;
-keep-tablet()
-keep-mobile()
-}
-.header-shrink .page-container .page-main-content {
-  padding-top: $header-shrink-height;
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-top {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: $header-height;
-  z-index: $z-index-5;
-  box-sizing: border-box;
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-top.hide {
-  transform: translateY(-105%);
-}
-.header-shrink .page-container .page-main-content .page-main-content-top {
-  height: $header-shrink-height;
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-middle {
-  box-sizing: border-box;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: $component-spacing-value 0;
-  background: var(--background-color);
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-middle .main-content {
-  position: relative;
-  box-sizing: border-box;
-  width: $main-content-width;
-  max-width: $content-max-width;
-  height: 100%;
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-bottom {
-  width: 100%;
-}
-.page-container .page-aside {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: -260px;
-  width: 260px;
-  height: 100%;
-  z-index: $z-index-6;
-  overflow-y: auto;
-  padding: 20px;
-  box-sizing: border-box;
-  background: var(--background-color);
-keep-tablet()
-}
-.page-container .post-tools {
-  position: fixed;
-  top: $header-height$component-spacing-value;
-  right: $component-spacing-value;
-keep-tablet()
-keep-mobile()
-}
-.header-shrink .page-container .post-tools {
-  top: $header-shrink-height$component-spacing-value;
-keep-tablet()
-keep-mobile()
-}
-.page-container .right-bottom-side-tools {
-  position: fixed;
-  bottom: 5%;
-  right: 0;
-}
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                🐴 慎独阁
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class="active"
+                               href="/changelog"
+                            >
+                                更新日志
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="active"
+                       href="/changelog">更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="empty-page-container">
+
+        
+
+        <div class="empty-page-content markdown-body">
+            
+                <h1 id="2021-1-28-慎独阁一周年🎉"><a href="#2021-1-28-慎独阁一周年🎉" class="headerlink" title="2021.1.28 慎独阁一周年🎉"></a>2021.1.28 慎独阁一周年🎉</h1><p>好久没更新了，网站迎来重大改版！</p>
+<ul>
+<li>已经<ul>
+<li>更换主题为<a class="link"   target="_blank" rel="noopener" href="https://github.com/XPoet/hexo-theme-keep" >Keep<i class="fas fa-external-link-alt"></i></a></li>
+<li>更新评论系统为<a class="link"   target="_blank" rel="noopener" href="https://github.com/gitalk/gitalk" >Gitalk<i class="fas fa-external-link-alt"></i></a></li>
+<li>更改网站名称为<strong>慎独阁</strong></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>做完这次更新感触颇深：网站的好坏，不仅在于UI和UX的体验，还有一个富有诗意的名称，几篇有内涵的文章，和一个能让人静下心来的主题。像Icarus、Matery这样的华美我也试过，但是静下心来最终发现，真正吸引我的是极简的设计风。既减少网站加载时间，又给人耳目一新，放下累赘，何乐不为？</p>
+</blockquote>
+<h1 id="2020-5-6"><a href="#2020-5-6" class="headerlink" title="2020.5.6"></a>2020.5.6</h1><ul>
+<li>已经<ul>
+<li>更换图床为<code>GitHub</code>图床，使用<code>jsDelivr</code>加速</li>
+</ul>
+</li>
+<li>准备<ul>
+<li>从 icarus 更换主题为它的改编版：hexo-theme-amazing</li>
+</ul>
+</li>
+</ul>
+<h1 id="2020-4-15"><a href="#2020-4-15" class="headerlink" title="2020.4.15"></a>2020.4.15</h1><ul>
+<li>已经<ul>
+<li>更改网站主题为：hexo-theme-icarus</li>
+<li>恢复评论系统</li>
+</ul>
+</li>
+<li>准备<ul>
+<li>更换图床为<a class="link"   target="_blank" rel="noopener" href="https://www.superbed.cn/" >聚合图床<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+</li>
+</ul>
+<h1 id="2020-4-13"><a href="#2020-4-13" class="headerlink" title="2020.4.13"></a>2020.4.13</h1><ul>
+<li>已经<ul>
+<li>更改网站主题为：hexo-theme-matery</li>
+<li>升级网站系统</li>
+</ul>
+</li>
+<li>准备<ul>
+<li>恢复评论系统</li>
+<li>再换图床（SM.MS 图床越来越慢了）</li>
+</ul>
+</li>
+</ul>
+<h1 id="2020-1-30"><a href="#2020-1-30" class="headerlink" title="2020.1.30"></a>2020.1.30</h1><ul>
+<li><p>已经</p>
+<ul>
+<li>添加评论系统</li>
+</ul>
+</li>
+<li><p>准备</p>
+<ul>
+<li>尝试新增镜像</li>
+<li>自定义域名</li>
+</ul>
+</li>
+</ul>
+<h1 id="2020-1-29"><a href="#2020-1-29" class="headerlink" title="2020.1.29"></a>2020.1.29</h1><ul>
+<li><p>已经</p>
+<ul>
+<li>将图床更换为 <a class="link"   target="_blank" rel="noopener" href="https://sm.ms/" >SM.MS<i class="fas fa-external-link-alt"></i></a></li>
+<li>加快网页浏览速度</li>
+<li>增加文章</li>
+</ul>
+</li>
+<li><p>准备</p>
+<ul>
+<li>添加评论系统</li>
+</ul>
+</li>
+</ul>
+<h1 id="2020-1-28"><a href="#2020-1-28" class="headerlink" title="2020.1.28"></a>2020.1.28</h1><ul>
+<li>已经<ul>
+<li>建站</li>
+<li>使用 <a class="link"   target="_blank" rel="noopener" href="https://postimages.org/" >Postimages<i class="fas fa-external-link-alt"></i></a> 图床</li>
+<li>导入并发布若干文章</li>
+</ul>
+</li>
+</ul>
+
+            
+        </div>
+        <div class="empty-page-comments">
+            
+        </div>
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">TLHorse</a>
+        </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.3.2</a>
+        </div> -->
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
 
 <script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/header-shrink.js"></script><script src="/js/back2top.js"></script><script src="/js/dark-light-toggle.js"></script>
 

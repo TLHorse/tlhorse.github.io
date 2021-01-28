@@ -27,93 +27,543 @@
 
 
 <body>
-.page-container {
-  position: relative;
-keep-tablet()
-}
-.page-container .page-main-content {
-  padding-top: $header-height;
-  position: relative;
-keep-tablet()
-keep-mobile()
-}
-.header-shrink .page-container .page-main-content {
-  padding-top: $header-shrink-height;
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-top {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: $header-height;
-  z-index: $z-index-5;
-  box-sizing: border-box;
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-top.hide {
-  transform: translateY(-105%);
-}
-.header-shrink .page-container .page-main-content .page-main-content-top {
-  height: $header-shrink-height;
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-middle {
-  box-sizing: border-box;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: $component-spacing-value 0;
-  background: var(--background-color);
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-middle .main-content {
-  position: relative;
-  box-sizing: border-box;
-  width: $main-content-width;
-  max-width: $content-max-width;
-  height: 100%;
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-bottom {
-  width: 100%;
-}
-.page-container .page-aside {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: -260px;
-  width: 260px;
-  height: 100%;
-  z-index: $z-index-6;
-  overflow-y: auto;
-  padding: 20px;
-  box-sizing: border-box;
-  background: var(--background-color);
-keep-tablet()
-}
-.page-container .post-tools {
-  position: fixed;
-  top: $header-height$component-spacing-value;
-  right: $component-spacing-value;
-keep-tablet()
-keep-mobile()
-}
-.header-shrink .page-container .post-tools {
-  top: $header-shrink-height$component-spacing-value;
-keep-tablet()
-keep-mobile()
-}
-.page-container .right-bottom-side-tools {
-  position: fixed;
-  bottom: 5%;
-  right: 0;
-}
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                🐴 慎独阁
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >
+                                更新日志
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog">更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">从最简单的程序开始教你怎么破解（二）</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">TLHorse</span>
+                        <span class="level">Lv3</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2020-01-30 09:16:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/">反编译</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.1k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>4 分钟</span>
+        </span>
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>今天，我们还讲Hopper反编译，不过用的还是昨天的<code>CM</code>。我今天准备告诉大家，怎样替换程序里的字符串，这样就可以为所欲为了。</p>
+<a id="more"></a>
+<blockquote>
+<p>目标：把程序修改成，只有使用自己规定的注册码，才能激活成功。  </p>
+</blockquote>
+<h1 id="开始分析"><a href="#开始分析" class="headerlink" title="开始分析"></a>开始分析</h1><p>首先，程序拖入 Hopper 解析。完成后，在左边的搜索视图中选择<code>Str</code>，查看程序里的字符串。因为程序比较小，所以字符串只有5个。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/1/29/hop-cm2-search-str.png" alt="查看字符串"></p>
+<p>这五个字符串，前面一个是激活码（怎么判断出来的上篇文章讲过），中间四个其实是中文的十六进制编码（对应的是“说明”“要求”和“输入错误”几个字符串），最后一个是定义用来处理换行的。既然要修改第一个，我们就点进去。</p>
+<h1 id="修改程序"><a href="#修改程序" class="headerlink" title="修改程序"></a>修改程序</h1><p>修改字符串有两种方法。</p>
+<h2 id="方法一：修改十六进制"><a href="#方法一：修改十六进制" class="headerlink" title="方法一：修改十六进制"></a>方法一：修改十六进制</h2><ol>
+<li><p>把视图切换为<code>Hex Mode</code>，这个模式已经自动给你高亮了对应激活码的16进制码。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/1/29/hop-cm2-16bit.png" alt="16进制码"></p>
+</li>
+<li><p>例如，你要把激活码改成<code>111111-111111-111111</code>，那么，十六进制里，<code>1</code>对应<code>31</code>，而连字符<code>-</code>对应着<code>2D</code>，所以你就要把对应的十六进制改成：</p>
+</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">31 31 31 31 31 31 2D 31 31 31 31 31 31 2D 31 31 31 31 31 31<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这里我要说明一点，如果你的激活码比以前的激活码要短，那么你就尽管从头开始修改，最后剩下几位，你就在相应的位置上填写<code>00</code>即可。如果激活码比以前的长，那么会出现一个修改文件偏移量的问题，比较复杂，再次不阐述。</p>
+<p>例如，你的激活码是：<code>helloworld!</code>，对应下来就是：<code>68 65 6c 6c 6f 77 6f 72 6c 64 21</code><br>2.  如果你嫌麻烦，可以在右边对应的字符串一个个修改成<code>1</code>和<code>-</code>， Hopper 会自动为你生成十六进制填在左边。<br>3.  <kbd>command</kbd>+<kbd>shift</kbd>+<kbd>E</kbd>，导出，完工！</p>
+<h2 id="方法二：修改汇编代码"><a href="#方法二：修改汇编代码" class="headerlink" title="方法二：修改汇编代码"></a>方法二：修改汇编代码</h2><p>这个方法要比修改十六进制简单得多，我把它放在后面，是因为修改出来， Hopper 显示得有些让人迷糊，看不懂。我开始也用的这个方法，感觉错了，后来才知道这是最简单的方法。如果你用的是修改十六进制的方法，不妨撤回，然后用这个方法试试。</p>
+<ol>
+<li><p> 把视图切换回汇编代码，确保在激活码的地方。汇编代码应该长这样：</p>
+<pre class="line-numbers language-nasm" data-language="nasm"><code class="language-nasm">                		a82mal929anyw9m:
+0000000100000e80         db         &quot;82mal9-29anyw-9msfz6&quot;, 0                   ; DATA XREF&#x3D;_main+8
+0000000100000e95         db         &quot;&quot;, 0
+0000000100000e96         db         &quot;&quot;, 0
+0000000100000e97         db         &quot;&quot;, 0
+0000000100000e98         db         &quot;&quot;, 0                                       ; DATA XREF&#x3D;_$s10Crackme__16verifyyyF+118, _$s10Crackme__16verifyyyF+653
+0000000100000e99         db         &quot;&quot;, 0
+0000000100000e9a         db         &quot;&quot;, 0
+0000000100000e9b         db         &quot;&quot;, 0
+0000000100000e9c         db         &quot;&quot;, 0
+0000000100000e9d         db         &quot;&quot;, 0
+0000000100000e9e         db         &quot;&quot;, 0
+0000000100000e9f         db         &quot;&quot;, 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>鼠标选中第一行。我的第一行是指：<br> <code>0000000100000e80         db         &amp;quot;82mal9-29anyw-9msfz6&amp;quot;, 0                   ; DATA XREF=_main+8</code><br> 如果你不是这一行，会发生不好的结果。</p>
+</li>
+<li><p> <kbd>option</kbd>+<kbd>A</kbd>修改，输入指令：<code>db “你想要的激活码”, 0</code></p>
+</li>
+<li><p> 之后，你的那行代码就会改成这样：</p>
+<pre class="line-numbers language-nasm" data-language="nasm"><code class="language-nasm">0000000100000e80         db         6 dup (0x31), 0x2d, 0x31                    ; DATA XREF&#x3D;_main+8
+0000000100000e88         db         5 dup (0x31), 0x2d, 2 dup (0x31)
+0000000100000e90         db         4 dup (0x31), 0x00<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>很奇怪吧！这就是一个坑：这段代码看起来怪怪的。为什么呢？<br>我提醒一下大家：</p>
+</li>
+<li><p> <code>db</code>命令是定义字节，基本上常量和变量的定义都会出现，不必纠结。</p>
+</li>
+<li><p> <code>dup</code>是复制的意思，对应英文单词<code>duplicate</code>。那么<code>6 dup (...)</code>是什么意思，就可想而知了。</p>
+</li>
+<li><p> <code>0x31</code>和<code>0x2d</code>都是刚才说过的十六进制。<br>现在你就会明白，这段代码是没有问题的。</p>
+</li>
+</ol>
+<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><p>提醒大家注意几点：</p>
+<ul>
+<li>  十六进制码<strong>不区分大小写</strong>；</li>
+<li>  汉字也可以转化为十六进制。如果你在程序中看到类似<code>x98\xH7\x2B\x..\x..</code>这样的东西，是中文的十六进制编码，不是乱码。你可以到<a class="link"   target="_blank" rel="noopener" href="http://tools.jb51.net/tools/base64_decode-gb2312.php" >相关解码网站<i class="fas fa-external-link-alt"></i></a>解码成中文。</li>
+<li>  如果你需要十六进制的加解密，可以试试<a class="link"   target="_blank" rel="noopener" href="http://www.bejson.com/convert/ox2str/" >BeJson<i class="fas fa-external-link-alt"></i></a>等工具。</li>
+<li>  在HDA里输入命令时，用不着纠结汇编指令与参数之间的空格，空一个格就好， Hopper 会自动给你补充的。</li>
+</ul>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：从最简单的程序开始教你怎么破解（二）</li>
+        <li>本文作者：TLHorse</li>
+        <li>创建时间：2020-01-30 09:16:00</li>
+        <li>
+            本文链接：https://tlhorse.github.io/posts/39501/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh">BY-NC-ND</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/posts/2615/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">从最简单的程序开始教你怎么破解（一）</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/posts/33945/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">《草房子》读后感</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+        
+    <div id="gitalk-container"></div>
+    <script 
+            src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+    <script >
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: '88d770a805d27a98e780',
+                    clientSecret: 'c1c798735d6221391048e9225ae064e5e06ecdc8',
+                    repo: 'TLBlogComments',
+                    owner: 'TLHorse',
+                    admin: ['TLHorse'],
+                    id: __gitalk__pathname,
+                    language: 'zh-CN'
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('false') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">TLHorse</a>
+        </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.3.2</a>
+        </div> -->
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E5%88%86%E6%9E%90"><span class="nav-text">开始分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E7%A8%8B%E5%BA%8F"><span class="nav-text">修改程序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E4%BF%AE%E6%94%B9%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6"><span class="nav-text">方法一：修改十六进制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E4%BF%AE%E6%94%B9%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81"><span class="nav-text">方法二：修改汇编代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-text">注意事项</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
 
 <script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/header-shrink.js"></script><script src="/js/back2top.js"></script><script src="/js/dark-light-toggle.js"></script>
 

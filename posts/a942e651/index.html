@@ -27,93 +27,596 @@
 
 
 <body>
-.page-container {
-  position: relative;
-keep-tablet()
-}
-.page-container .page-main-content {
-  padding-top: $header-height;
-  position: relative;
-keep-tablet()
-keep-mobile()
-}
-.header-shrink .page-container .page-main-content {
-  padding-top: $header-shrink-height;
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-top {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: $header-height;
-  z-index: $z-index-5;
-  box-sizing: border-box;
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-top.hide {
-  transform: translateY(-105%);
-}
-.header-shrink .page-container .page-main-content .page-main-content-top {
-  height: $header-shrink-height;
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-middle {
-  box-sizing: border-box;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: $component-spacing-value 0;
-  background: var(--background-color);
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-middle .main-content {
-  position: relative;
-  box-sizing: border-box;
-  width: $main-content-width;
-  max-width: $content-max-width;
-  height: 100%;
-keep-tablet()
-keep-mobile()
-}
-.page-container .page-main-content .page-main-content-bottom {
-  width: 100%;
-}
-.page-container .page-aside {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: -260px;
-  width: 260px;
-  height: 100%;
-  z-index: $z-index-6;
-  overflow-y: auto;
-  padding: 20px;
-  box-sizing: border-box;
-  background: var(--background-color);
-keep-tablet()
-}
-.page-container .post-tools {
-  position: fixed;
-  top: $header-height$component-spacing-value;
-  right: $component-spacing-value;
-keep-tablet()
-keep-mobile()
-}
-.header-shrink .page-container .post-tools {
-  top: $header-shrink-height$component-spacing-value;
-keep-tablet()
-keep-mobile()
-}
-.page-container .right-bottom-side-tools {
-  position: fixed;
-  bottom: 5%;
-  right: 0;
-}
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                🐴 慎独阁
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >
+                                更新日志
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog">更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">硬核输密码</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">TLHorse</span>
+                        <span class="level">Lv3</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2020-06-29 11:51:11
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/">反编译</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Python/">Python</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.3k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>5 分钟</span>
+        </span>
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>好久没写文章了，今天输出一篇。首先，为了防止误判我是标题党，先解释一下在这篇文章里我要做什么。</p>
+<p>以前我在<a class="link"   target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1132170-1-1.html" >《【Mac】一次意外的 CleanMyMac X 破解》<i class="fas fa-external-link-alt"></i></a>里破解过CleanMyMac X（注：这篇帖子已被移动），但是最近CleanMyMac X更新，所以我便把旧版本的CMM删除了，下载了新版本4.6.7的CMM。结果不破不知道，一破吓一跳，动态库注入破解，破解倒是成功了，但是可能因为签名等问题，CMM总会在清理时不断地让我输入root密码，获取我的权限，尽管我已经赋予了CMM完全磁盘访问权限。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2020/6/29/pwd-enter-box.jpg" alt="不断要求输入密码"></p>
+<p>尝试过的解决方法：</p>
+<ul>
+<li><del><code>codesign -f -s - --deep /Applications/CleanMyMac\ X.app</code></del></li>
+<li><del><code>AppleScript</code></del></li>
+<li><del>每一次都手动输一遍密码</del></li>
+<li><del>更换破解框架</del></li>
+</ul>
+<p>都不行。所以我准备写一段<code>Python</code>脚本，模拟键盘和鼠标，每当输入密码框弹出来时，自动输入密码并确认，你可以理解为一个轻量级的按键精灵。</p>
+<h1 id="0x1-编写代码"><a href="#0x1-编写代码" class="headerlink" title="0x1 编写代码"></a>0x1 编写代码</h1><p>首先使用<code>pip install pyuserinput</code>安装<code>PyUserInput</code>，然后导入。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from pymouse import PyMouse
+from pykeyboard import PyKeyboard
+
+# 定义键盘和鼠标实例
+m &#x3D; PyMouse()
+k &#x3D; PyKeyboard()
+
+def enter_pass(pwd: str, pos&#x3D;(1322, 705), enter_bt_pos&#x3D;(1425, 759)):
+    &#39;&#39;&#39;
+    将输入密码流程封装成函数
+    &#39;&#39;&#39;
+    global m, k
+    m.click(pos[0], pos[1])
+    k.type_string(pwd)
+    m.click(enter_bt_pos[0], enter_bt_pos[1])
+
+if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
+    enter_pass(pwd&#x3D;&quot;password123&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>其中输入框位置(1322, 705)和确认键位置(1425, 759)是我通过macOS自带的截图工具<kbd>Command+Shift+5</kbd>获取的。</p>
+<p>之后我们打开CMM，选择操作&gt;身份验证，然后会弹出一个“安装帮助程序”的弹窗，运行脚本——你会发现，确认键成功被点击，但是脚本却没有成功输入密码。</p>
+<h1 id="0x2-绕过漏洞"><a href="#0x2-绕过漏洞" class="headerlink" title="0x2 绕过漏洞"></a>0x2 绕过漏洞</h1><p>研究了一番后，发现输入密码弹框属于系统层程序，因此无法模拟键盘输入（顺便提一下，<code>PyUserInput</code>是通过<code>pyobjc</code>调用<code>Objective-C</code>代码模拟的）。又试了试，发现密码弹窗有一个漏洞，那就是可以进行粘贴操作（不能复制）。怎么办呢？我们的新思路就是使用<code>pyperclip</code>框架先复制密码，然后点击文本框，再模拟键盘进行<kbd>Command+V</kbd>粘贴操作。</p>
+<p>代码改写如下：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from pymouse import PyMouse 
+from pykeyboard import PyKeyboard 
+import pyperclip as clip 
+ 
+m &#x3D; PyMouse() 
+k &#x3D; PyKeyboard() 
+ 
+def enter_pass(pwd: str, pos&#x3D;(1322, 705), enter_bt_pos&#x3D;(1425, 759)): 
+    global m, k 
+    clip.copy(pwd) 
+    m.click(pos[0], pos[1]) 
+    k.press_keys([&#39;Command&#39;, &#39;V&#39;])  # 快捷键组合函数
+    m.click(enter_bt_pos[0], enter_bt_pos[1]) 
+ 
+if __name__ &#x3D;&#x3D; &#39;__main__&#39;: 
+    enter_pass(pwd&#x3D;&quot;password123&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="0x3-优化速度"><a href="#0x3-优化速度" class="headerlink" title="0x3 优化速度"></a>0x3 优化速度</h1><p>上面的脚本运行后发现一切很好，但是太慢，原因是<code>pyperclip.copy()</code>占用的时间太长。怎么办呢？我便把<code>clip.copy(pwd)</code>改成了：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">if not clip.paste() &#x3D;&#x3D; pwd:
+    clip.copy(pwd)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>检测剪贴板和密码是否相同，如果相同，就不复制了。效果还不错呢：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2020/6/29/pwd-enter-vid.gif" alt="效果"></p>
+<h1 id="0x4-检测弹窗"><a href="#0x4-检测弹窗" class="headerlink" title="0x4 检测弹窗"></a>0x4 检测弹窗</h1><blockquote>
+<p><strong>你坑谁呢？难道每一次弹出密码窗口时我都要运行一遍脚本？</strong></p>
+</blockquote>
+<p>对于以上问题，我准备使用<code>PIL.ImageGrab</code>来不断捕捉屏幕，如果识别到弹窗，再运行<code>enter_pass:pos:enter_bt_pos:</code>函数。代码如下：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from PIL import ImageGrab
+from pymouse import PyMouse 
+from pykeyboard import PyKeyboard 
+import pyperclip as clip 
+ 
+m &#x3D; PyMouse() 
+k &#x3D; PyKeyboard() 
+ 
+def enter_pass(pwd: str, pos&#x3D;(1322, 705), enter_bt_pos&#x3D;(1425, 759)): 
+    global m, k 
+    if not clip.paste() &#x3D;&#x3D; pwd: 
+        clip.copy(pwd) 
+    m.click(pos[0], pos[1]) 
+    k.press_keys([&#39;Command&#39;, &#39;V&#39;]) 
+    m.click(enter_bt_pos[0], enter_bt_pos[1]) 
+ 
+if __name__ &#x3D;&#x3D; &#39;__main__&#39;: 
+    print(&quot;Start grabbing:&quot;) 
+    while True: 
+        screen &#x3D; ImageGrab.grab().convert(&#39;RGB&#39;) # 捕捉屏幕
+        print(f&quot;Screen grabbed.&quot;) 
+        colorls &#x3D; screen.load() # 加载数据
+        # 判断像素
+        if colorls[2222, 1478] &#x3D;&#x3D; (236, 236, 236) and colorls[2153, 1206] &#x3D;&#x3D; (236, 236, 236):
+            # 输入密码
+            enter_pass(pwd&#x3D;&quot;password123&quot;)
+            print(&quot;Password entered.&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>到此，我们的自动填充密码脚本便编写完了。</p>
+<h1 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h1><p>代码如下：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from PIL import ImageGrab
+from pymouse import PyMouse
+from pykeyboard import PyKeyboard
+import pyperclip as clip
+
+m &#x3D; PyMouse()
+k &#x3D; PyKeyboard()
+
+def enter_pass(pwd: str, pos&#x3D;(1322, 705), enter_bt_pos&#x3D;(1425, 759)):
+    global m, k
+    if not clip.paste() &#x3D;&#x3D; pwd:
+        clip.copy(pwd)
+    m.click(pos[0], pos[1])
+    k.press_keys([&#39;Command&#39;, &#39;V&#39;])
+    m.click(enter_bt_pos[0], enter_bt_pos[1])
+
+if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
+    no_passbox_count &#x3D; 0
+    idx &#x3D; 1
+    print(&quot;Start grabbing ------&quot;)
+    while True:
+        if no_passbox_count &gt; 4: break
+        screen &#x3D; ImageGrab.grab().convert(&#39;RGB&#39;)
+        colorls &#x3D; screen.load()
+        if colorls[2222, 1478] &#x3D;&#x3D; (236, 236, 236) and colorls[2153, 1206] &#x3D;&#x3D; (236, 236, 236)
+            enter_pass(pwd&#x3D;&quot;password123&quot;)
+            print(&quot;Password entered.&quot;)
+            no_passbox_count &#x3D; 0
+        else:
+            no_passbox_count +&#x3D; 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>运行此<code>Python</code>脚本，之后启动 CleanMyMac X 清理，你就能看到脚本自动为你输密码的壮观景象了。由于截图时延迟比较大，在1秒左右，因此清理运行下来大概需要五分钟……</p>
+<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p>还是<del>去下载别人家的破解</del>买正版软件更好 : )</p>
+<blockquote>
+<p>如果贴友们有更好的方法解决 CleanMyMac 频繁让输入密码的问题（例：<code>codesign</code>），请跟帖留言。</p>
+</blockquote>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：硬核输密码</li>
+        <li>本文作者：TLHorse</li>
+        <li>创建时间：2020-06-29 11:51:11</li>
+        <li>
+            本文链接：https://tlhorse.github.io/posts/a942e651/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh">BY-NC-ND</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/posts/ed6c4c67/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">制作一个 Deepin Linux 启动盘</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+        
+    <div id="gitalk-container"></div>
+    <script 
+            src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+    <script >
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: '88d770a805d27a98e780',
+                    clientSecret: 'c1c798735d6221391048e9225ae064e5e06ecdc8',
+                    repo: 'TLBlogComments',
+                    owner: 'TLHorse',
+                    admin: ['TLHorse'],
+                    id: __gitalk__pathname,
+                    language: 'zh-CN'
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('false') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">TLHorse</a>
+        </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.3.2</a>
+        </div> -->
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x1-%E7%BC%96%E5%86%99%E4%BB%A3%E7%A0%81"><span class="nav-text">0x1 编写代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x2-%E7%BB%95%E8%BF%87%E6%BC%8F%E6%B4%9E"><span class="nav-text">0x2 绕过漏洞</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x3-%E4%BC%98%E5%8C%96%E9%80%9F%E5%BA%A6"><span class="nav-text">0x3 优化速度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x4-%E6%A3%80%E6%B5%8B%E5%BC%B9%E7%AA%97"><span class="nav-text">0x4 检测弹窗</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C"><span class="nav-text">最终效果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-text">结论</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
 
 <script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/header-shrink.js"></script><script src="/js/back2top.js"></script><script src="/js/dark-light-toggle.js"></script>
 
