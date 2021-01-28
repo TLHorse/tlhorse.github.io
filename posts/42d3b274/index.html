@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="莫见乎隐，莫显乎微，故君子慎其独也，进其步也。">
+    <meta name="author" content="TLHorse">
+    
+    <title>
+        
+            执行一个优美的并行程序 |
+        
+        🐴 慎独阁
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/favicon.svg">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"tlhorse.github.io","root":"/","language":"zh-CN","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.png","favicon":"/images/favicon.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"莫见乎隐，莫显乎微，故君子慎其独也，进其步也。"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.3.2"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                🐴 慎独阁
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">执行一个优美的并行程序</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">TLHorse</span>
+                        <span class="level">Lv3</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2020-04-30 10:49:36
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Python/">Python</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h1><p>我最近用<code>Python</code>的<code>print</code>，通过打印一帧帧的进度条，实现了一个进度条样式，顺便跟大家分享一下代码：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">import time
+
+AT_PROGRESS_BAR &#x3D; [
+    &quot;(                    )&quot;, 
+    &quot;(@                   )&quot;, 
+    &quot;(@@                  )&quot;, 
+    &quot;(@@@                 )&quot;, 
+    &quot;(@@@@                )&quot;, 
+    &quot;(@@@@@               )&quot;, 
+    &quot;(@@@@@@              )&quot;, 
+    &quot;(@@@@@@@             )&quot;, 
+    &quot;(@@@@@@@@            )&quot;, 
+    &quot;(@@@@@@@@@           )&quot;,
+    &quot;(@@@@@@@@@@          )&quot;,
+    &quot;(@@@@@@@@@@@         )&quot;,
+    &quot;(@@@@@@@@@@@@        )&quot;,
+    &quot;( @@@@@@@@@@@@       )&quot;,
+    &quot;(  @@@@@@@@@@@@      )&quot;,
+    &quot;(   @@@@@@@@@@@@     )&quot;,
+    &quot;(    @@@@@@@@@@@@    )&quot;,
+    &quot;(     @@@@@@@@@@@@   )&quot;,
+    &quot;(      @@@@@@@@@@@@  )&quot;,
+    &quot;(       @@@@@@@@@@@@ )&quot;,
+    &quot;(        @@@@@@@@@@@@)&quot;,
+    &quot;(         @@@@@@@@@@@)&quot;,
+    &quot;(          @@@@@@@@@@)&quot;,
+    &quot;(           @@@@@@@@@)&quot;,
+    &quot;(            @@@@@@@@)&quot;,
+    &quot;(             @@@@@@@)&quot;,
+    &quot;(              @@@@@@)&quot;,
+    &quot;(               @@@@@)&quot;,
+    &quot;(                @@@@)&quot;,
+    &quot;(                 @@@)&quot;,
+    &quot;(                  @@)&quot;,
+    &quot;(                   @)&quot;,
+    &quot;(                    )&quot;,
+]
+def print_progress_bar():
+    while True:
+        for i in AT_PROGRESS_BAR:
+            print(i, end&#x3D;&quot;&quot;)
+            time.sleep(0.1)
+            print(&#39;\r&#39; * len(i), end&#x3D;&quot;&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>运行效果如下：<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/4/30/py-async-loading.gif" alt="进度条"><br>然而，我现在有一个函数，叫做<code>long_function()</code>，用来模拟一个执行时间很长的函数：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def long_function():
+    for i in range(20):
+        # 每隔一秒就 print 一下，以示函数正在执行。
+        time.sleep(1)
+        print(&quot;函数正在执行！&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>我想让<code>long_function()</code>执行的时候，让<code>print_progress_bar()</code>也一块伴随执行。但是如果我们直接使用如下代码：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
+    long_function()
+    print_progress_bar()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>两个函数是不会同时执行的。因此，我们就需要使用<code>multiprocessing</code>模块，使用并行程序<a class="link"   target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3.8/library/multiprocessing.html" >^1<i class="fas fa-external-link-alt"></i></a>执行。</p>
+<h1 id="需求一：2进程并行执行"><a href="#需求一：2进程并行执行" class="headerlink" title="需求一：2进程并行执行"></a>需求一：2进程并行执行</h1><p>代码如下：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">import time
+from multiprocessing import Process
+
+AT_PROGRESS_BAR &#x3D; [
+    &quot;(                    )&quot;, 
+    &quot;(@                   )&quot;, 
+    &quot;(@@                  )&quot;, 
+    &quot;(@@@                 )&quot;, 
+    &quot;(@@@@                )&quot;, 
+    &quot;(@@@@@               )&quot;, 
+    &quot;(@@@@@@              )&quot;, 
+    &quot;(@@@@@@@             )&quot;, 
+    &quot;(@@@@@@@@            )&quot;, 
+    &quot;(@@@@@@@@@           )&quot;,
+    &quot;(@@@@@@@@@@          )&quot;,
+    &quot;(@@@@@@@@@@@         )&quot;,
+    &quot;(@@@@@@@@@@@@        )&quot;,
+    &quot;( @@@@@@@@@@@@       )&quot;,
+    &quot;(  @@@@@@@@@@@@      )&quot;,
+    &quot;(   @@@@@@@@@@@@     )&quot;,
+    &quot;(    @@@@@@@@@@@@    )&quot;,
+    &quot;(     @@@@@@@@@@@@   )&quot;,
+    &quot;(      @@@@@@@@@@@@  )&quot;,
+    &quot;(       @@@@@@@@@@@@ )&quot;,
+    &quot;(        @@@@@@@@@@@@)&quot;,
+    &quot;(         @@@@@@@@@@@)&quot;,
+    &quot;(          @@@@@@@@@@)&quot;,
+    &quot;(           @@@@@@@@@)&quot;,
+    &quot;(            @@@@@@@@)&quot;,
+    &quot;(             @@@@@@@)&quot;,
+    &quot;(              @@@@@@)&quot;,
+    &quot;(               @@@@@)&quot;,
+    &quot;(                @@@@)&quot;,
+    &quot;(                 @@@)&quot;,
+    &quot;(                  @@)&quot;,
+    &quot;(                   @)&quot;,
+    &quot;(                    )&quot;,
+]
+
+def print_progress_bar():
+    while True:
+        for i in AT_PROGRESS_BAR:
+            print(i, end&#x3D;&quot;&quot;)
+            time.sleep(0.1)
+            print(&#39;\r&#39; * len(i), end&#x3D;&quot;&quot;)
+            
+def long_function():
+    for i in range(20):
+        # 每隔一秒就 print 一下，以示函数正在执行。
+        time.sleep(1)
+        print(&quot;函数正在执行！&quot;)
+
+if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
+    p &#x3D; Process(target&#x3D;print_progress_bar, args&#x3D;())
+    p.start()
+    long_function()
+    p.join()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在上面的代码中，我们首先在<code>__main__</code>（主程序）里面新建一个<code>Process</code>实例；其次，用<code>start()</code>启动这个程序；第三，运行父程序<code>long_function()</code>，最后再用<code>join()</code>函数等待到程序终止。</p>
+<p>效果（因为两个<code>print</code>语句冲突，所以可能打印的效果不太好，但是是正常的）：<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/4/30/py-async.gif" alt="效果-需求一"></p>
+<h1 id="需求二：2-进程并行"><a href="#需求二：2-进程并行" class="headerlink" title="需求二：2+进程并行"></a>需求二：2+进程并行</h1><p>对于2+进程的并行程序来说，我们使用进程池（<code>Pool</code>）来实现会更方便一些。代码如下：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">import time
+from multiprocessing import Process, Pool # 引入 Pool
+
+AT_PROGRESS_BAR &#x3D; [...] # 为了观看方便，把这个数组省略了
+
+def print_progress_bar():
+    while True:
+        for i in AT_PROGRESS_BAR:
+            print(i, end&#x3D;&quot;&quot;)
+            time.sleep(0.1)
+            print(&#39;\r&#39; * len(i), end&#x3D;&quot;&quot;)
+            
+def long_function():
+    for i in range(20):
+        # 每隔一秒就 print 一下，以示函数正在执行。
+        time.sleep(1)
+        print(&quot;函数正在执行！&quot;)
+
+# 我在这里新增了第三个函数：bfunc，作为第三个进程。
+def bfunc():
+    for i in range(30):
+        time.sleep(0.5)
+        print(&quot;bfunc&quot;)
+
+if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
+    pool &#x3D; Pool(2) # 新建一个含有两个进程的进程池
+    pool.apply_async(print_progress_bar, args&#x3D;()) # 添加 print_progress_bar 进程
+    pool.apply_async(bfunc, args&#x3D;()) # 添加 bfunc 进程
+    long_function() # 执行主进程
+    p.close() # 进程池不再接受新进程
+    p.start() # 启动进程池
+    p.join() # 进程池等待结束<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>三个进程并行的运行效果（<code>print</code>语句还是有些冲突，不过运行正常）：<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/4/30/py-async-2.gif" alt="效果-需求一"></p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>如果你把<code>pool</code>里添加上4+个进程的话，程序的并行可能失败。这取决于你的电脑有几个 CPU（就是几核），可以通过如下<code>os.cpu_count()</code>命令查询：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">Python 3.8.2 (v3.8.2:7b3ab5921f, Feb 24 2020, 17:52:18) 
+[Clang 6.0 (clang-600.0.57)] on darwin
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; import os
+&gt;&gt;&gt; 
+&gt;&gt;&gt; os.cpu_count()
+4
+&gt;&gt;&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="需求三：两进程并行中，其中一个进程停止，另外一个进程也停止"><a href="#需求三：两进程并行中，其中一个进程停止，另外一个进程也停止" class="headerlink" title="需求三：两进程并行中，其中一个进程停止，另外一个进程也停止"></a>需求三：两进程并行中，其中一个进程停止，另外一个进程也停止</h1><p>一开始我使用<code>Pool</code>进行并行，并且尝试捕捉<code>SIGCHLD</code>信号，来解决标题中的问题，但是这样好像行不太同。实际上我们可以使用两个<code>Process</code>实现，代码如下：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">import time
+from multiprocessing import Process
+
+AT_PROGRESS_BAR &#x3D; [...] # 为了读者方便，省略数组内容
+
+def print_progress_bar():
+    while True:
+        for i in AT_PROGRESS_BAR:
+            print(i, end&#x3D;&quot;&quot;)
+            time.sleep(0.1)
+            print(&#39;\r&#39; * len(i), end&#x3D;&quot;&quot;)
+            
+def long_function():
+    for i in range(20):
+        # 每隔一秒就 print 一下，以示函数正在执行。
+        time.sleep(1)
+        print(&quot;函数正在执行！&quot;)
+
+if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
+    p &#x3D; Process(target&#x3D;long_function, args&#x3D;())
+    p.start()
+    p2 &#x3D; Process(target&#x3D;print_progress_bar, args&#x3D;())
+    p2.start()
+    p.join()
+    p2.terminate()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在上面的代码中，我们希望<code>long_function()</code>执行结束后，停止<code>print_progress_bar()</code>进程。</p>
+<p>代码中：首先，我创建了<code>p</code>和<code>p2</code>两个<code>Process</code>，分别代表<code>long_function</code>和<code>print_progress_bar</code>，再分别<code>start()</code>进程；其次，我通过<code>p.join()</code>等待<code>p</code>进程结束，却不等待<code>p2</code>结束；最后，我巧妙地在<code>p</code>结束（即<code>long_function()</code>结束后）后，通过<code>terminate()</code>停止<code>p2</code>进程。</p>
+<p>这种方法的好处是，我们不用等待或传递任何信号，而只是通过<strong>代码的从上到下依次执行规律</strong>，解决标题中的问题。</p>
+<h1 id="END"><a href="#END" class="headerlink" title="END"></a>END</h1>
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：执行一个优美的并行程序</li>
+        <li>本文作者：TLHorse</li>
+        <li>创建时间：2020-04-30 10:49:36</li>
+        <li>
+            本文链接：https://tlhorse.github.io/posts/42d3b274/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/posts/7ab4abc/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">使用 PocketSphinx 进行真正的语音识别</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/posts/e92d57c7/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">网站 Changelog</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+        
+    <div id="gitalk-container"></div>
+    <script 
+            src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+    <script >
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: '88d770a805d27a98e780',
+                    clientSecret: 'c1c798735d6221391048e9225ae064e5e06ecdc8',
+                    repo: 'TLBlogComments',
+                    owner: 'TLHorse',
+                    admin: ['TLHorse'],
+                    id: __gitalk__pathname,
+                    language: 'zh-CN'
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('false') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">TLHorse</a>
+        </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.3.2</a>
+        </div> -->
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF"><span class="nav-text">场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E4%B8%80%EF%BC%9A2%E8%BF%9B%E7%A8%8B%E5%B9%B6%E8%A1%8C%E6%89%A7%E8%A1%8C"><span class="nav-text">需求一：2进程并行执行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E4%BA%8C%EF%BC%9A2-%E8%BF%9B%E7%A8%8B%E5%B9%B6%E8%A1%8C"><span class="nav-text">需求二：2+进程并行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F"><span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E4%B8%89%EF%BC%9A%E4%B8%A4%E8%BF%9B%E7%A8%8B%E5%B9%B6%E8%A1%8C%E4%B8%AD%EF%BC%8C%E5%85%B6%E4%B8%AD%E4%B8%80%E4%B8%AA%E8%BF%9B%E7%A8%8B%E5%81%9C%E6%AD%A2%EF%BC%8C%E5%8F%A6%E5%A4%96%E4%B8%80%E4%B8%AA%E8%BF%9B%E7%A8%8B%E4%B9%9F%E5%81%9C%E6%AD%A2"><span class="nav-text">需求三：两进程并行中，其中一个进程停止，另外一个进程也停止</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#END"><span class="nav-text">END</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/header-shrink.js"></script><script src="/js/back2top.js"></script><script src="/js/dark-light-toggle.js"></script>
+
+
+    <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+<div class="post-scripts">
+    
+        <script src="/js/left-side-toggle.js"></script><script src="/js/libs/anime.min.js"></script><script src="/js/toc.js"></script>
+    
+</div>
+
+
+
+</body>
+</html>

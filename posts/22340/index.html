@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="莫见乎隐，莫显乎微，故君子慎其独也，进其步也。">
+    <meta name="author" content="TLHorse">
+    
+    <title>
+        
+            使用动态库优雅破解 AppDelete |
+        
+        🐴 慎独阁
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/favicon.svg">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"tlhorse.github.io","root":"/","language":"zh-CN","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.png","favicon":"/images/favicon.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"莫见乎隐，莫显乎微，故君子慎其独也，进其步也。"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.3.2"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                🐴 慎独阁
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">使用动态库优雅破解 AppDelete</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">TLHorse</span>
+                        <span class="level">Lv3</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2020-03-29 16:40:17
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/">反编译</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Hook/">Hook</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我最近一直在寻找如何使用动态库注入的方法完美 Hook <code>macOS</code> 应用程序的方法。像<code>MonkeyAppMac</code>、<code>EasySIMBL</code>这样的框架都找遍了，可就是找不到真正的香格里拉——要么就是版本太低，要么就是缺少文档。</p>
+<a id="more"></a>
+<p>我刷飘云阁论坛时偶然看到了 tree_fly 大神原创的<a class="link"   target="_blank" rel="noopener" href="https://www.chinapyg.com/forum.php?mod=viewthread&tid=82610&highlight=mac" >这篇帖子<i class="fas fa-external-link-alt"></i></a>，介绍了如何破解<code>AppDelete</code>。它真正让我明白了 <code>macOS</code> 动态库注入的工作原理与注入方法，然而文章有些地方写的却过于跳步、不尽人意。我<del>有感而发</del>，把原帖的某些地方改了改，将不容易理解的地方进一步解释，然后改编成这篇文章。</p>
+<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><ul>
+<li><a class="link"   target="_blank" rel="noopener" href="http://www.reggieashworth.com/" >AppDelete<i class="fas fa-external-link-alt"></i></a>：<code>AppDelete</code>是Mac的卸载程序，不仅可以删除应用程序，还可以删除小部件，首选项窗格，插件和屏幕保护程序及其关联文件。 如果没有<code>AppDelete</code>，这些关联的项目将被留下来占用空间并可能引起问题。 下载完软件后没你可以先打开软件熟悉一下，</li>
+<li>Hopper Disassembler v4</li>
+<li>Xcode：此处用的版本是<code>Version 11.3.1 (11C504)</code>。</li>
+</ul>
+<h1 id="分析软件"><a href="#分析软件" class="headerlink" title="分析软件"></a>分析软件</h1><p>因为软件支持中文，所以我们可以通过字符串本地化文件来判断中文对应的英文。打开软件的资源目录中的中文目录：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;Applications&#x2F;AppDelete.app&#x2F;Contents&#x2F;Resources&#x2F;zh_CN.lproj<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>找到本地中文资源文件 <code>Localizable.strings</code>，注意到如下信息：</p>
+<pre class="line-numbers language-none"><code class="language-none">&quot;AppDelete Registration&quot; &#x3D; &quot;AppDelete 注册&quot;;
+&quot;Registration Accepted&quot; &#x3D; &quot;接受注册&quot;;
+&quot;Registration Rejected&quot; &#x3D; &quot;拒绝注册&quot;;
+&quot;Register&quot; &#x3D; &quot;注册&quot;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>将软件载入Hopper，查找上面的英文字符串。通过寻找引用的方法（X），找到程序验证的核心：</p>
+<pre class="line-numbers language-objective-c" data-language="objective-c"><code class="language-objective-c">&#x2F;* @class ADController *&#x2F;
+&#x2F;* Address: 0x1000118add *&#x2F;
+-(void)deletePaths:(void *)arg2 &#123;
+    r14 &#x3D; [[self-&gt;plistOne stringValue] retain];
+    r15 &#x3D; [[r14 stringByReplacingOccurrencesOfString:@&quot; &quot; withString:@&quot;&quot;] retain];
+    var_30 &#x3D; [r15 isEqualTo:@&quot;&quot;];
+    [r15 release];
+    [r14 release];
+    var_38 &#x3D; self;
+    r15 &#x3D; [[self-&gt;extensionMaster stringValue] retain];
+    rbx &#x3D; [[r15 stringByReplacingOccurrencesOfString:@&quot; &quot; withString:@&quot;&quot;] retain];
+    rdx &#x3D; @&quot;&quot;;
+    r14 &#x3D; [rbx isEqualTo:rdx];
+    [rbx release];
+    [r15 release];
+    if (var_30 !&#x3D; 0x1) &#123;
+            rdx &#x3D; @&quot;&quot;;
+            if (r14 !&#x3D; 0x1) &#123;
+                    r14 &#x3D; [[var_38-&gt;extensionMaster stringValue] retain];
+                    rbx &#x3D; [[r14 stringByReplacingOccurrencesOfString:@&quot; &quot; withString:@&quot;&quot;] retain];
+                    rdx &#x3D; rbx;
+                    r15 &#x3D; [var_38 orphansArray:rdx]; &#x2F;&#x2F; 1
+                    [rbx release];
+                    [r14 release];
+                    if (r15 !&#x3D; 0x0) &#123;
+                            &#x2F;&#x2F; 2
+                            rbx &#x3D; [[NSBundle mainBundle] retain];
+                            r15 &#x3D; [[rbx localizedStringForKey:@&quot;Registration Accepted&quot; value:@&quot;&quot; table:0x0] retain];
+                            var_48 &#x3D; r15;
+                            [rbx release];
+                            intrinsic_movsd(xmm1, *double_value_0_607843);
+                            intrinsic_movsd(xmm3, *double_value_1);
+                            intrinsic_xorpd(xmm0, xmm0);
+                            rax &#x3D; [NSColor colorWithCalibratedRed:@&quot;Registration Accepted&quot; green:@&quot;&quot; blue:r8 alpha:r9];
+                            rax &#x3D; [rax retain];
+                            rbx &#x3D; *ivar_offset(zipFiles);
+                            [*(var_38 + rbx) setTextColor:rax, @&quot;&quot;];
+                            [*(var_38 + rbx) setStringValue:r15, @&quot;&quot;];
+                            [*(var_38 + rbx) setHidden:0x0, @&quot;&quot;];
+                            [var_38-&gt;zButton setEnabled:0x0, @&quot;&quot;];
+                            [var_38-&gt;qButton setEnabled:0x0, @&quot;&quot;];
+                            [var_38-&gt;plistOne setEnabled:0x0, @&quot;&quot;];
+                            r15 &#x3D; *ivar_offset(extensionMaster);
+                            [*(var_38 + r15) setEnabled:0x0, @&quot;&quot;];
+                            [var_38-&gt;helpP setEnabled:0x0, @&quot;&quot;];
+                            r13 &#x3D; [[*(var_38 + r15) stringValue] retain];
+                            rbx &#x3D; [[r13 stringByReplacingOccurrencesOfString:@&quot; &quot; withString:@&quot;&quot;] retain];
+                            var_40 &#x3D; [[rbx dataUsingEncoding:0x4, @&quot;&quot;] retain];
+                            [rbx release];
+                            [r13 release];
+                            rbx &#x3D; [[NSUserDefaults standardUserDefaults] retain];
+                            r12 &#x3D; [[var_38-&gt;plistOne stringValue] retain];
+                            [rbx setObject:r12 forKey:@&quot;ADFieldOne&quot;];
+                            [r12 release];
+                            [rbx release];
+                            rbx &#x3D; [[NSUserDefaults standardUserDefaults] retain];
+                            [rbx setObject:var_40 forKey:@&quot;ADFieldTwo&quot;];
+                            [rbx release];
+                            *(int8_t *)&amp;var_38-&gt;archiveRun &#x3D; 0x1;
+                            *(int8_t *)&amp;var_38-&gt;undoList &#x3D; 0x0;
+                            [var_40 release];
+                            [rax release];
+                            rdi &#x3D; var_48;
+                    &#125;
+                    else &#123;
+                            &#x2F;&#x2F; 3
+                            r15 &#x3D; [[var_38-&gt;plistOne stringValue] retain];
+                            rbx &#x3D; [[r15 stringByReplacingOccurrencesOfString:@&quot; &quot; withString:@&quot;&quot;] retain];
+                            NSLog(@&quot;AD Rejected Name ~ %@&quot;, rbx);
+                            [rbx release];
+                            [r15 release];
+                            r15 &#x3D; [[var_38-&gt;extensionMaster stringValue] retain];
+                            rbx &#x3D; [[r15 stringByReplacingOccurrencesOfString:@&quot; &quot; withString:@&quot;&quot;] retain];
+                            NSLog(@&quot;AD Rejected Serial Number ~ %@&quot;, rbx);
+                            [rbx release];
+                            [r15 release];
+                            rbx &#x3D; [[NSBundle mainBundle] retain];
+                            r15 &#x3D; [[rbx localizedStringForKey:@&quot;Registration Rejected&quot; value:@&quot;&quot; table:0x0] retain];
+                            [rbx release];
+                            intrinsic_movsd(xmm0, *double_value_0_921569);
+                            intrinsic_movsd(xmm3, *double_value_1);
+                            intrinsic_xorpd(xmm1, xmm1);
+                            r14 &#x3D; [[NSColor colorWithCalibratedRed:@&quot;Registration Rejected&quot; green:@&quot;&quot; blue:r8 alpha:r9] retain];
+                            rbx &#x3D; *ivar_offset(zipFiles);
+                            [*(var_38 + rbx) setTextColor:r14, @&quot;&quot;];
+                            [*(var_38 + rbx) setStringValue:r15, @&quot;&quot;];
+                            [*(var_38 + rbx) setHidden:0x0, @&quot;&quot;];
+                            [var_38-&gt;plistOne setStringValue:@&quot;&quot;, @&quot;&quot;];
+                            [var_38-&gt;extensionMaster setStringValue:@&quot;&quot;, @&quot;&quot;];
+                            *(int8_t *)&amp;var_38-&gt;archiveRun &#x3D; 0x0;
+                            [r14 release];
+                            rdi &#x3D; r15;
+                    &#125;
+            &#125;
+            else &#123;
+                    r15 &#x3D; [[var_38-&gt;plistOne stringValue] retain];
+                    rbx &#x3D; [[r15 stringByReplacingOccurrencesOfString:@&quot; &quot; withString:@&quot;&quot;] retain];
+                    NSLog(@&quot;AD Rejected Name ~ %@&quot;, rbx);
+                    [rbx release];
+                    [r15 release];
+                    r15 &#x3D; [[var_38-&gt;extensionMaster stringValue] retain];
+                    rbx &#x3D; [[r15 stringByReplacingOccurrencesOfString:@&quot; &quot; withString:@&quot;&quot;] retain];
+                    NSLog(@&quot;AD Rejected Serial Number ~ %@&quot;, rbx);
+                    [rbx release];
+                    [r15 release];
+                    rbx &#x3D; [[NSBundle mainBundle] retain];
+                    r15 &#x3D; [[rbx localizedStringForKey:@&quot;Registration Rejected&quot; value:@&quot;&quot; table:0x0] retain];
+                    [rbx release];
+                    intrinsic_movsd(xmm0, *double_value_0_921569);
+                    intrinsic_movsd(xmm3, *double_value_1);
+                    intrinsic_xorpd(xmm1, xmm1);
+                    r14 &#x3D; [[NSColor colorWithCalibratedRed:@&quot;Registration Rejected&quot; green:@&quot;&quot; blue:r8 alpha:r9] retain];
+                    rbx &#x3D; *ivar_offset(zipFiles);
+                    [*(var_38 + rbx) setTextColor:r14, @&quot;&quot;];
+                    [*(var_38 + rbx) setStringValue:r15, @&quot;&quot;];
+                    [*(var_38 + rbx) setHidden:0x0, @&quot;&quot;];
+                    [var_38-&gt;plistOne setStringValue:@&quot;&quot;, @&quot;&quot;];
+                    [var_38-&gt;extensionMaster setStringValue:@&quot;&quot;, @&quot;&quot;];
+                    *(int8_t *)&amp;var_38-&gt;archiveRun &#x3D; 0x0;
+                    [r14 release];
+                    rdi &#x3D; r15;
+            &#125;
+    &#125;
+    else &#123;
+            r15 &#x3D; [[var_38-&gt;plistOne stringValue] retain];
+            rbx &#x3D; [[r15 stringByReplacingOccurrencesOfString:@&quot; &quot; withString:@&quot;&quot;] retain];
+            NSLog(@&quot;AD Rejected Name ~ %@&quot;, rbx);
+            [rbx release];
+            [r15 release];
+            r15 &#x3D; [[var_38-&gt;extensionMaster stringValue] retain];
+            rbx &#x3D; [[r15 stringByReplacingOccurrencesOfString:@&quot; &quot; withString:@&quot;&quot;] retain];
+            NSLog(@&quot;AD Rejected Serial Number ~ %@&quot;, rbx);
+            [rbx release];
+            [r15 release];
+            rbx &#x3D; [[NSBundle mainBundle] retain];
+            r15 &#x3D; [[rbx localizedStringForKey:@&quot;Registration Rejected&quot; value:@&quot;&quot; table:0x0] retain];
+            [rbx release];
+            intrinsic_movsd(xmm0, *double_value_0_921569);
+            intrinsic_movsd(xmm3, *double_value_1);
+            intrinsic_xorpd(xmm1, xmm1);
+            r14 &#x3D; [[NSColor colorWithCalibratedRed:@&quot;Registration Rejected&quot; green:@&quot;&quot; blue:r8 alpha:r9] retain];
+            rbx &#x3D; *ivar_offset(zipFiles);
+            [*(var_38 + rbx) setTextColor:r14, @&quot;&quot;];
+            [*(var_38 + rbx) setStringValue:r15, @&quot;&quot;];
+            [*(var_38 + rbx) setHidden:0x0, @&quot;&quot;];
+            [var_38-&gt;plistOne setStringValue:@&quot;&quot;, @&quot;&quot;];
+            [var_38-&gt;extensionMaster setStringValue:@&quot;&quot;, @&quot;&quot;];
+            *(int8_t *)&amp;var_38-&gt;archiveRun &#x3D; 0x0;
+            [r14 release];
+            rdi &#x3D; r15;
+    &#125;
+    [rdi release];
+    return;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li><code>orphansArray:</code>函数应该是一个判断函数。如果你点进去，你可以看到函数声明中有严谨的判断流程；</li>
+<li>如果代码执行到这里，那么就代表验证成功，可以使用App；</li>
+<li>执行到这里，就是验证失败。</li>
+</ol>
+<p>此时如果你把<code>orphansArray:</code>的返回值修改为0x1：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">mov eax, 0x1
+ret<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>那么你会发现软件运行、重启后，注册验证都通过了，同时注册按钮已经变灰，注册成功！你也可以根据<code>orphansArray:</code>的验证流程来写注册机。当然这些不是本篇文章的重点，接下来为大家介绍如何使用动态库注入来修改函数返回值。</p>
+<h1 id="代码劫持"><a href="#代码劫持" class="headerlink" title="代码劫持"></a>代码劫持</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>简单的说，在<code>Windows</code>下，很多时候我们在软件<code>.exe</code>同一目录下放置<code>version.dll</code>、<code>lpk.dll</code>等劫持文件，依照规则<code>.exe</code>优先加载了当前目录下<code>.dll</code>，可以偷偷摸摸做很多想做的事。</p>
+<p>同理，在<code>macOS</code>下，思路是相同的，你可以想尽一切办法让App加载我们的动态库。加载完自定义的动态库，破解即成功。</p>
+<h2 id="动态库编写"><a href="#动态库编写" class="headerlink" title="动态库编写"></a>动态库编写</h2><ol>
+<li><p>首先，<a class="link"   href="xcode://" >打开Xcode<i class="fas fa-external-link-alt"></i></a>（你会神奇的发现如果你点击这个链接你的Xcode就会打开）。在<code>macOS</code>平台里选择 <code>Framework &amp; Library </code>&gt; <code>Library</code>。使用此模板新建一个项目，名称随便起，此处叫做<code>AppDeletePatch</code>，<code>Framework</code>选择<code>Cocoa</code>，<code>Type</code>选择<code>Dyamic</code>（动态）。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2020/3/27/hop-ad-choose-temp.png" alt="选择模版"></p>
+<p>这一步可以创建一个动态库工程。这个动态库就是我们要注入的动态库。</p>
+<p>其次，我们打开<code>AppDeletePatch.m</code>文件。接下来我一步步带你编写动态库代码：</p>
+</li>
+<li><p>我们用两个<code>#import</code>语句，将<code>AppDeletePatch.h</code>文件与<code>objc/runtime.h</code>。<code>AppDeletePatch.h</code>文件（头文件），是每个<code>.m</code>文件里必须引用的。而<code>objc/runtime.h</code>库是什么？这就是很多小白不了解的地方之一。简单的解释，<code>runtime</code>是<code>C</code>类语言**”运行时”机制**的一个强大的库。通过这个库里的方法，可以在运行时实现对OC函数的 hook。</p>
+<pre class="line-numbers language-objective-c" data-language="objective-c"><code class="language-objective-c">#import &quot;AppDeletePatch.h&quot;
+   #import &lt;objc&#x2F;runtime.h&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>现在，这两行代码明白了吧！</p>
+</li>
+<li><p>接下来，在两个引入语句的下面编写：</p>
+<pre class="line-numbers language-objective-c" data-language="objective-c"><code class="language-objective-c">@implementation AppDeletePatch
+
+
+
+@end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在<code>Objective-C</code>语言中，可以使用<code>implementation</code>进行一个类的具体实现，类的实现代码以<code>@implementation</code>开始，以<code>@end</code>结束。这就类似于<code>Python</code>、<code>Swift</code>的<code>class</code>。<strong>这部分代码通常都是放在<code>.m</code>文件中</strong>。</p>
+</li>
+<li><p>然后，我们在<code>@implementation</code>的内部，声明一个函数：</p>
+<pre class="line-numbers language-objective-c" data-language="objective-c"><code class="language-objective-c">- (char)orphansArray:(NSString *)data &#123;
+    NSLog(@&quot;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; METHOD PATCHING &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&quot;);
+    return 0x1;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这又涉及了<code>OC</code>的语法，我们简单说一下。这样写，是实现了一个函数，函数名是<code>orphansArray:</code>。而冒号后面跟的是函数的参数列表<code>(NSString *)data</code>。这里声明了一个类型为<code>NSString</code>的参数<code>data</code>。而前面的<code>(char)</code>则代表函数的返回值。</p>
+<p>如果你把原程序里<code>orphansArray:</code>的函数声明伪代码与这里的函数声明做对比，你会发现，这里的函数声明与原程序的函数声明一模一样。</p>
+<p>你可能会疑问，函数前面的减号是干嘛的？类方法以<code>+</code>号开头，对象方法以<code>-</code>号开头。</p>
+<p>函数里的两行代码就好解释了。<code>NSLog:</code>就是日志输出，相当于<code>Swift</code>和<code>Python</code>下的<code>print()</code>，这里我打印了一条信息以便记录；<code>return</code>就是返回的意思，此处返回了<code>0x1</code>一值。</p>
+<p><code>orphansArray:</code>的实现就到此结束了。</p>
+</li>
+<li><p>在<code>orphansArray:</code>的实现后，空上几行，然后输入<code>load</code>。<code>Xcode</code>的自动补全功能会弹出列表。在列表第一行回车，之后在添上大括号：</p>
+<pre class="line-numbers language-objective-c" data-language="objective-c"><code class="language-objective-c">+ (void)load &#123;
+
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>这个方法是干什么的？每当将类或类别添加到Objective-C的<code>runtime</code>时会被调用； 实现此方法以在加载时执行特定于类的行为。<code>load</code>方法的初始化顺序如下：</p>
+<ol>
+<li>您链接到的任何框架中的所有初始化程序。</li>
+<li>图片中的所有<code> + load</code>方法。</li>
+<li>图像中的所有<code>C++</code>静态初始化程序和<code>C</code> / <code>C ++</code> <code>__attribute __(constructor)</code>函数。</li>
+<li>链接到您的框架中的所有初始化程序。</li>
+</ol>
+<p>我们在<code>load</code>里键入：</p>
+<pre class="line-numbers language-objective-c" data-language="objective-c"><code class="language-objective-c">NSLog(@&quot;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; START DYLIB INJECT &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&quot;);
+
+NSLog(@&quot;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; GETTING METHOD &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&quot;);
+Method origMethod &#x3D; class_getInstanceMethod(NSClassFromString(@&quot;ADController&quot;), NSSelectorFromString(@&quot;orphansArray:&quot;)); &#x2F;&#x2F; 1
+Method newMethod &#x3D; class_getInstanceMethod([AppDeletePatch class], @selector(orphansArray:)); &#x2F;&#x2F; 2
+
+method_exchangeImplementations(origMethod, newMethod); &#x2F;&#x2F; 3
+NSLog(@&quot;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; METHOD SWIZZLED &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&quot;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li>通过<code>class_getInstanceMethod</code>函数，获取程序里<code>orphansArray:</code>的原函数；</li>
+<li>这一行代码与<code>3</code>同理，只不过是获取我们声明的替换函数<code>orphansArray:</code>；</li>
+<li>通过<code>method_exchangeImplementations</code>函数替换刚才获取的两个新旧函数。</li>
+</ol>
+<p>其中：</p>
+<ul>
+<li><code>NSClassFromString</code>可以通过字符串获取类；</li>
+<li><code>NSSelectorFromString</code>可以通过字符串获取方法；</li>
+<li><code>[AppDeletePatch class]</code>代表<code>AppDeletePatch</code>类的<code>class</code>本身；</li>
+<li>通过<code>@selector</code>直接获取一个函数。</li>
+</ul>
+</li>
+</ol>
+<p>到此，动态库的代码编写结束。整体的代码应该长这样：</p>
+<pre class="line-numbers language-objective-c" data-language="objective-c"><code class="language-objective-c">#import &quot;AppDeletePatch.h&quot;
+#import &lt;objc&#x2F;runtime.h&gt;
+
+@implementation AppDeletePatch
+
+- (char)orphansArray:(NSString *)data &#123;
+    NSLog(@&quot;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; METHOD PATCHING &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&quot;);
+    return 0x1;
+&#125;
+
++ (void)load &#123;
+    NSLog(@&quot;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; START DYLIB INJECT &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&quot;);
+
+    NSLog(@&quot;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; GETTING METHOD &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&quot;);
+    Method origMethod &#x3D; class_getInstanceMethod(NSClassFromString(@&quot;ADController&quot;), NSSelectorFromString(@&quot;orphansArray:&quot;));
+    Method newMethod &#x3D; class_getInstanceMethod([AppDeletePatch class], @selector(orphansArray:));
+
+    method_exchangeImplementations(origMethod, newMethod);
+    NSLog(@&quot;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; METHOD SWIZZLED &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&quot;);
+&#125;
+
+@end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="动态库注入"><a href="#动态库注入" class="headerlink" title="动态库注入"></a>动态库注入</h2><p>编写完动态库，就可以注入了。按下<code>Cmd</code>+<code>B</code>编译，得到<code>.dylib</code>文件。</p>
+<p>之后我们要注入。原作者用的是<code>bash</code>脚本，但是这样做比较费事，容易发生权限错误，因此我们用<code>insert_dylib</code>工具注入。点击<a class="link"   href="xcode://clone?repo=https%3A%2F%2Fgithub.com%2FTyilo%2Finsert_dylib" >这个链接<i class="fas fa-external-link-alt"></i></a>将<code>insert_dylib</code>项目克隆到<code>Xcode</code>，并且编译，得到<code>insert_dylib</code>二进制文件。</p>
+<p>我们将动态库、二进制文件和<code>AppDelete</code>应用程序的路径分别记录下来，然后打开终端，执行命令（记得替换路径）：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ .&#x2F;insert_dylib xxx&#x2F;libAppDeletePatch.dylib xxx&#x2F;AppDelete.app&#x2F;Contents&#x2F;MacOS&#x2F;AppDelete<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>注：<code>./insert_dylib</code>的用法是：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">.&#x2F;insert_dylib [要被注入的动态库的路径] [要注入的二进制文件]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>注意第二个参数，是要注入的<strong>二进制文件</strong>，而不是<code>.app</code>文件，或者其他。还要注意，路径要使用<strong>绝对路径</strong>。</p>
+<p>回车后，如果出现<code>LC_CODE_SIGNATURE load command found. Remove it? [y/n]</code>，那么就按下<code>y</code>，回车。</p>
+<p>如果出现<code>Added LC_LOAD_DYLIB to /Applications/AppDelete.app/Contents/MacOS/AppDelete_patched</code>，代表注入成功。</p>
+<p>回到<code>/Applications/AppDelete.app/Contents/MacOS/</code>路径，会发现多出一个<code>AppDelete_patched</code>文件。这就是已注入动态库的二进制文件。把原先的<code>AppDelete</code>二进制更名或删除，然后将<code>AppDelete_patched</code>更名为<code>AppDelete</code>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2020/3/27/hop-ad-chname.png" alt="重命名"></p>
+<h1 id="验证破解"><a href="#验证破解" class="headerlink" title="验证破解"></a>验证破解</h1><p>我们现在不要用正常的方法打开软件。我们还保持上一步的目录（<code>MacOS</code>），然后双击已经被注入的二进制文件，应用也会打开。不过同时会打开一个终端窗口，在这个窗口中就可以看到我们在写代码时使用<code>NSLog</code>语句打印的内容了：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; START DYLIB INJECT &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; GETTING METHOD &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; METHOD PATCHING &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; METHOD SWIZZLED &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>成功破解！</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：使用动态库优雅破解 AppDelete</li>
+        <li>本文作者：TLHorse</li>
+        <li>创建时间：2020-03-29 16:40:17</li>
+        <li>
+            本文链接：https://tlhorse.github.io/posts/22340/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/posts/32831/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">教你过关吾爱破解游戏《圈小猫》</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/posts/24364/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Hopper 一拳搞定 Interface Inspector</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+        
+    <div id="gitalk-container"></div>
+    <script 
+            src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+    <script >
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: '88d770a805d27a98e780',
+                    clientSecret: 'c1c798735d6221391048e9225ae064e5e06ecdc8',
+                    repo: 'TLBlogComments',
+                    owner: 'TLHorse',
+                    admin: ['TLHorse'],
+                    id: __gitalk__pathname,
+                    language: 'zh-CN'
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('false') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">TLHorse</a>
+        </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.3.2</a>
+        </div> -->
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%86%E5%A4%87"><span class="nav-text">准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E8%BD%AF%E4%BB%B6"><span class="nav-text">分析软件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%8A%AB%E6%8C%81"><span class="nav-text">代码劫持</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-text">原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E5%BA%93%E7%BC%96%E5%86%99"><span class="nav-text">动态库编写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E5%BA%93%E6%B3%A8%E5%85%A5"><span class="nav-text">动态库注入</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E7%A0%B4%E8%A7%A3"><span class="nav-text">验证破解</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/header-shrink.js"></script><script src="/js/back2top.js"></script><script src="/js/dark-light-toggle.js"></script>
+
+
+    <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+<div class="post-scripts">
+    
+        <script src="/js/left-side-toggle.js"></script><script src="/js/libs/anime.min.js"></script><script src="/js/toc.js"></script>
+    
+</div>
+
+
+
+</body>
+</html>

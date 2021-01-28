@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="莫见乎隐，莫显乎微，故君子慎其独也，进其步也。">
+    <meta name="author" content="TLHorse">
+    
+    <title>
+        
+            从最简单的程序开始教你怎么破解（一） |
+        
+        🐴 慎独阁
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/favicon.svg">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"tlhorse.github.io","root":"/","language":"zh-CN","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.png","favicon":"/images/favicon.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"莫见乎隐，莫显乎微，故君子慎其独也，进其步也。"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.3.2"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                🐴 慎独阁
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">从最简单的程序开始教你怎么破解（一）</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">TLHorse</span>
+                        <span class="level">Lv3</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2020-01-30 09:16:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/">反编译</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>28号我发了一篇关于破解迅雷的文章，如果你看到了，你就会先被那上千的字数吓住。但是破解（反编译）真的有那么难吗？作为一个不太“菜”的“菜鸟”，我想告诉你，其实破解一个软件只是找到思路后，改改二进制的逻辑罢了。但是真的又有这么简单吗？也不是。</p>
+<a id="more"></a>
+<p>如果你刚接触反编译、破解软件，那就从自己开发的最简单的小程序开始破解。今天这篇文章所讲的，是关于如何在MacOS Catalina系统里，使用Hopper Disassembler破解二进制文件。希望我可以通过这篇文章能帮到你。</p>
+<h1 id="入手程序"><a href="#入手程序" class="headerlink" title="入手程序"></a>入手程序</h1><p>我们想要破解，可以先从最简单的程序开始——<code>Crackmes</code>。<code>Crackme</code>都是一些公开给别人尝试破解的小程序，制作<code>Crackme</code>的人可能是程序员，想测试一下自己的软件保护技术，也可能是一位<code>Cracker</code>，想挑战一下其它<code>Cracker</code>的破解实力，也可能是一些正在学习破解的人，自己编一些小程序给自己破。<code>CrackMe</code>简称<code>CM</code>。有不少论坛的<code>CM</code>大赛就是指这个。我用<code>Swift</code>语言做了几个简单的<code>Crackme</code>，来教你们怎么破解。先看看第一个CM：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/1/29/hop-cm1-thumb.png" alt="CM #1"></p>
+<p>我的这个程序首先会用中文打印出说明书和破解要求，然后要求你输入一个固定的序列号，才能激活，如果错误，会提示让你再输入一遍，直到输入正确为止。而你的工作，就是把程序改成输入任意序列号都能激活。</p>
+<h1 id="分析程序"><a href="#分析程序" class="headerlink" title="分析程序"></a>分析程序</h1><p>将这个二进制拖入 Hopper （关于 Hopper 的使用，《破解迅雷》那篇文章有所涉及，不过有时间我可以专门出一篇文章讲 Hopper 的使用，这里不再阐述）分析。分析完成后， Hopper 应该会跳转到<code>_main</code>函数。类似下图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2020/1/29/hop-cm1-mainfunc.png" alt="main函数"></p>
+<p>有人说，不对啊，<code>Swift</code>语言没有<code>main</code>主函数这一说啊，为什么会有它呢？因为，<code>Swift</code>中，写法里没有主函数，但是<code>Swift</code>代码是从上往下依次执行的，因袭编译器在编译中，自然会解析到一种进程，但它不能称作主函数，只能用<strong>主进程</strong>这样的词<strong>形容</strong>。因此，所有代码都会出现在这里。</p>
+<p>面对这么多复杂的汇编指令怎么办？自然是要瞧一瞧伪代码：</p>
+<pre class="line-numbers language-objectivec" data-language="objectivec"><code class="language-objectivec">int _main(int arg0, int arg1) &#123;
+    rax &#x3D; Swift.String.init(82mal9-29anyw-9msfz6, 0x14, 0x1);
+    rsi &#x3D; *type metadata for Any;
+    *Crackme__1.serial : Swift.String &#x3D; rax;
+    *qword_100002050 &#x3D; 0x1;
+    var_20 &#x3D; Swift._allocateUninitializedArray(0x1, rsi + 0x8);
+    rax &#x3D; Swift.String.init(\xE8\xAF\xB4\xE6\x98\x8E\xEF\xBC\x9A\xE6\xAD\xA4\xE7\xA8\x8B\xE5\xBA\x8F\xE8\xA6\x81\xE6\xB1\x82\xE4\xBD\xA0\xE8\xBE\x93\xE5\x85\xA5\xE4\xB8\x80\xE4\xB8\xAA\xE5\x9B\xBA\xE5\xAE\x9A\xE7\x9A\x84\xE5\xBA\x8F\xE5\x88\x97\xE5\x8F\xB7\xEF\xBC\x8C\xE6\x89\x8D\xE8\x83\xBD\xE6\xBF\x80\xE6\xB4\xBB\xE3\x80\x82\n\xE8\xA6\x81\xE6\xB1\x82\xEF\xBC\x9A\xE6\x8A\x8A\xE7\xA8\x8B\xE5\xBA\x8F\xE6\x94\xB9\xE6\x88\x90\xE8\xBE\x93\xE5\x85\xA5\xE4\xBB\xBB\xE6\x84\x8F\xE5\xBA\x8F\xE5\x88\x97\xE5\x8F\xB7\xE9\x83\xBD\xE8\x83\xBD\xE6\xBF\x80\xE6\xB4\xBB\xE3\x80\x82\n, 0x89, 0x0, 0x0);
+    *(int64_t *)0x19 &#x3D; *type metadata for Swift.String;
+    *(int64_t *)0x1 &#x3D; rax;
+    *(int64_t *)0x9 &#x3D; 0x0;
+    var_28 &#x3D; default argument 1 of Swift.print();
+    Swift.print(var_20, var_28, 0x0, default argument 2 of Swift.print(), 0x0);
+    swift_bridgeObjectRelease(0x0);
+    swift_bridgeObjectRelease(0x0);
+    swift_bridgeObjectRelease(var_20);
+    Crackme__1.verify(var_20, var_28);
+    return 0x0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>虽然我不太懂OC，也不太懂这代码说的是什么，但是至少知道了如下几点（看代码注释）：</p>
+<pre class="line-numbers language-objectivec" data-language="objectivec"><code class="language-objectivec">int _main(int arg0, int arg1) &#123; &#x2F;&#x2F; main函数
+    rax &#x3D; Swift.String.init(82mal9-29anyw-9msfz6, 0x14, 0x1); &#x2F;&#x2F; Swift的字符串初始化。从字符串看，很可能是注册码：82mal9-29anyw-9msfz6
+    ...
+    rax &#x3D; Swift.String.init(\xE8\xAF\xB4\xE6\x98\x8E\xEF\xBC\x9A\xE6\xAD\xA4\xE7\xA8\x8B\xE5\xBA\x8F\xE8\xA6\x81\xE6\xB1\x82\xE4\xBD\xA0\xE8\xBE\x93\xE5\x85\xA5\xE4\xB8\x80\xE4\xB8\xAA\xE5\x9B\xBA\xE5\xAE\x9A\xE7\x9A\x84\xE5\xBA\x8F\xE5\x88\x97\xE5\x8F\xB7\xEF\xBC\x8C\xE6\x89\x8D\xE8\x83\xBD\xE6\xBF\x80\xE6\xB4\xBB\xE3\x80\x82\n\xE8\xA6\x81\xE6\xB1\x82\xEF\xBC\x9A\xE6\x8A\x8A\xE7\xA8\x8B\xE5\xBA\x8F\xE6\x94\xB9\xE6\x88\x90\xE8\xBE\x93\xE5\x85\xA5\xE4\xBB\xBB\xE6\x84\x8F\xE5\xBA\x8F\xE5\x88\x97\xE5\x8F\xB7\xE9\x83\xBD\xE8\x83\xBD\xE6\xBF\x80\xE6\xB4\xBB\xE3\x80\x82\n, 0x89, 0x0, 0x0); &#x2F;&#x2F; 这一大长串的东西也是字符串初始化，应该是中文，可能是“说明”和“要求”的字符串
+    ...
+    var_28 &#x3D; default argument 1 of Swift.print();  &#x2F;&#x2F; 打印了那一长串中文
+    Swift.print(var_20, var_28, 0x0, default argument 2 of Swift.print(), 0x0); &#x2F;&#x2F; 打印了那一长串中文
+    ...
+    Crackme__1.verify(var_20, var_28); &#x2F;&#x2F; 调用了一个叫verify的函数
+    return 0x0; &#x2F;&#x2F; 程序结束
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>最吸引人的是<code>verify()</code>函数，它有两个参数：<code>var_20</code>和<code>var_28</code>。这个函数把这两个参数做比较，最后打印出结果。因为函数后面没有打印结果的操作，所以这个打印结果的操作应该在函数里。</p>
+<p>双击这个函数，就能查看。这个函数不短（其实源代码很短），我们来看关键点：</p>
+<pre class="line-numbers language-objectivec" data-language="objectivec"><code class="language-objectivec">int _$s10Crackme__16verifyyyF(int arg0, int arg1) &#123;
+    ... &#x2F;&#x2F; 定义了一些东西，还打印了说明和要求
+    if ((var_89 &amp; 0x1) &#x3D;&#x3D; 0x0) &#123; 
+        &#x2F;&#x2F; 判断语句
+    &#125;
+    else &#123; 
+        &#x2F;&#x2F; 判断语句
+    &#125;
+    rax &#x3D; outlined consume of Swift.String?(var_70, 0x1);
+    return rax; &#x2F;&#x2F; 执行一些结束用的代码
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>我们只要让程序执行正确的语句就行了。但是怎么判断条件语句中<code>if</code>是正确的，还是<code>else</code>是正确的呢？经过仔细观察，我们看见了<code>if</code>中有一个代码：</p>
+<pre class="line-numbers language-objectivec" data-language="objectivec"><code class="language-objectivec">Crackme__1.verify(var_D0, rsi);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>按照程序的思路，用户输错了，程序会提示你错误，然后再次调用函数，让用户重新输入序列号。函数中会嵌套一个同样的函数，不难看出这是<strong>递归</strong>，按照思路走，递归一般会使用在用户序列号错误的情况，因此：<code>if</code>中是用户输错的情况，<code>else</code>是输对的情况。只要让程序执行<code>else</code>代码块即可。</p>
+<h1 id="修改程序"><a href="#修改程序" class="headerlink" title="修改程序"></a>修改程序</h1><p>随便在<code>else</code>中选一段代码，切回<code>CFG Mode</code>，可以看到，这段代码在<code>loc_100000ba2</code>里，因此<code>loc_100000ba2</code>是正确代码。沿着上面的箭头找，就会发现上面的主程序是<code>_$s10Crackme__16verifyyyF</code>函数，只需把函数下的<code>jne</code>做一个硬性跳转，换成<code>jmp</code>：</p>
+<pre class="line-numbers language-nasm" data-language="nasm"><code class="language-nasm">jmp loc_100000ba2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2020/1/29/hop-cm2-jmp.jpg" alt="换成jmp"></p>
+<p>之后按回车。</p>
+<h1 id="修改完成"><a href="#修改完成" class="headerlink" title="修改完成"></a>修改完成</h1><p>回车后，你的 Hopper 可能会出现这个诡异的画面：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2020/1/29/hop-cm1-cfgbug.png" alt="CFG bug"></p>
+<p>不用怕，这只是 Hopper 的 CFG bug。之所以它显示这个画面，是因为你在CFG模式下，然而你的光标自动跳转到了白色区域的代码，这段代码已经不存在了（被<code>ret</code>了）。因此随便点击 Hopper 的任意位置（白色区域代码外），就可以回到 CFG 了。接下来，让我们在纵观一下 CFG：</p>
+<img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2020/1/29/hop-cm2-cfg.png" alt="纵观 CFG" style="zoom:50%;" />
+
+<p>怎么样？刚才的两个分支变成了一个分支了。运行一下程序，无论输入什么，都可以成功激活。这么鼓捣下来，还是挺有趣的。</p>
+<blockquote>
+<p>再次声明：<strong>无论任何人使用文章中的技术破解任何软件造成的后果，请自行承担</strong>。  </p>
+</blockquote>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：从最简单的程序开始教你怎么破解（一）</li>
+        <li>本文作者：TLHorse</li>
+        <li>创建时间：2020-01-30 09:16:00</li>
+        <li>
+            本文链接：https://tlhorse.github.io/posts/2615/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/posts/37946/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">“木兰”辞</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/posts/39501/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">从最简单的程序开始教你怎么破解（二）</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+        
+    <div id="gitalk-container"></div>
+    <script 
+            src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+    <script >
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: '88d770a805d27a98e780',
+                    clientSecret: 'c1c798735d6221391048e9225ae064e5e06ecdc8',
+                    repo: 'TLBlogComments',
+                    owner: 'TLHorse',
+                    admin: ['TLHorse'],
+                    id: __gitalk__pathname,
+                    language: 'zh-CN'
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('false') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">TLHorse</a>
+        </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.3.2</a>
+        </div> -->
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%A5%E6%89%8B%E7%A8%8B%E5%BA%8F"><span class="nav-text">入手程序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E7%A8%8B%E5%BA%8F"><span class="nav-text">分析程序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E7%A8%8B%E5%BA%8F"><span class="nav-text">修改程序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%AE%8C%E6%88%90"><span class="nav-text">修改完成</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/header-shrink.js"></script><script src="/js/back2top.js"></script><script src="/js/dark-light-toggle.js"></script>
+
+
+    <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+<div class="post-scripts">
+    
+        <script src="/js/left-side-toggle.js"></script><script src="/js/libs/anime.min.js"></script><script src="/js/toc.js"></script>
+    
+</div>
+
+
+
+</body>
+</html>

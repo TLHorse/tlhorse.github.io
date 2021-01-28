@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="莫见乎隐，莫显乎微，故君子慎其独也，进其步也。">
+    <meta name="author" content="TLHorse">
+    
+    <title>
+        
+            OllyDBG 完美教程 |
+        
+        🐴 慎独阁
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/favicon.svg">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"tlhorse.github.io","root":"/","language":"zh-CN","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.png","favicon":"/images/favicon.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"莫见乎隐，莫显乎微，故君子慎其独也，进其步也。"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.3.2"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                🐴 慎独阁
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">OllyDBG 完美教程</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">TLHorse</span>
+                        <span class="level">Lv3</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2020-03-19 13:40:17
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/">反编译</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">基础知识</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我以前研究的破解与反编译，一直处于Unix、类Unix的领空，比如我现在用的macOS。但是一个人的研究并不能止步于此吧，毕竟Windows系统的破解也值得学习，Windows上也有许多可供破解、研究、分析的软件，因此我把这篇介绍OllyDbg——Windows下专用反汇编软件——的文章，放在此处。</p>
+<a id="more"></a>
+<p>此篇文章的原作者是<strong>CCDebuger</strong>，但是很可惜，由于在各个平台上找不到其账号，因此无法单独感谢作者。我把原作者的文章进行排版，把其中一些语句梳理了一下，供大家阅读。</p>
+<h1 id="使用入门"><a href="#使用入门" class="headerlink" title="使用入门"></a>使用入门</h1><h2 id="OllyDBG-的安装与配置"><a href="#OllyDBG-的安装与配置" class="headerlink" title="OllyDBG 的安装与配置"></a>OllyDBG 的安装与配置</h2><p>OllyDBG 1.10 版的发布版本是个 ZIP 压缩包，只要解压到一个目录下，运行 OllyDBG.exe 就可以了。汉化版的发布版本是个 RAR 压缩包，同样只需解压到一个目录下运行 OllyDBG.exe 即可：</p>
+<p><img src="https://i.loli.net/2020/03/20/dnbSgrTKfFRkhXP.png" alt="ollydbg主窗口"></p>
+<p>OllyDBG 中各个窗口的功能如上图。简单解释一下各个窗口的功能，更详细的内容可以参考 TT 小组翻译的中文帮助：</p>
+<ul>
+<li>反汇编窗口：显示被调试程序的反汇编代码，标题栏上的地址、HEX 数据、反汇编、注释可以通过在窗口中右击出现的菜单界面选项 &gt; 隐藏标题或显示标题来进行切换是否显示。用鼠标左键点击注释标签可以切换注释显示的方式。</li>
+<li>寄存器窗口：显示当前所选线程的 CPU 寄存器内容。同样点击标签寄存器 (FPU) 可以切换显示寄存器的方式。</li>
+<li>信息窗口：显示反汇编窗口中选中的第一个命令的参数及一些跳转目标地址、字串等。</li>
+<li>数据窗口：显示内存或文件的内容。右键菜单可用于切换显示方式。</li>
+<li>堆栈窗口：显示当前线程的堆栈。</li>
+</ul>
+<p>要调整上面各个窗口的大小的话，只需左键按住边框拖动，等调整好了，重新启动一下 OllyDBG 就可以生效了。</p>
+<p>启动后我们要把插件及 UDD 的目录配置为绝对路径，点击菜单上的选项&gt;界面，将会出来一个界面选项的对话框，我们点击其中的目录标签：</p>
+<p><img src="https://i.loli.net/2020/03/20/M4XBzQ3lx9iqEdt.png" alt="udd设置"></p>
+<p>因为我这里是把 OllyDBG 解压在 F:\OllyDBG 目录下，所以相应的 UDD 目录及插件目录按图上配置。还有一个常用到的标签就是上图后面那个字体，在这里你可以更改 OllyDBG 中显示的字体。上图中其它的选项可以保留为默认，若有需要也可以自己修改。修改完以后点击确定，弹出一个对话框，说我们更改了插件路径，要重新启动 OllyDBG。在这个对话框上点确定，重新启动一下 OllyDBG，我们再到界面选项中看一下，会发现我们原先设置好的路径都已保存了。有人可能知道插件的作用，但对那个 UDD 目录不清楚。我简单解释一下：这个 UDD 目录的作用是保存你调试的工作。比如你调试一个软件，设置了断点，添加了注释，一次没做完，这时 OllyDBG 就会把你所做的工作保存到这个 UDD 目录，以便你下次调试时可以继续以前的工作。如果不设置这个 UDD 目录，OllyDBG 默认是在其安装目录下保存这些后缀名为 udd 的文件，时间长了就会显的很乱，所以还是建议专门设置一个目录来保存这些文件。</p>
+<p>另外的一个重要的选项，就是调试选项，可通过菜单选项 &gt; 调试设置来配置：</p>
+<p><img src="https://i.loli.net/2020/03/20/uzkUf6jNndX5cl2.png" alt="调试选项"></p>
+<p>新手一般不需更改这里的选项，默认已配置好，可以直接使用。建议在对 OllyDBG 已比较熟的情况下再来进行配置。上面那个异常标签中的选项经常会在脱壳中用到，建议在有一定调试基础后学脱壳时再配置这里。</p>
+<p>除了直接启动 OllyDBG 来调试外，我们还可以把 OllyDBG 添加到资源管理器右键菜单，这样我们就可以直接在 <code>.exe</code> 及 <code>.dll</code> 文件上点右键选择“用 OllyDBG 打开”菜单来进行调试。要把 OllyDBG 添加到资源管理器右键菜单，只需点菜单选项&gt;添加到浏览器，将会出现一个对话框，先点击“添加 Ollydbg 到系统资源管理器菜单”，再点击“完成”按钮即可。要从右键菜单中删除也很简单，还是这个对话框，点击“从系统资源管理器菜单删除OllyDBG”，再点击“完成”就行了。</p>
+<p>OllyDBG 支持插件功能，插件的安装也很简单，只要把下载的插件（一般是个 DLL 文件）复制到 OllyDBG 安装目录下的 PLUGIN 目录中就可以了，OllyDBG 启动时会自动识别。要注意的是 OllyDBG 1.1 0 对插件的个数有限制，最多不能超过 32 个，否则会出错。建议插件不要添加的太多。</p>
+<p>到这里基本配置就完成了，OllyDBG 把所有配置都放在安装目录下的<code>ollydbg.ini</code>文件中。</p>
+<h2 id="基本调试方法"><a href="#基本调试方法" class="headerlink" title="基本调试方法"></a>基本调试方法</h2><p>OllyDBG 有三种方式来载入程序进行调试：点击菜单文件 &gt; 打开（快捷键是 F3）来打开一个可执行文件进行调试；点击菜单文件 &gt; 附加来附加到一个已运行的进程上进行调试，注意这里要附加的程序必须已运行；用右键菜单来载入程序。</p>
+<p>一般情况下我们选第一种方式。比如我们选择一个<code>test.exe</code>来调试，通过菜单文件 &gt; 打开来载入这个程序，OllyDBG 中显示的内容将会是这样：</p>
+<p><img src="https://i.loli.net/2020/03/20/RXdi5FLnbDz2ZQw.png" alt="加载test.exe"></p>
+<p>调试中我们经常要用到的快捷键有这些：</p>
+<ul>
+<li><p>F2：设置断点，只要在光标定位的位置（上图中灰色条）按F2键即可，再按一次F2键则会删除断点。（相当于 SoftICE 中的 F9）</p>
+</li>
+<li><p>F8：单步步过。每按一次这个键执行一条反汇编窗口中的一条指令，遇 <code>CALL</code>等子程序不进入其代码。（相当于 SoftICE 中的 F10）</p>
+</li>
+<li><p>F7：单步步入。功能同单步步过（F8）类似，区别是遇到 <code>CALL</code> 等子程序时会进入其中，进入后首先会停留在子程序的第一条指令上。（相当于 SoftICE 中的 F8）</p>
+</li>
+<li><p>F4：运行到选定位置。作用就是直接运行到光标所在位置处暂停。（相当于 SoftICE 中的 F7）</p>
+</li>
+<li><p>F9：运行。按下这个键如果没有设置相应断点的话，被调试的程序将直接开始运行。（相当于 SoftICE 中的 F5）</p>
+</li>
+<li><p>CTRL + F9：执行到返回。此命令在执行到一个<code>ret</code>（返回指令）时暂停，常用于从系统领空返回到我们调试的程序领空。（相当于 SoftICE 中的 F12）</p>
+</li>
+<li><p>ALT + F9：执行到用户代码。可用于从系统领空快速返回到我们调试的程序领空。（相当于 SoftICE 中的 F 11）</p>
+</li>
+</ul>
+<p>上面提到的几个快捷键对于一般的调试基本上已够用了。要开始调试只需设置好断点，找到你感兴趣的代码段再按 F8 或 F7 键来一条条分析指令功能就可以了。</p>
+<h1 id="破解实例"><a href="#破解实例" class="headerlink" title="破解实例"></a>破解实例</h1><p>上一篇是使用入门，现在我们开始正式进入破解。</p>
+<h2 id="字串参考"><a href="#字串参考" class="headerlink" title="字串参考"></a>字串参考</h2><p>今天的目标程序是看《加密与解密》一书第一版附带光盘中的 <code>crackmes.cjb.net</code> 镜像打包中的<code>CFF Crackme #3</code>，采用用户名/序列号保护方式。原版加了个 UPX 的壳。刚开始学破解先不涉及壳的问题，我们主要是熟悉用 OllyDBG 来破解的一般方法。我这里把壳脱掉来分析，附件是脱壳后的文件，直接就可以拿来用。先说一下一般软件破解的流程：拿到一个软件先别接着马上用 OllyDBG 调试，先运行一下，有帮助文档的最好先看一下帮助，熟悉一下软件的使用方法，再看看注册的方式。如果是序列号方式可以先输个假的来试一下，看看有什么反应，也给我们破解留下一些有用的线索。如果没有输入注册码的地方，要考虑一下是不是读取注册表或 Key 文件（一般称为 keyfile，就是程序读取一个文件中的内容来判断是否注册），这些可以用其它工具来辅助分析。如果这些都不是，原程序只是一个功能不全的试用版，那要注册为正式版本就要自己来写代码完善了。</p>
+<p>接下来我们回到正题：获得程序的一些基本信息后，还要用查壳的工具来查一下程序是否加了壳，若没壳的话看看程序是什么编译器编的，如 VC、Delphi、VB 等。这样的查壳工具有 PEiD 和 FI。有壳的话我们要尽量脱了壳后再来用 OllyDBG 调试，特殊情况下也可带壳调试。下面进入正题。</p>
+<p>我们先来运行一下这个 crackme（用 PEiD 检测显示是 Delphi 编的），界面如图：</p>
+<p><img src="https://i.loli.net/2020/03/20/RuEynJYiqV89Ohz.png" alt="运行第一个crakeme"></p>
+<p>这个 crackme 已经把用户名和注册码都输好了，省得我们动手^_^。我们在那个“Register now !”按钮上点击一下，将会跳出一个对话框：</p>
+<img src="https://i.loli.net/2020/03/20/jNeCiZ5KLGRQgna.png" alt="crackme弹出错误对话框" style="zoom:150%;" />
+
+<p>好了，今天我们就从这个错误对话框中显示的“Wrong Serial, try again!”来入手。启动 OllyDBG，选择菜单文件&gt;打开载入 CrackMe3.exe 文件，我们会停在这里：</p>
+<p><img src="https://i.loli.net/2020/03/20/D8RmEjGUdiqt2Q5.png" alt="载入crackme后停在这里"></p>
+<p>我们在反汇编窗口中右击鼠标，出来一个菜单，我们在查找 &gt; 所有参考文本字串上左键点击：</p>
+<p><img src="https://i.loli.net/2020/03/20/bErxu8yDFiLh1Vt.png" alt="反汇编右击"></p>
+<p>当然如果用上面那个超级字串参考＋插件会更方便。但我们的目标是熟悉 OllyDBG 的一些操作，我就尽量使用 OllyDBG 自带的功能，少用插件。好了，现在出来另一个对话框，我们在这个对话框里右击，选择“查找文本”菜单项，输入“Wrong Serial, try again!”的开头单词“Wrong”（注意这里查找内容要区分大小写）来查找，找到一处：</p>
+<p><img src="https://i.loli.net/2020/03/20/O4bjFTol5YBs8gE.png" alt="找到一处字串"></p>
+<p>在我们找到的字串上右击，再在出来的菜单上点击“反汇编窗口中跟随”，我们来到这里：</p>
+<p><img src="https://i.loli.net/2020/03/20/FDEocJBKnmweXb1.png" alt="反汇编窗口中跟随"></p>
+<p>见上图，为了看看是否还有其他的参考，可以通过选择右键菜单查找参考&gt;立即数，会出来一个对话框：</p>
+<p><img src="https://i.loli.net/2020/03/20/SyxPJCzTqepV1R7.png" alt="立即数对话框"></p>
+<p>分别双击上面标出的两个地址，我们会来到对应的位置：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">00440F79 |. BA 8C104400     MOV EDX,CrackMe3.0044108C             ; ASCII “Wrong Serial,try again!”
+00440F7E |. A1 442C4400     MOV EAX,DWORD PTR DS:[442C44]
+00440F83 |. 8B00            MOV EAX,DWORD PTR DS:[EAX]
+00440F85 |. E8 DEC0FFFF     CALL CrackMe3.0043D068
+00440F8A |. EB 18           JMP SHORT CrackMe3.00440FA4
+00440F8C |&gt; 6A 00           PUSH 0
+00440F8E |. B9 80104400     MOV ECX,CrackMe3.00441080             ; ASCII “Beggar off!”
+00440F93 |. BA 8C104400     MOV EDX,CrackMe3.0044108C             ; ASCII “Wrong Serial,try again!”
+00440F98 |. A1 442C4400     MOV EAX,DWORD PTR DS:[442C44]
+00440F9D |. 8B00            MOV EAX,DWORD PTR DS:[EAX]
+00440F9F |. E8 C4C0FFFF     CALL CrackMe3.0043D068<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>我们在反汇编窗口中向上滚动一下再看看：</p>
+<pre class="line-numbers language-asm" data-language="asm"><code class="language-asm">00440F2C |. 8B45 FC         MOV EAX,DWORD PTR SS:[EBP-4]
+00440F2F |. BA 14104400     MOV EDX,CrackMe3.00441014             ; ASCII “Registered User”
+00440F34 |. E8 F32BFCFF     CALL CrackMe3.00403B2C                ; 关键，要用F7跟进去
+00440F39 |. 75 51           JNZ SHORT CrackMe3.00440F8C           ; 这里跳走就完蛋
+00440F3B |. 8D55 FC         LEA EDX,DWORD PTR SS:[EBP-4]
+00440F3E |. 8B83 C8020000   MOV EAX,DWORD PTR DS:[EBX+2C8]
+00440F44 |. E8 D7FEFDFF     CALL CrackMe3.00420E20
+00440F49 |. 8B45 FC         MOV EAX,DWORD PTR SS:[EBP-4]
+00440F4C |. BA 2C104400     MOV EDX,CrackMe3.0044102C             ; ASCII “GFX-754-IER-954”
+00440F51 |. E8 D62BFCFF     CALL CrackMe3.00403B2C                ; 关键，要用F7跟进去
+00440F56 |. 75 1A           JNZ SHORT CrackMe3.00440F72           ; 这里跳走就完蛋
+00440F58 |. 6A 00 PUSH 0
+00440F5A |. B9 3C104400     MOV ECX,CrackMe3.0044103C             ; ASCII “CrackMe cracked successfully”
+00440F5F |. BA 5C104400     MOV EDX,CrackMe3.0044105C             ; ASCII “Congrats! You cracked this CrackMe!”
+00440F64 |. A1 442C4400     MOV EAX,DWORD PTR DS:[442C44]
+00440F69 |. 8B00            MOV EAX,DWORD PTR DS:[EAX]
+00440F6B |. E8 F8C0FFFF     CALL CrackMe3.0043D068
+00440F70 |. EB 32           JMP SHORT CrackMe3.00440FA4
+00440F72 |&gt; 6A 00           PUSH 0
+00440F74 |. B9 80104400     MOV ECX,CrackMe3.00441080             ; ASCII “Beggar off!”
+00440F79 |. BA 8C104400     MOV EDX,CrackMe3.0044108C             ; ASCII “Wrong Serial,try again!”
+00440F7E |. A1 442C4400     MOV EAX,DWORD PTR DS:[442C44]
+00440F83 |. 8B00            MOV EAX,DWORD PTR DS:[EAX]
+00440F85 |. E8 DEC0FFFF     CALL CrackMe3.0043D068
+00440F8A |. EB 18           JMP SHORT CrackMe3.00440FA4
+00440F8C |&gt; 6A 00           PUSH 0
+00440F8E |. B9 80104400     MOV ECX,CrackMe3.00441080             ; ASCII “Beggar off!”
+00440F93 |. BA 8C104400     MOV EDX,CrackMe3.0044108C             ; ASCII “Wrong Serial,try again!”
+00440F98 |. A1 442C4400     MOV EAX,DWORD PTR DS:[442C44]
+00440F9D |. 8B00            MOV EAX,DWORD PTR DS:[EAX]
+00440F9F |. E8 C4C0FFFF     CALL CrackMe3.0043D068<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>大家注意看一下上面的注释，我在上面标了两个关键点。有人可能要问，你怎么知道那两个地方是关键点？其实很简单，我是根据查看是哪条指令跳到“wrong serial,try again”这条字串对应的指令来决定的。如果你在调试选项&gt;CPU 标签中把“显示跳转路径”及其下面的两个“如跳转未实现则显示灰色路径”、“显示跳转到选定命令的路径”都选上的话，就会看到是从什么地方跳到出错字串处的：</p>
+<p><img src="https://i.loli.net/2020/03/20/VEz65UFyjRYWmuS.png" alt="看到从何跳到出错字串"></p>
+<p>我们在上图中地址 00440F2C 处按 F2 键设个断点，现在我们按 F9 键，程序已运行起来了。我在上面那个编辑框中随便输入一下，如<code>CCDebuger</code>，下面那个编辑框我还保留为原来的“754-GFX-IER-954”，我们点一下那个“Register now !”按钮，OllyDBG 跳了出来，暂停在我们下的断点处。我们看一下信息窗口，你应该发现了你刚才输入的内容了吧？我这里显示是这样：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">堆栈 SS:[0012F9AC]&#x3D;00D44DB4, (ASCII &quot;CCDebuger&quot;)
+EAX&#x3D;00000009<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>上面的内存地址 <code>00D44DB4</code> 中就是我们刚才输入的内容，我这里是 <code>CCDebuger</code>。你可以在堆栈 <code>SS:[0 012F9AC]=00D44DB4, (ASCII &quot;CCDebuger&quot;)</code> 这条内容上左击选择一下，再点右键，在弹出菜单中选择“数据窗口中跟随数值”，你就会在下面的数据窗口中看到你刚才输入的内容。而 <code>EAX=00000009</code> 指的是你输入内容的长度。如我输入的 <code>CCDebuger</code> 是9个字符。如下图所示：</p>
+<p><img src="https://i.loli.net/2020/03/20/A5lmgt18udUsKZn.png" alt="数据窗口中跟随数值"></p>
+<p>现在我们来按 F8 键一步步分析一下：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">00440F2C |. 8B45 FC MOV EAX,DWORD PTR SS:[EBP-4] ; 把我们输入的内容送到EAX，我这里是“CCDebuger”
+00440F2F |. BA 14104400 MOV EDX,CrackMe3.00441014 ; ASCII &quot;Registered User&quot;
+00440F34 |. E8 F32BFCFF CALL CrackMe3.00403B2C ; 关键，要用F7跟进去00440F39 |. 75 51 JNZ SHORT CrackMe3.00440F8C ; 这里跳走就完蛋<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>当我们按 F8 键走到 <code>00440F34 |. E8 F32BFCFF CALL CrackMe3.00403B2C</code> 这一句时，我们按一下 F7 键，进入这个 <code>CALL</code>，进去后光标停在这一句：</p>
+<p><img src="https://i.loli.net/2020/03/20/bHEfGPYBdR5CSaA.png" alt="光标停在这一句"></p>
+<p>我们所看到的那些 <code>PUSH EBX</code>、 <code>PUSH ESI</code> 等都是调用子程序保存堆栈时用的指令，不用管它，按 F8 键一步步过来，我们只关心关键部分：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">00403B2C &#x2F;$ 53 PUSH EBX
+00403B2D |. 56 PUSH ESI
+00403B2E |. 57 PUSH EDI
+00403B2F |. 89C6 MOV ESI,EAX ; 把EAX内我们输入的用户名送到 ES I
+00403B31 |. 89D7 MOV EDI,EDX ; 把EDX内的数据“Registered Use r”送到EDI
+00403B33 |. 39D0 CMP EAX,EDX ; 用“Registered User”和我们输入的用户名作比较
+00403B35 |. 0F84 8F000000 JE CrackMe3.00403BCA ; 相同则跳
+00403B3B |. 85F6 TEST ESI,ESI ; 看看ESI中是否有数据，主要是看看我们有没有输入用户名
+00403B3D |. 74 68 JE SHORT CrackMe3.00403BA7 ; 用户名为空则跳
+00403B3F |. 85FF TEST EDI,EDI
+00403B41 |. 74 6B JE SHORT CrackMe3.00403BAE
+00403B43 |. 8B46 FC MOV EAX,DWORD PTR DS:[ESI-4] ; 用户名长度送EAX 00403B46 |. 8B57 FC MOV EDX,DWORD PTR DS:[EDI-4] ; “Registered User”字串的长度送EDX
+00403B49 |. 29D0 SUB EAX,EDX ; 把用户名长度和“Registered Use r”字串长度相减
+00403B4B |. 77 02 JA SHORT CrackMe3.00403B4F ; 用户名长度大于“Registere d User”长度则跳
+00403B4D |. 01C2 ADD EDX,EAX ; 把减后值与“Registered User”长度相加，即用户名长度
+00403B4F |&gt; 52 PUSH EDX
+00403B50 |. C1EA 02 SHR EDX,2 ; 用户名长度值右移2位，这里相当于长度除以4
+00403B53 |. 74 26 JE SHORT CrackMe3.00403B7B ; 上面的指令及这条指令就是判断用户名长度最少不能低于4
+00403B55 |&gt; 8B0E MOV ECX,DWORD PTR DS:[ESI] ; 把我们输入的用户名送到ECX
+00403B57 |. 8B1F MOV EBX,DWORD PTR DS:[EDI] ; 把“Registered User”送到EBX
+00403B59 |. 39D9 CMP ECX,EBX ; 比较
+00403B5B |. 75 58 JNZ SHORT CrackMe3.00403BB5 ; 不等则完蛋<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>根据上面的分析，我们知道用户名必须是“Registered User”。我们按 F9 键让程序运行，出现错误对话框，点确定，重新在第一个编辑框中输入“Registered User”，再次点击那个“Register now !”按钮，被 OllyDBG 拦下。因为地址 <code>00440F34</code> 处的那个 <code>CALL</code> 我们已经分析清楚了，这次就不用再按 F7 键跟进去了，直接按 F8 键通过。我们一路按 F8 键，来到第二个关键代码处：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">00440F49 |. 8B45 FC MOV EAX,DWORD PTR SS:[EBP-4] ; 取输入的注册码00440F4C |. BA 2C104400 MOV EDX,CrackMe3.0044102C ; ASCII &quot;GFX-754-IE R-954&quot;
+00440F51 |. E8 D62BFCFF CALL CrackMe3.00403B2C ; 关键，要用F7跟进去00440F56 |. 75 1A JNZ SHORT CrackMe3.00440F72 ; 这里跳走就完蛋&#96;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>大家注意看一下，地址 <code>00440F51</code> 处的 <code>CALL CrackMe3.00403B2C</code> 和上面我们分析的地址 <code>00440F34</code> 处的 <code>CALL CrackMe3.00403B2C</code> 是不是汇编指令都一样啊？这说明检测用户名和注册码是用的同一个子程序。而这个子程序 <code>CALL</code> 我们在上面已经分析过了。我们执行到现在可以很容易得出结论，这个 <code>CALL</code> 也就是把我们输入的注册码与 <code>00440F4C</code> 地址处指令后的“GFX-754-IER-954”作比较，相等则 OK。好了，我们已经得到足够的信息了。现在我们在菜单查看&gt;断点上点击一下，打开断点窗口（也可以通过组合键 ALT+B 或点击工具栏上那个“B”图标打开断点窗口）：</p>
+<p><img src="https://i.loli.net/2020/03/20/B4stMxyn2CQ68Ef.png" alt="打开断点窗口"></p>
+<p>为什么要做这一步，而不是把这个断点删除呢？这里主要是为了保险一点，万一分析错误，我们还要接着分析，要是把断点删除了就要做一些重复工作了。还是先禁用一下，如果经过实际验证证明我们的分析是正确的，再删不迟。现在我们把断点禁用，在 OllyDBG 中按 F9 键让程序运行。输入我们经分析得出的内容：</p>
+<ul>
+<li><p>用户名：Registered User</p>
+</li>
+<li><p>注册码：GFX-754-IER-954</p>
+</li>
+</ul>
+<p>点击“Register now!”按钮，呵呵，终于成功了：</p>
+<p><img src="https://i.loli.net/2020/03/20/rtDNVOondR4H8PC.png" alt="crackme1成功"></p>
+<h2 id="函数参考"><a href="#函数参考" class="headerlink" title="函数参考"></a>函数参考</h2><p>现在进入第三篇，这一篇我们重点讲解怎样使用 <code>OllyDBG</code> 中的函数参考（即名称参考）功能。仍然选择 crackmes.cjb.net 镜像打包中的一个名称为 <code>CrackHead</code> 的crackme。老规矩，先运行一下这个程序看看：</p>
+<p><img src="https://i.loli.net/2020/03/20/1Iefc9vDnLhQrk7.png" alt="CrackHead主界面"></p>
+<p>别急，我们点一下程序上的那个菜单“Shit”（学英语的，你懂的），在下拉菜单中选“Try It”，会来到如下界面输入注册码：</p>
+<p><img src="https://i.loli.net/2020/03/20/SJN9XFTrMLcUgqz.png" alt="crackme2输入注册码"></p>
+<p>我们点一下那个“Check It”按钮试一下，哦，竟然没反应！我再输个“78787878”试试，还是没反应。再试试输入字母或其它字符，输不进去。由此判断注册码应该都是数字，只有输入正确的注册码才有动静。用 PEiD 检测一下，结果为 <code>MASM32 / TASM32</code>，怪不得程序比较小。信息收集的差不多了，现在关掉这个程序，我们用 OllyDBG 载入，按 F9 键直接让它运行起来，依次点击上面图中所说的菜单，使被调试程序显示如上面的第二个图。先不要点那个“Check It”按钮，保留上图的状态。现在我们没有什么字串好参考了，我们就在 API 函数上下断点，来让被调试程序中断在我们希望的地方。我们在 OllyDBG 的反汇编窗口中右击鼠标，在弹出菜单中选择查找 &gt; 当前模块中的名称 (标签)，或者我们通过按 CTRL + N 组合键也可以达到同样的效果（注意在进行此操作时要在 OllyDBG 中保证是在当前被调试程序的领空，我在第一篇中已经介绍了领空的概念，如我这里调试这个程序时 OllyDBG 的标题栏显示的就是<code>[CPU - 主线程, 模块 - CrackHead]</code>，这表明我们当前在被调试程序的领空）。通过上面的操作后会弹出一个对话框，如图：</p>
+<p><img src="https://i.loli.net/2020/03/20/vRdxQZrX2O5DobU.png" alt="操作后弹出对话框"></p>
+<p>对于这样的编辑框中输注册码的程序我们要设断点首选的 API 函数就是 <code>GetDlgItemText</code> 及 <code>GetWindowText</code>。</p>
+<blockquote>
+<p>每个函数都有两个版本，一个是 <code>ASCII</code> 版，在函数后添加一个 <code>A</code> 表示，如 <code>GetDlgItemTextA</code>，另一个是 <code>UNICODE</code> 版，在函数后添加一个 <code>W</code> 表示。如 <code>GetDlgItemTextW</code>。对于编译为 <code>UNCODE</code> 版的程序可能在 <code>Win98</code> 下不能运行，因为 <code>Win98</code> 并非是完全支持 <code>UNICODE</code> 的系统。而 <code>NT</code> 系统则从底层支持 <code>UNICODE</code>，它可以在操作系统内对字串进行转换，同时支持 ASCII 和 <code>UNICODE</code> 版本函数的调用。一般我们打开的程序看到的调用都是 <code>ASCII</code> 类型的函数，以<code>A</code>结尾。</p>
+</blockquote>
+<p>现在回到我们调试的程序上来，我们现在就是要找一下我们调试的程序有没有调用 <code>GetDlgItemTextA</code> 或 <code>GetWindowTextA</code> 函数。还好，找到一个 <code>GetWindowTextA</code>。在这个函数上右击，在弹出菜单上选择“在每个参考上设置断点”，我们会在 <code>OllyDBG</code> 窗口最下面的那个状态栏里看到“已设置 2 个断点”。另一种方法就是那个 <code>GetWindowTextA</code> 函数上右击，在弹出菜单上选择“查找输入函数参考”（或者按回车键），将会出现下面的对话框：</p>
+<p><img src="https://i.loli.net/2020/03/20/pLFaUE1hWtofXY8.png" alt="回车出现下面的对话框"></p>
+<p>看上图，我们可以把两条都设上断点。这个程序只需在第一条指令设断点就可以了。好，我们现在按前面提到的第一条方法，就是“在每个参考上设置断点”，这样上图中的两条指令都会设上断点。断点设好后我们转到我们调试的程序上来，现在我们在被我们调试的程序上点击那个“Check It”按钮，被 OllyDBG 断下：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">00401323 |. E8 4C010000 CALL &lt;JMP.&amp;USER32.GetWindowTextA&gt; ; GetWin dowTextA
+00401328 |. E8 A5000000 CALL CrackHea.004013D2 ; 关键，要按F7键跟进去
+0040132D |. 3BC6 CMP EAX,ESI ; 比较
+0040132F |. 75 42 JNZ SHORT CrackHea.00401373 ; 不等则完蛋00401331 |. EB 2C JMP SHORT CrackHea.0040135F
+00401333 |. 4E 6F 77 20 7&gt; ASCII &quot;Now write a keyg&quot;
+00401343 |. 65 6E 20 61 6&gt; ASCII &quot;en and tut and y&quot;
+00401353 |. 6F 75 27 72 6&gt; ASCII &quot;ou&#39;re done.&quot;,0
+0040135F |&gt; 6A 00 PUSH 0 ; Style &#x3D; MB_OK|MB_APP LMODAL
+00401361 |. 68 0F304000 PUSH CrackHea.0040300F ; Title &#x3D; &quot;Crudd &#39;s Crack Head&quot;
+00401366 |. 68 33134000 PUSH CrackHea.00401333 ; Text &#x3D; &quot;No
+w write a keygen and tut and you&#39;re done.&quot;
+0040136B |. FF75 08 PUSH DWORD PTR SS:[EBP+8] ; hOwner 0040136E |. E8 19010000 CALL &lt;JMP.&amp;USER32.MessageBoxA&gt; ; Message BoxA<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>从上面的代码，我们很容易看出 <code>00401328</code> 地址处的 <code>CALL CrackHea.004013D2</code> 是关键，必须仔细跟踪。而注册成功则会显示一个对话框，标题是“Crudd’s Crack Head”，对话框显示的内容是“Now write a keygen and tut and you’re done.”现在我按一下 F8，准备步进到 <code>00401328</code> 地址处的那条 <code>CALL CrackHea.004013D2</code> 指令后再按 F7 键跟进去。等等，怎么回事？怎么按一下 F8 键跑到这来了：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">00401474 $- FF25 2C204000 JMP DWORD PTR DS:[&lt;&amp;USER32.GetWindowText&gt; ; U SER32.GetWindowTextA
+0040147A $- FF25 30204000 JMP DWORD PTR DS:[&lt;&amp;USER32.LoadCursorA&gt;] ; US ER32.LoadCursorA
+00401480 $- FF25 1C204000 JMP DWORD PTR DS:[&lt;&amp;USER32.LoadIconA&gt;] ; US
+ER32.LoadIconA
+00401486 $- FF25 20204000 JMP DWORD PTR DS:[&lt;&amp;USER32.LoadMenuA&gt;] ; US ER32.LoadMenuA
+0040148C $- FF25 24204000 JMP DWORD PTR DS:[&lt;&amp;USER32.MessageBoxA&gt;] ; U SER32.MessageBoxA<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>原来是跳到另一个断点了。这个断点我们不需要，按一下 F2 键删掉它吧。删掉 <code>00401474</code> 地址处的断点后，我再按 F8 键，呵，完了，跑到 <code>User32.dll</code> 的领空了。看一下 OllyDBG 的标题栏：“[CPU - 主线程, 模块 - USER32]，跑到系统领空了，OllyDBG 反汇编窗口中显示代码是这样：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">77D3213C 6A 0C PUSH 0C
+77D3213E 68 A021D377 PUSH USER32.77D321A0
+77D32143 E8 7864FEFF CALL USER32.77D185C0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>怎么办？别急，我们按一下 ALT + F9 组合键，呵，回来了：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">00401328 |. E8 A5000000 CALL CrackHea.004013D2 ; 关键，要按F7键跟进去
+0040132D |. 3BC6 CMP EAX,ESI ; 比较
+0040132F |. 75 42 JNZ SHORT CrackHea.00401373 ; 不等则完蛋<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>光标停在 <code>00401328</code> 地址处的那条指令上。现在我们按 F7 键跟进：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">004013D2 &#x2F;$ 56 PUSH ESI ; ESI入栈
+004013D3 |. 33C0 XOR EAX,EAX ; EAX清零
+004013D5 |. 8D35 C4334000 LEA ESI,DWORD PTR DS:[4033C4] ; 把注册码框中的数值送到ESI
+004013DB |. 33C9 XOR ECX,ECX ; ECX清零
+004013DD |. 33D2 XOR EDX,EDX ; EDX清零
+004013DF |. 8A06 MOV AL,BYTE PTR DS:[ESI] ; 把注册码中的每个字符送到AL
+004013E1 |. 46 INC ESI ; 指针加1，指向下一个字符004013E2 |. 3C 2D CMP AL,2D ; 把取得的字符与16进制值为2D的字符(即“-”)比较，这里主要用于判断输入的是不是负数
+004013E4 |. 75 08 JNZ SHORT CrackHea.004013EE ; 不等则跳
+004013E6 |. BA FFFFFFFF MOV EDX,-1 ; 如果输入的是负数，则把-1送到EDX，即16进制FFFFFFFF
+004013EB |. 8A06 MOV AL,BYTE PTR DS:[ESI] ; 取“-”号后的第一个字符
+004013ED |. 46 INC ESI ; 指针加1，指向再下一个字符004013EE |&gt; EB 0B JMP SHORT CrackHea.004013FB
+004013F0 |&gt; 2C 30 SUB AL,30 ; 每位字符减16进制的30，因为这里都是数字，如1的ASCII码是“31H”，减30H后为1，即我们平时看到的数值
+004013F2 |. 8D0C89 LEA ECX,DWORD PTR DS:[ECX+ECX*4] ; 把前面运算后保存在ECX中的结果乘5再送到ECX
+004013F5 |. 8D0C48 LEA ECX,DWORD PTR DS:[EAX+ECX*2] ; 每位字符运算后的值与2倍上一位字符运算后值相加后送ECX
+004013F8 |. 8A06 MOV AL,BYTE PTR DS:[ESI] ; 取下一个字符004013FA |. 46 INC ESI ; 指针加1，指向再下一个字符004013FB |&gt; 0AC0 OR AL,AL
+004013FD |.^ 75 F1 JNZ SHORT CrackHea.004013F0 ; 上面一条和这一条指令主要是用来判断是否已把用户输入的注册码计算完
+004013FF |. 8D040A LEA EAX,DWORD PTR DS:[EDX+ECX] ; 把EDX中的值与经过上面运算后的ECX中值相加送到EAX
+00401402 |. 33C2 XOR EAX,EDX ; 把EAX与EDX异或。如果我们输入的是负数，则此处功能就是把EAX中的值取反
+00401404 |. 5E POP ESI ; ESI出栈。看到这条和下一条指令，我们要考虑一下这个ESI的值是哪里运算得出的呢？
+00401405 |. 81F6 53757A79 XOR ESI,797A7553 ; 把ESI中的值与797 A7553H异或
+0040140B \. C3 RETN<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这里留下了一个问题：那个 ESI 寄存器中的值是从哪运算出来的？先不管这里，我们接着按 F8 键往下走，来到 <code>0040140B</code> 地址处的那条 <code>RETN</code> 指令（这里可以通过在调试选项的“命令”标签中勾选“使用 RET 代替RETN”来更改返回指令的显示方式），再按一下 F8，我们就走出 00401328 地址处的那个 <code>CALL</code> 了。现在我们回到了这里：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">0040132D |. 3BC6 CMP EAX,ESI ; 比较
+0040132F |. 75 42 JNZ SHORT CrackHea.00401373 ; 不等则完蛋<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>光标停在了 0040132D 地址处的那条指令上。根据前面的分析，我们知道 EAX 中存放的是我们输入的注册码经过计算后的值。我们来看一下信息窗口：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">ESI&#x3D;E6B5F2F9
+EAX&#x3D;FF439EBE<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>左键选择信息窗口中的 <code>ESI=E6B5F2F9</code>，再按右键，在弹出菜单上选“修改寄存器”，我们会看到这样一个窗口：</p>
+<img src="https://i.loli.net/2020/03/20/FxR2eUNs4Jp89Eu.png" alt="修改esi" style="zoom:150%;" />
+
+<p>可能你的显示跟我不一样，因为这个 crackme 中已经说了每个机器的序列号不一样。关掉上面的窗口，再对信息窗口中的 <code>EAX=FF439EBE </code>做同样操作：</p>
+<img src="https://i.loli.net/2020/03/20/SQWM6seORHKPwFT.png" alt="修改eax" style="zoom:150%;" />
+
+<p>由上图我们知道了原来前面分析的对我们输入的注册码进行处理后的结果就是把字符格式转为数字格式。</p>
+<p>我们原来输入的是字串“12345666”，现在转换为了数字 12345666。这下就很清楚了，随便在上面那个修改 ESI 图中显示的有符号或无符号编辑框中复制一个，粘贴到我们调试的程序中的编辑框中试一下：</p>
+<p><img src="https://i.loli.net/2020/03/20/RlNY1CQ85eG26VD.png" alt="编辑框中试一下"></p>
+<p>成功了！——且慢，这个 crackme 是要求写出注册机的。不过在这篇文章内，我们不要求写注册机，但我们要搞清楚注册的算法。还记得我在前面说到的那个 <code>ESI</code> 寄存器值的问题吗？现在看看我们上面的分析，其实对做注册机来说是没有多少帮助的。要搞清注册算法，必须知道上面那个 <code>ESI</code> 寄存器值是如何产生的，这弄清楚后才能真正清楚这个 crackme 算法。今天就先说到这里，关于如何追出 <code>ESI</code> 寄存器的值我就留到下一篇——内存断点中再讲吧。</p>
+<h2 id="内存断点"><a href="#内存断点" class="headerlink" title="内存断点"></a>内存断点</h2><p>还记得上一篇的内容吗？在那篇文章中我们分析后发现一个 ESI 寄存器值不知是从什么地方产生的，要弄清这个问题必须要找到生成这个 ESI 值的计算部分。今天我们的任务就是使用 OllyDBG 的内存断点功能找到这个地方，搞清楚这个值是如何算出来的。这次分析的目标程序还是上一篇的那个 crackme，附件我就不再上传了，用上篇中的附件就可以了。下面我们开始。</p>
+<p>还记得我们上篇中所说的关键代码的地方吗？温习一下：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">00401323 |. E8 4C010000 CALL &lt;JMP.&amp;USER32.GetWindowTextA&gt; ; GetWin dowTextA
+00401328 |. E8 A5000000 CALL CrackHea.004013D2 ; 关键，要按F7键跟进去
+0040132D |. 3BC6 CMP EAX,ESI ; 比较
+0040132F |. 75 42 JNZ SHORT CrackHea.00401373 ; 不等则完蛋<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>我们重新用 OllyDBG 载入目标程序，F9运行来到上面代码所在的地方（你上次设的断点应该没删吧？），我们向上看看能不能找到那个 ESI 寄存器中最近是在哪里赋的值。哈哈，原来就在附近啊：</p>
+<p><img src="https://i.loli.net/2020/03/20/tAEkCfj8R6vWTN3.png" alt="就在附近"></p>
+<p>我们现在知道 ESI 寄存器的值是从内存地址 <code>40339C</code> 中送过来的，那内存地址 <code>40339C</code> 中的数据是什么时候产生的呢？大家注意，我这里信息窗口中显示的是 <code>DS:[0040339C]=9FCF87AA</code>，你那可能是 <code>DS:[0040339C]=XXXXXXXX</code>，这里的 <code>XXXXXXXX</code> 表示的是其它的值，就是说与我这里显示的 <code>9FCF87AA</code> 不一样。我们按上图的操作在数据窗口中看一下：</p>
+<p><img src="https://i.loli.net/2020/03/20/n18PG2imUXeB9W3.png" alt="在数据窗口中看"></p>
+<p>从上图我们可以看出内存地址 <code>40339C</code> 处的值已经有了，说明早就算过了。现在怎么办呢？我们考虑一下，看情况程序是把这个值算出来以后写在这个内存地址，那我们要是能让 OllyDBG 在程序开始往这个内存地址写东西的时候中断下来，不就有可能知道目标程序是怎么算出这个值的吗？说干就干，我们在 OllyDBG 的菜单上点调试-&gt;重新开始，或者按 <code>CTRL + F2</code> 组合键（还可以点击工具栏上的那个有两个实心左箭头的图标）来重新载入程序。这时会跳出一个“进程仍处于激活状态”的对话框（我们可以在在调试选项的安全标签下把“终止活动进程时警告”这条前面的勾去掉，这样下次就不会出现这个对话框了），问我们是否要终止进程。这里我们选“是”，程序被重新载入，我们停在下面这一句上：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">00401000 &gt;&#x2F;$ 6A 00 PUSH 0 ; pModule &#x3D; NULL<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>现在我们就要来设内存断点了。在 OllyDBG 中一般我们用到的内存断点有内存访问和内存写入断点。内存访问断点就是指程序访问内存中我们指定的内存地址时中断，内存写入断点就是指程序往我们指定的内存地址中写东西时中断。更多关于断点的知识大家可以参考论坛精华7 -&gt; 基础知识 -&gt; 断点技巧 -&gt; 断点原理这篇 Lenus 写的《如何对抗硬件断点之一 — 调试寄存器》文章，也可以看<a class="link"   target="_blank" rel="noopener" href="http://bbs.pediy.com/showthread.php?threadid=10829" >这个帖<i class="fas fa-external-link-alt"></i></a>。根据当前我们调试的具体程序的情况，我们选用内存写入断点。还记得前面我叫大家记住的那个 <code>40339C</code> 内存地址吗？现在我们要用上了。我们先在 OllyDBG 的数据窗口中左键点击一下，再右击，会弹出一个如下图所示的菜单。我们选择其中的转到 -&gt; 表达式（也可以左键点击数据窗口后按 CTRL + G 组合键）。如下图：</p>
+<p><img src="https://i.loli.net/2020/03/20/WzfCGjTShX3IqV6.png" alt="转到 -&gt; 表达式"></p>
+<p>现在将会出现这样一个对话框：</p>
+<p>我们在上面那个编辑框中输入我们想查看内容的内存地址 <code>40339C</code>，然后点确定按钮，数据窗口中显示如下：</p>
+<p><img src="https://i.loli.net/2020/03/20/pe7dEOmqQihU2ta.png" alt="点确定按钮数据窗口中显示如下"></p>
+<p>我们可以看到，<code>40339C</code> 地址开始处的这段内存里面还没有内容。我们现在在 <code>40339C</code> 地址处后面的 <code>HEX</code> 数据或 <code>ASCII</code> 栏中按住左键往后拖放，选择一段。内存断点的特性就是不管你选几个字节，<code>OllyDBG</code> 都会分配 4096 字节的内存区。这里我就选从 <code>40339C</code> 地址处开始的四个字节，主要是为了让大家提前了解一下硬件断点的设法，因为硬件断点最多只能选4个字节。选中部分会显示为灰色。选好以后松开鼠标左键，在我们选中的灰色部分上右击：</p>
+<p><img src="https://i.loli.net/2020/03/20/NpgZf8K9ChIecs2.png" alt="选中的灰色部分上右击"></p>
+<p>经过上面的操作，我们的内存断点就设好了（这里还有个要注意的地方：内存断点只在当前调试的进程中有效，就是说你如果重新载入程序的话内存断点就自动删除了。且内存断点每一时刻只能有一个。就是说你不能像按 F2 键那样同时设置多个断点）。现在按 F9 键让程序运行，呵，OllyDBG 中断了！</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">7C932F39 8808 MOV BYTE PTR DS:[EAX],CL ; 这就是我们第一次断下来的地方
+7C932F3B 40 INC EAX
+7C932F3C 4F DEC EDI
+7C932F3D 4E DEC ESI
+7C932F3E ^ 75 CB JNZ SHORT ntdll.7C932F0B
+7C932F40 8B4D 10 MOV ECX,DWORD PTR SS:[EBP+10]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>上面就是我们中断后反汇编窗口中的代码。如果你是其它系统，如 <code>Win98</code> 的话，可能会有所不同。没关系，这里不是关键。我们看一下领空，原来是在 <code>ntdll.dll</code> 内。系统领空，我们现在要考虑返回到程序领空。返回前我们看一下数据窗口：</p>
+<p><img src="https://i.loli.net/2020/03/20/K3ZWzJDrydwhY1k.png" alt="返回前我们看一下数据窗口"></p>
+<p>现在我们转到反汇编窗口，右击鼠标，在弹出菜单上选择断点 -&gt; 删除内存断点，这样内存断点就被删除了。</p>
+<p><img src="https://i.loli.net/2020/03/20/QneZq7b9EwrSpxd.png" alt="内存断点就被删除"></p>
+<p>现在我们来按一下 ALT + F9 组合键，我们来到下面的代码：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">00401431 |. 8D35 9C334000 LEA ESI,DWORD PTR DS:[40339C] ; ALT+F9返回后来到的位置
+00401437 |. 0FB60D EC334000 MOVZX ECX,BYTE PTR DS:[4033EC]
+0040143E |. 33FF XOR EDI,EDI<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>我们把反汇编窗口往上翻翻，呵，原来就在我们上一篇分析的代码下面啊？</p>
+<p><img src="https://i.loli.net/2020/03/22/DqNM8HY9O3P6Jgy.png" alt="上一篇分析的代码"></p>
+<p>现在我们在 <code>0040140C</code> 地址处那条指令上按 F2 设置一个断点，现在我们按 CTRL + F2 组合键重新载入程序，载入后按 F9 键运行，我们将会中断在我们刚才在 <code>0040140C</code> 地址下的那个断点处：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">0040140C &#x2F;$ 60 PUSHAD
+0040140D |. 6A 00 PUSH 0 ; &#x2F;RootPathName &#x3D; NULL 0040140F |. E8 B4000000 CALL &lt;JMP.&amp;KERNEL32.GetDriveTypeA&gt; ; \GetDriv eTypeA
+00401414 |. A2 EC334000 MOV BYTE PTR DS:[4033EC],AL ; 磁盘类型参数送内存地址4033EC
+00401419 |. 6A 00 PUSH 0 ; &#x2F;pFileSystemNameSiz
+e &#x3D; NULL
+0040141B |. 6A 00 PUSH 0 ; |pFileSystemNameBuffe
+r &#x3D; NULL
+0040141D |. 6A 00 PUSH 0 ; |pFileSystemFlags &#x3D; NULL 0040141F |. 6A 00 PUSH 0 ; |pMaxFilenameLength &#x3D; N ULL
+00401421 |. 6A 00 PUSH 0 ; |pVolumeSerialNumbe
+r &#x3D; NULL
+00401423 |. 6A 0B PUSH 0B ; |MaxVolumeNameSiz
+e &#x3D; B (11.)
+00401425 |. 68 9C334000 PUSH CrackHea.0040339C ; |VolumeName Buffer &#x3D; CrackHea.0040339C
+0040142A |. 6A 00 PUSH 0 ; |RootPathName &#x3D; NULL 0040142C |. E8 A3000000 CALL &lt;JMP.&amp;KERNEL32.GetVolumeInformationA&gt; ; \GetV olumeInformationA
+00401431 |. 8D35 9C334000 LEA ESI,DWORD PTR DS:[40339C] ; 把crackme程序所在分区的卷标名称送到ESI
+00401437 |. 0FB60D EC334000 MOVZX ECX,BYTE PTR DS:[4033EC] ; 磁盘类型参数送ECX
+0040143E |. 33FF XOR EDI,EDI ; 把EDI清零
+00401440 |&gt; 8BC1 MOV EAX,ECX ; 磁盘类型参数送EAX 00401442 |. 8B1E MOV EBX,DWORD PTR DS:[ESI] ; 把卷标名作为数值送到 EBX
+00401444 |. F7E3 MUL EBX ; 循环递减取磁盘类型参数值与卷标名值相乘
+00401446 |. 03F8 ADD EDI,EAX ; 每次计算结果再加上上次计算结果保存在EDI中
+00401448 |. 49 DEC ECX ; 把磁盘类型参数作为循环次数，依次递减
+00401449 |. 83F9 00 CMP ECX,0 ; 判断是否计算完
+0040144C |.^ 75 F2 JNZ SHORT CrackHea.00401440 ; 没完继续0040144E |. 893D 9C334000 MOV DWORD PTR DS:[40339C],EDI ; 把计算后值送到内存地址40339C，这就是我们后来在ESI中看到的值
+00401454 |. 61 POPAD
+00401455 \. C3 RETN<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>通过上面的分析，我们知道基本算法是这样的：先用 <code>GetDriveTypeA</code> 函数获取磁盘类型参数，再用 <code>GetVolumeInformationA</code> 函数获取这个 crackme 程序所在分区的卷标。如我把这个 Crackme 程序放在 <code>F:\OD教程\crackhead\</code> 目录下，而我 F 盘设置的卷标是 <code>GAME</code>，则这里获取的就是 <code>GAME</code>，<code>ASCII</code> 码为“47414D45”。但我们发现一个问题：假如原来我们在数据窗口中看到的地址 <code>40339C</code> 处的 16 进制代码是“47414D45”，即“GAME”，但经过地址 <code>00401442</code> 处的那条 <code>MOV EBX,DWORD PTR DS:[ESI]</code> 指令后，我们却发现 <code>EBX</code> 中的值是“454D4147”，正好把我们上面那个“47414D45”反过来了。为什么会这样呢？如果大家对 x86系列 CPU 的存储方式了解的话，这里就容易理解了。我们知道“GAME”有四个字节，即 <code>ASCII</code> 码为“47414D45”。我们看一下数据窗口中的情况：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">0040339C 47 41 4D 45 00 00 00 00 00 00 00 00 00 00 00 00 GAME............<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>大家可以看出来内存地址 <code>40339CH</code> 到 <code>40339FH</code> 分别按顺序存放的是 <code>47 41 4D 45</code>。如下图：</p>
+<img src="https://i.loli.net/2020/03/22/9hO3yVM5zItWKbs.png" alt="olly-tutorial-32.jpg" style="zoom:150%;" />
+
+<p>系统存储的原则为“高高低低”，即低字节存放在地址较低的字节单元中，高字节存放在地址较高的字节单元中。比如一个字由两个字节组成，像这样：<code>12 34</code> ，这里的高字节就是 <code>12</code> ，低字节就是 <code>34</code>。上面的那条指令 <code>MOV EBX,DWORD PTR DS:[ESI]</code> 等同于 <code>MOV EBX,DWORD PTR DS:[40339C]</code>。注意这里是 <code>DWORD</code>，即“双字”，由 4 个连续的字节构成。而取地址为 <code>40339C</code> 的双字单元中的内容时，我们应该得到的是“454D4147”，即由高字节到低字节顺序的值。因此经过 <code>MOV EBX,DWORD PTR DS: [ESI]</code> 这条指令，就是把从地址 <code>40339C</code> 开始处的值送到 <code>EBX</code>，所以我们得到了“454D4147”。好了，这里弄清楚了，我们再接着谈这个程序的算法。前面我们已经说了取磁盘类型参数做循环次数，再取卷标值 ASCII 码的逆序作为数值，有了这两个值就开始计算了。现在我们把磁盘类型值作为 t，卷标值 <code>ASCII</code> 码的逆序数值作为 a，最后得出的结果作为 b，有这样的计算过程：</p>
+<p>第一次：$b = at$</p>
+<p>第二次：$b=a\left( t-1\right) +b$</p>
+<p>第三次：$b=a\left( t-2\right) +b$</p>
+<p>…</p>
+<p>第 n 次：$b=a\left( t-n+1\right) +b$</p>
+<p>可得出公式为 $b=a[ n+\left( n-1\right) +\left( n-2\right) +\ldots +1]=a\cdot \dfrac {n\left( n+1\right) }{2}$</p>
+<p>还记得上一篇我们的分析吗？看这一句：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">00401405 |. 81F6 53757A79 XOR ESI,797A7553 ; 把ESI中的值与797 A7553H异或<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这里算出来的b最后还要和 <code>797A7553H</code> 异或一下才是真正的注册码。只要你对编程有所了解，这个注册机就很好写了。如果用汇编来写这个注册机的话就更简单了，很多内容可以直接照抄。</p>
+<p>到此已经差不多了，最后还有几个东西也说一下吧：</p>
+<ol>
+<li><p>上面用到了两个 API 函数，一个是 <code>GetDriveTypeA</code>，还有一个是 <code>GetVolumeInformationA</code>，关于这两个函数的具体用法我就不多说了，大家可以查一下 MSDN。这里只要大家注意函数参数传递的次序，即调用约定。先看一下这里：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">00401419 |. 6A 00 PUSH 0 ; &#x2F;pFileSystemNameSiz
+e &#x3D; NULL
+0040141B |. 6A 00 PUSH 0 ; |pFileSystemNameBuffe
+r &#x3D; NULL
+0040141D |. 6A 00 PUSH 0 ; |pFileSystemFlags &#x3D; NULL 0040141F |. 6A 00 PUSH 0 ; |pMaxFilenameLength &#x3D; N ULL
+00401421 |. 6A 00 PUSH 0 ; |pVolumeSerialNumbe
+r &#x3D; NULL
+00401423 |. 6A 0B PUSH 0B ; |MaxVolumeNameSiz
+e &#x3D; B (11.)
+00401425 |. 68 9C334000 PUSH CrackHea.0040339C ; |VolumeName Buffer &#x3D; CrackHea.0040339C
+0040142A |. 6A 00 PUSH 0 ; |RootPathName &#x3D; NULL 0040142C |. E8 A3000000 CALL &lt;JMP.&amp;KERNEL32.GetVolumeInformationA&gt; ; \GetVolumeInformationA<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>把上面代码后的 OllyDBG 自动添加的注释与 MSDN 中的函数原型比较一下：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">BOOL GetVolumeInformation(
+LPCTSTR lpRootPathName, &#x2F;&#x2F; address of root directory of the file system LPTSTR lpVolumeNameBuffer, &#x2F;&#x2F; address of name of the volume
+DWORD nVolumeNameSize, &#x2F;&#x2F; length of lpVolumeNameBuffer
+LPDWORD lpVolumeSerialNumber, &#x2F;&#x2F; address of volume serial number
+LPDWORD lpMaximumComponentLength, &#x2F;&#x2F; address of system&#39;s maximum filenam e length
+LPDWORD lpFileSystemFlags, &#x2F;&#x2F; address of file system flags
+LPTSTR lpFileSystemNameBuffer, &#x2F;&#x2F; address of name of file system
+DWORD nFileSystemNameSize &#x2F;&#x2F; length of lpFileSystemNameBuffer
+);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>大家应该看出来点什么了吧？函数调用是先把最后一个参数压栈，参数压栈顺序是从后往前。这就是一般比较常见的 <code>stdcall</code> 调用约定。</p>
+</li>
+<li><p>我在前面的 <code>00401414</code> 地址处的那条<code>MOV BYTE PTR DS:[4033EC],AL</code>指令后加的注释是“磁盘类型参数送内存地址4033EC”。为什么这样写？大家把前一句和这一句合起来看一下：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">0040140F |. E8 B4000000 CALL &lt;JMP.&amp;KERNEL32.GetDriveTypeA&gt; ; \GetDriv eTypeA
+00401414 |. A2 EC334000 MOV BYTE PTR DS:[4033EC],AL ; 磁盘类型参数送内存地址4033EC<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>地址 <code>0040140F</code> 处的那条指令是调用 <code>GetDriveTypeA</code> 函数，一般函数调用后的返回值都保存在 <code>EAX</code> 中，所以地址 <code>00401414</code> 处的那一句 <code>MOV BYTE PTR DS:[4033EC],AL</code> 就是传递返回值。查一下 MSDN 可以知道 <code>GetDriveTypeA</code> 函数的返回值有这几个：</p>
+<blockquote>
+<p>Value Meaning 返回在EAX中的值：</p>
+<ul>
+<li>DRIVE_UNKNOWN The drive type cannot be determined. 0</li>
+<li>DRIVE_NO_ROOT_DIR The root directory does not exist. 1</li>
+<li>DRIVE_REMOVABLE The disk can be removed from the drive. 2</li>
+<li>DRIVE_FIXED The disk cannot be removed from the drive. 3</li>
+<li>DRIVE_REMOTE The drive is a remote (network) drive. 4</li>
+<li>DRIVE_CDROM The drive is a CD-ROM drive. 5</li>
+<li>DRIVE_RAMDISK The drive is a RAM disk. 6</li>
+</ul>
+</blockquote>
+<p>上面那个“返回在EAX中的值”是我加的，我这里返回的是 3，即磁盘不可从驱动器上删除。</p>
+</li>
+<li><p>通过分析这个程序的算法，我们发现这个注册算法是有漏洞的。如果我的分区没有卷标的话，则卷标值为 0，最后的注册码就是 <code>797A7553H</code>，即十进制 <code>2038068563</code>。而如果你的卷标和我一样，且磁盘类型一样的话，注册码也会一样，并不能真正做到一机一码。</p>
+</li>
+</ol>
+<h2 id="消息断点及-RUN-跟踪"><a href="#消息断点及-RUN-跟踪" class="headerlink" title="消息断点及 RUN 跟踪"></a>消息断点及 RUN 跟踪</h2><p>找了几十个不同语言编写的 crackme，发现只用消息断点的话有很多并不能真正到达我们要找的关键位置，想想还是把消息断点和 RUN 跟踪结合在一起讲，更有效一点。关于消息断点的更多内容大家可以参考 jingulong 的那篇《几种典型程序Button处理代码的定位》的文章，堪称经典之作。今天仍然选择 crackmes.cjb.net 镜像打包中的一个名称为 cycle 的 crackme。按照惯例，我们先运行一下这个程序看看：</p>
+<img src="https://i.loli.net/2020/03/22/W9KGVsxicCamEwq.png" alt="cycle主页面" style="zoom:150%;" />
+
+<p>我们输入用户名 <code>CCDebuger</code>，序列号 <code>78787878</code>，点上面那个“Check”按钮，呵，没反应！看来是要注册码正确才有动静。现在关掉这个 crackme，用 PEiD 查一下壳，原来是 <code>MASM32 / TASM32 [Overlay]</code>。启动 OllyDBG 载入这个程序，F9让它运行。这个程序按我们前面讲的采用字串参考或函数参考的方法都很容易断下来。但我们今天主要学习的是消息断点及 RUN 跟踪，就先用消息断点来断这个程序吧。在设消息断点前，有两个内容我们要简单了解一下：首先我们要了解的是消息。<code>Windows</code> 的中文翻译就是“窗口”，而 <code>Windows</code> 上面的应用程序也都是通过窗口来与用户交互的。现在就有一个问题，应用程序是如何知道用户作了什么样的操作的？这里就要用到消息了。<code>Windows</code> 是个基于消息的系统，它在应用程序开始执行后，为该程序创建一个“消息队列”，用来存放该程序可能创建的各种不同窗口的信息。比如你创建窗口、点击按钮、移动鼠标等等，都是通过消息来完成的。通俗的说，<code>Windows</code> 就像一个中间人，你要干什么事是先通知它，然后它才通过传递消息的方式通知应用程序作出相应的操作。说到这，又有个问题了，在 <code>Windows</code> 下有多个程序都在运行，那我点了某个按钮，或把某个窗口最大化，<code>Windows</code> 知道我是点的哪个吗？这里就要说到另一个内容：句柄（handle）了。句柄一般是个 32 位的数，表示一个对象。<code>Windows</code> 通过使用句柄来标识它代表的对象。比如你点击某个按钮，<code>Windows</code> 就是通</p>
+<p>过句柄来判断你是点击了那一个按钮，然后发送相应的消息通知程序。说完这些我们再回到我们调试的程序上来，你应该已经用 OllyDBG 把这个 crackme 载入并按 F9 键运行了吧？现在我们输入用户名“CCDebuger”，序列号“78787878”，先不要点那个“Check”按钮，我们来到 OllyDBG 中，点击菜单查看-&gt;窗口（或者点击工具栏上那个“W”的图标），我们会看到以下内容：</p>
+<p><img src="https://i.loli.net/2020/03/22/M8Xuza1p5svNWkD.png" alt="点击工具栏上那个“W”的图标"></p>
+<p>我们在选中的条目上点右键，再选择上图所示的菜单项，会来到下面这个窗口：</p>
+<p><img src="https://i.loli.net/2020/03/22/59U4w8a6shKZbHV.png" alt="会来到下面这个窗口"></p>
+<p>现在我们点击图上的那个下拉菜单，呵，原来里面的消息真不少。这么多消息我们选哪个呢？注册是个按钮，我们就在按下按钮再松开时让程序中断。查一下 MSDN，我们知道这个消息应该是 <code>WM_LBUTTON_UP</code>，看字面意思也可以知道是左键松开时的消息：</p>
+<p><img src="https://i.loli.net/2020/03/22/pZKtdjvxqNHeIDP.png" alt="可以知道是左键松开时的消息"></p>
+<p>从下拉菜单中选中那个 <code>202 WM_LBUTTON_UP</code>，再按确定按钮，我们的消息断点就设好了。现在我们还要做一件事，就是把 RUN 跟踪打开。有人可能要问，这个 RUN 跟踪是干什么的？简单的说，RUN 跟踪就是把被调试程序执行过的指令保存下来，让你可以查看被调试程序运行期间干了哪些事。RUN 跟踪会把地址、寄存器的内容、消息以及已知的操作数记录到 RUN 跟踪缓冲区中，你可以通过查看 RUN 跟踪的记录来了解程序执行了那些指令。在这还要注意一个缓冲区大小的问题，如果执行的指令太多，缓冲区满了的话，就会自动丢弃前面老的记录。我们可以在调试选项 -&gt; 跟踪中设置：</p>
+<p><img src="https://i.loli.net/2020/03/22/y1iqG4a9RnADPTd.png" alt="调试选项 -&gt; 跟踪中设置"></p>
+<p>现在我们回到 OllyDBG 中，点击菜单调试-&gt;打开或清除 RUN 跟踪（第一次点这个菜单是打开 RUN 跟踪，在打开的情况下点击就是清除 RUN 跟踪的记录，对 RUN 跟踪熟悉时还可以设置条件），保证当前在我们调试的程序领空，在反汇编窗口中点击右键，在弹出菜单中选择 RUN 跟踪 -&gt; 添加所有函数过程的入口：</p>
+<p><img src="https://i.loli.net/2020/03/22/L8Jz3x7HR9oI2U4.png" alt="RUN 跟踪 -&gt; 添加所有函数过程的入口"></p>
+<p>我们可以看到 OllyDBG 把识别出的函数过程都在前面加了灰色条：</p>
+<p><img src="https://i.loli.net/2020/03/22/yl9zaqAdrP54QWR.png" alt="在前面加了灰色条"></p>
+<p>现在我们回到那个 crackme 中按那个“Check”按钮，被 OllyDBG 断下了：</p>
+<p><img src="https://i.loli.net/2020/03/22/aLIW8fGObXHhTEr.png" alt="“Check”按钮被OllyDBG断下了"></p>
+<p>这时我们点击菜单查看 -&gt; 内存，或者点击工具栏上那个“M”按钮（也可以按组合键 ALT + M），来到内存映射窗口：</p>
+<p><img src="https://i.loli.net/2020/03/22/rGxVPkbZRAg1O7S.png" alt="来到内存映射窗口"></p>
+<p>为什么在这里设访问断点，我也说一下。我们可以看一下常见的 PE 文件，没加过壳的用 PEiD 检测是这样：</p>
+<p><img src="https://i.loli.net/2020/03/22/usLIOqzy4U7XFEh.png" alt="没加过壳的用 PEiD 检测是这样"></p>
+<p>点一下 EP 段后面那个“&gt;”符号，我们可以看到以下内容：</p>
+<p><img src="https://i.loli.net/2020/03/22/2Rxypf5eJtzmobP.png" alt="点一下 EP 段后面那个“&gt;”符号"></p>
+<p>看完上面的图我们应该了解为什么在 <code>401000</code> 处的代码段下访问断点了，我们这里的意思就是在消息断点断下后，只要按 F9 键运行时执行到程序代码段的指令我们就中断，这样就可以回到程序领空了（当然在 <code>401000</code> 处所在的段不是绝对的，我们主要是要看程序的代码段在什么位置，其实在上面图中 OllyDBG 内存窗口的“包含”栏中我们就可以看得很清楚了）。设好访问断点后我们按 F9 键，被 OllyDBG 断下：</p>
+<p><img src="https://i.loli.net/2020/03/22/m9i8hJWYCUpDya2.png" alt="按F9被OllyDBG断下"></p>
+<p>现在我们先不管，按 F9 键（或者按 CTR+F12 组合键跟踪步过）让程序运行，再点击菜单查看-&gt;RUN 跟踪，或者点击工具栏上的那个“…”符号，打开 RUN 跟踪的记录窗口看看：</p>
+<p><img src="https://i.loli.net/2020/03/22/pzJXOKTdZAEVBr1.png" alt="打开 RUN 跟踪的记录窗口看看"></p>
+<p>我们现在再来看看统计的情况：</p>
+<p><img src="https://i.loli.net/2020/03/22/vYbKuOwQiens3c9.png" alt="再来看看统计的情况"></p>
+<p>在地址 <code>401082</code> 处的那条指令上双击一下，来到以下位置：</p>
+<p><img src="https://i.loli.net/2020/03/22/fSF31HpaYenzTrD.png" alt="olly-tutorial-47.jpg"></p>
+<p>现在我们在地址 <code>4010A6</code> 处的那条指令上按 F2，删除所有其它的断点，点菜单调试 -&gt; 关闭 RUN 跟踪，现在我们就可以开始分析了：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">004010E2 |. 8BFE MOV EDI,ESI ; 用户名送 EDI 004010E4 |. 03F8 ADD EDI,EAX
+004010E6 |. FC CLD
+004010E7 |. F3:A4 REP MOVS BYTE PTR ES:[EDI],BYTE PTR DS:[ESI]
+004010E9 |. 33C9 XOR ECX,ECX ; 清零，设循环计数器004010EB |. BE 71214000 MOV ESI,cycle.00402171 ; 注册码送ESI 004010F0 |&gt; 41 INC ECX
+004010F1 |. AC LODS BYTE PTR DS:[ESI] ; 取注册码的每个字符
+004010F2 |. 0AC0 OR AL,AL ; 判断是否为空
+004010F4 |. 74 0A JE SHORT cycle.00401100 ; 没有则跳走004010F6 |. 3C 7E CMP AL,7E ; 判断字符是否为非ASCII字符
+004010F8 |. 7F 06 JG SHORT cycle.00401100 ; 非ASCII字符跳走
+004010FA |. 3C 30 CMP AL,30 ; 看是否小于30H，主要是
+判断是不是数字或字母等
+004010FC |. 72 02 JB SHORT cycle.00401100 ; 小于跳走004010FE |.^ EB F0 JMP SHORT cycle.004010F0
+00401100 |&gt; 83F9 11 CMP ECX,11 ; 比较注册码位数，必须为十进制17位
+00401103 |. 75 1A JNZ SHORT cycle.0040111F
+00401105 |. E8 E7000000 CALL cycle.004011F1 ; 关键，F7跟进去0040110A |. B9 01FF0000 MOV ECX,0FF01
+0040110F |. 51 PUSH ECX
+00401110 |. E8 7B000000 CALL cycle.00401190 ; 关键，跟进去00401115 |. 83F9 01 CMP ECX,1
+00401118 |. 74 06 JE SHORT cycle.00401120
+0040111A |&gt; E8 47000000 CALL cycle.00401166 ; 注册失败对话框
+0040111F |&gt; C3 RETN
+00401120 |&gt; A1 68214000 MOV EAX,DWORD PTR DS:[402168]
+00401125 |. 8B1D 6C214000 MOV EBX,DWORD PTR DS:[40216C]
+0040112B |. 33C3 XOR EAX,EBX
+0040112D |. 3305 82214000 XOR EAX,DWORD PTR DS:[402182]
+00401133 |. 0D 40404040 OR EAX,40404040
+00401138 |. 25 77777777 AND EAX,77777777
+0040113D |. 3305 79214000 XOR EAX,DWORD PTR DS:[402179]
+00401143 |. 3305 7D214000 XOR EAX,DWORD PTR DS:[40217D]
+00401149 |.^ 75 CF JNZ SHORT cycle.0040111A ; 这里跳走就完蛋
+0040114B |. E8 2B000000 CALL cycle.0040117B ; 注册成功对话框<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>写到这准备跟踪算法时，才发现这个 crackme 还是挺复杂的，具体算法我就不写了，实在没那么多时间详细跟踪。有兴趣的可以跟一下，注册码是17位，用户名采用复制的方式扩展到 16 位，如我输入“CCDebuger”，扩展后就是“CCDebugerCCDebug”。大致是先取扩展后用户名的前 8 位和注册码的</p>
+<p>前 8 位，把用户名的前四位和后四位分别与注册码的前四位和后四位进行运算，算完后再把扩展后用户名的后 8 位和注册码的后 8 位分两部分，再与前面用户名和注册码的前 8 位计算后的值进行异或计算，最后结果等于 0 就成功。注册码的第 17 位我尚未发现有何用处。对于新手来说，可能这个 crackme 的难度大了一点。没关系，我们主要是学习 OllyDBG 的使用，方法掌握就可以了。</p>
+<p>最后说明一下：</p>
+<ol>
+<li><p>这个程序在设置了消息断点后可以省略在代码段上设访问断点那一步，直接打开 RUN 跟踪，消息断点断下后按 CTR+F12 组合键让程序执行，RUN 跟踪记录中就可以找到关键地方。</p>
+</li>
+<li><p>对于这个程序，你可以不设消息断点，在输入用户名和注册码后先不按那个“Check”按钮，直接打开 R UN 跟踪，添加“所有函数过程的入口”后再回到程序中点“Check”按钮，这时在 OllyDBG 中打开 RUN 跟踪记录同样可以找到关键位置。</p>
+</li>
+</ol>
+<h2 id="汇编功能"><a href="#汇编功能" class="headerlink" title="汇编功能"></a>汇编功能</h2><p>今天我们的目标程序是 <code>MyUninstaller 1.34</code> 版。这是一个非常小的程序卸载工具，<code>VC6</code>编写，大小只有61K。我拿到的这个是上次@闪电狼给我的，附带在里面的简体中文语言文件是由六芒星制作的。这个程序有个毛病：就是在列出的可卸载程序上双击查看属性时，弹出的属性窗口的字体非常难看，应该就是系统字体（<code>SYSTEM_FONT</code>）：</p>
+<p><img src="https://i.loli.net/2020/03/22/tNy4dla8brCqRIV.png" alt="字体非常难看"></p>
+<p>我们今天的目标就是利用 OllyDBG 的汇编功能把上面显示的字体改成我们常见的9号（小五）宋体。首先我们用 OllyDBG 载入程序，按 CTRL + N 组合键查找一下有哪些 API 函数，只发现一个和设置字体相关的 <code>CreateFontIndirectA</code>。现在我们按鼠标右键，选择“在每个参考上设置断点”，关掉名称对话框，F9运行，程序已经运行起来了。我们在程序的列表框中随便找一项双击一下，很不幸，那个字体难看的界面又出现了，OllyDBG 没有任何动作。可见创建这个窗口的时候根本没调用 <code>CreateFontIndirectA</code>，问题现在就变得有点复杂了。先点确定把这个字体难看的对话框关闭，现在我们从另一个方面考虑：既然没有调用设置字体的函数，那我们来看看这个窗口是如何创建的，跟踪窗口创建过程可能会找到一些对我们有用的信息。现在我们再回到我们调试程序的领空，按 CTRL + N 看一下，发现 <code>CreateWindowExA</code> 这个 API 函数比较可疑。我们在 <code>CreateWindowExA</code> 函数的每个参考上设上断点，在 <code>MyUninstaller</code> 的列表框中再随便找一项双击一下，被 OllyDBG 断下：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">00408F5E |. FF15 98B24000 |CALL DWORD PTR DS:[&lt;&amp;USER32.CreateWindowEx A&gt;] ; \断在这里<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>上下翻看一下代码：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">00408F3B |. 50 |PUSH EAX ; |hInst
+00408F3C |. 8B45 C0 |MOV EAX,DWORD PTR SS:[EBP-40] ; |
+00408F3F |. 6A 00 |PUSH 0 ; |hMenu &#x3D; NULL
+00408F41 |. 03C6 |ADD EAX,ESI ; |
+00408F43 |. FF75 08 |PUSH DWORD PTR SS:[EBP+8] ; |hParent 00408F46 |. FF75 D0 |PUSH DWORD PTR SS:[EBP-30] ; |Height 00408F49 |. 57 |PUSH EDI ; |Width
+00408F4A |. 50 |PUSH EAX ; |Y
+00408F4B |. FF75 BC |PUSH DWORD PTR SS:[EBP-44] ; |X
+00408F4E |. FF75 EC |PUSH DWORD PTR SS:[EBP-14] ; |Style
+00408F51 |. 68 80DE4000 |PUSH myuninst.0040DE80 ; |WindowN ame &#x3D; &quot;&quot;
+00408F56 |. 68 DCD94000 |PUSH myuninst.0040D9DC ; |Clas
+s &#x3D; &quot;STATIC&quot;
+00408F5B |. FF75 D4 |PUSH DWORD PTR SS:[EBP-2C] ; |ExtStyle 00408F5E |. FF15 98B24000 |CALL DWORD PTR DS:[&lt;&amp;USER32.CreateWindowEx A&gt;] ; \断在这里
+00408F64 | 6A 00 |PUSH 0 ; 第一处要修改的地方
+00408F66 | 8945 F4 |MOV DWORD PTR SS:[EBP-C],EAX
+00408F69 |. E8 A098FFFF |CALL &lt;myuninst.sub_40280E&gt;
+00408F6E |. 50 |PUSH EAX ; |hInst
+00408F6F |. 8B45 DC |MOV EAX,DWORD PTR SS:[EBP-24] ; |
+00408F72 |. 6A 00 |PUSH 0 ; |hMenu &#x3D; NULL
+00408F74 |. 03F0 |ADD ESI,EAX ; |
+00408F76 |. FF75 08 |PUSH DWORD PTR SS:[EBP+8] ; |hParent 00408F79 |. FF75 CC |PUSH DWORD PTR SS:[EBP-34] ; |Height 00408F7C |. 53 |PUSH EBX ; |Width
+00408F7D |. 56 |PUSH ESI ; |Y
+00408F7E |. FF75 D8 |PUSH DWORD PTR SS:[EBP-28] ; |X
+00408F81 |. FF75 E8 |PUSH DWORD PTR SS:[EBP-18] ; |Style
+00408F84 |. 68 80DE4000 |PUSH myuninst.0040DE80 ; |WindowN ame &#x3D; &quot;&quot;
+00408F89 |. 68 D4D94000 |PUSH myuninst.0040D9D4 ; |Clas
+s &#x3D; &quot;EDIT&quot;
+00408F8E |. FF75 B8 |PUSH DWORD PTR SS:[EBP-48] ; |ExtStyle 00408F91 |. FF15 98B24000 |CALL DWORD PTR DS:[&lt;&amp;USER32.CreateWindowEx A&gt;] ; \CreateWindowExA
+00408F97 | 8945 F0 |MOV DWORD PTR SS:[EBP-10],EAX ; 第二处要修改的地方
+00408F9A | 8B45 F8 |MOV EAX,DWORD PTR SS:[EBP-8]
+00408F9D |. FF30 |PUSH DWORD PTR DS:[EAX] ; &#x2F;&lt;%s&gt;
+00408F9F |. 8D85 B0FEFFFF |LEA EAX,DWORD PTR SS:[EBP-150] ; |
+00408FA5 |. 68 D0D94000 |PUSH myuninst.0040D9D0 ; |forma
+t &#x3D; &quot;%s:&quot;
+00408FAA |. 50 |PUSH EAX ; |s
+00408FAB |. FF15 90B14000 |CALL DWORD PTR DS:[&lt;&amp;MSVCRT.sprintf&gt;] ; \ sprintf
+00408FB1 |. 8B35 84B24000 |MOV ESI,DWORD PTR DS:[&lt;&amp;USER32.SetWindowText A&gt;] ; USER32.SetWindowTextA
+00408FB7 |. 83C4 0C |ADD ESP,0C
+00408FBA |. 8D85 B0FEFFFF |LEA EAX,DWORD PTR SS:[EBP-150]
+00408FC0 |. 50 |PUSH EAX ; &#x2F;Text
+00408FC1 |. FF75 F4 |PUSH DWORD PTR SS:[EBP-C] ; |hWnd
+00408FC4 |. FFD6 |CALL ESI ; \SetWindowTextA
+00408FC6 |. 8D85 ACFAFFFF |LEA EAX,DWORD PTR SS:[EBP-554]
+00408FCC |. 50 |PUSH EAX ; &#x2F;Arg3
+00408FCD |. FF75 FC |PUSH DWORD PTR SS:[EBP-4] ; |Arg2
+00408FD0 |. FF35 00EF4000 |PUSH DWORD PTR DS:[40EF00] ; |Arg 1 &#x3D; 00BEADCC
+00408FD6 |. E8 1884FFFF |CALL &lt;myuninst.sub_4013F3&gt; ; \sub_40 13F3
+00408FDB |. 83C4 0C |ADD ESP,0C
+00408FDE |. 50 |PUSH EAX
+00408FDF |. FF75 F0 |PUSH DWORD PTR SS:[EBP-10]
+00408FE2 |. FFD6 |CALL ESI
+00408FE4 |. FF45 FC |INC DWORD PTR SS:[EBP-4]
+00408FE7 |. 8345 F8 14 |ADD DWORD PTR SS:[EBP-8],14
+00408FEB |. 837D FC 0F |CMP DWORD PTR SS:[EBP-4],0F
+00408FEF |.^ 0F8C 32FFFFFF \JL &lt;myuninst.loc_408F27&gt;
+00408FF5 |. 5F POP EDI
+00408FF6 |. 5E POP ESI
+00408FF7 |. 5B POP EBX
+00408FF8 |. C9 LEAVE
+00408FF9 \. C3 RETN<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>我想上面的代码我不需多做解释，OllyDBG 自动给出的注释已经够清楚的了。我们双击 <code>MyUninstaller</code> 列表框中的的某项查看属性时，弹出的属性窗口上的 <code>STATIC</code> 控件和 <code>EDIT</code> 控件都是由 <code>CreateWindowExA</code> 函数创建的，然后再调用 <code>SetWindowTextA</code> 来设置文本，根本没考虑控件上字体显示的问题，所以我们看到的都是系统默认的字体。我们要设置控件上的字体，可以考虑在 <code>CreateWindowExA</code> 创建完控件后，在使用 <code>SetWindowTextA</code> 函数设置文本之前调用相关字体创建函数来选择字体，再调用 <code>SendMessageA</code> 函数发送 <code>WM_SETFONT</code> 消息来设置控件字体。思路定下来后，我们就开始来实施。首先我们看一下这个程序中的导入函数，CreateFontIndirectA 这个字体创建函数已经有了，再看看 <code>SendMessageA</code>，呵呵，不错，原程序也有这个函数。这样我们就省事了。有人可能要问，如果原来并没有这两个导入函数，那怎么办呢？其实这也很简单，我们可以直接用 <code>LordPE</code> 来在程序中添加我们需要的导入函数。我这里用个很小的 PE 工具 <code>zeroadd</code> 来示范一下，这个程序里面没有 <code>CreateFontIndirectA</code> 和 <code>SendMessageA</code> 函数（这里还有个问题说一下，其实我们编程时调用这两个函数时都是直接写 <code>CreateFontIndirect</code> 及 <code>SendMessage</code>，一般不需指定。但在程序中写补丁代码时我们要指定这是什么类型的函数。这里在函数后面加个“A”表示这是 <code>ASCII</code> 版本，同样 <code>UNICODE</code> 版本在后面加个“W”，如 <code>SendMessageW</code>。在 <code>Win9X</code> 下我们一般都用 <code>ASCII</code> 版本的函数，<code>UNICODE</code> 版本的函数很多在 <code>Win9X</code> 下是不能运行的。而NT系统如 <code>WinXP</code> 一般都是 <code>UNICODE</code> 版本的，但如果我们用了 <code>ASCII</code> 版本的函数，系统会自动转换调用 <code>UNICODE</code> 版本。这样我们写补丁代码的时候就可以直接指定为 <code>ASCII</code> 版本的函数，可</p>
+<p>以兼容各个系统）：我们用 <code>LordPE</code> 的 PE 编辑器载入 <code>zeroadd</code> 程序，选择“目录”，再在弹出的目录表对话框中选择输入表后面的那个“…”按钮，会弹出一个对话框：</p>
+<p><img src="https://i.loli.net/2020/03/22/riQHdDxMPjZlTAw.png" alt="会弹出一个对话框"></p>
+<p>因为 <code>SendMessageA</code> 在 <code>USER32.dll</code> 中，我们在右键菜单中点击按钮“添加导入表”，来到下面：</p>
+<img src="https://i.loli.net/2020/03/22/M7pml2QvNIrcJER.png" alt="输入表对话框" style="zoom:150%;" />
+
+<p><img src="https://i.loli.net/2020/03/22/riQHdDxMPjZlTAw.png" alt="点击按钮“添加导入表”"></p>
+<p>按上面的提示完成后点“确定”，我们回到原先的那个“输入表”对话框：</p>
+<p><img src="https://i.loli.net/2020/03/22/YQidyqpFzmVe6AI.png" alt="回到原先的那个“输入表”对话框"></p>
+<p>从上图中我们可以看出多出了一个 <code>USER32.dll</code>，这就是我们添加 <code>SendMessageA</code> 的结果。这也是用工具添加的一个缺点。我们一般希望把添加的函数直接放到已存在的 <code>DLL</code> 中，而不是多出来一个，这样显得不好看。但用工具就没办法，<code>LordPE</code> 默认是建一个 1K 的新区段来保存添加后的结果，由此出现了上图中的情况。如果你对 PE 结构比较熟悉的话，也可以直接用16进制编辑工具来添加你需要的函数，这样改出来的东西好看。如果想偷懒，就像我一样用工具吧。在上图中我还标出了要注意 <code>FirstThunk</code> 及那个 <code>ThunkRVA</code> 的值，并且要把“总是查看<code>FirstThunk</code>”那个选项选上。有人可能不理解其作用，我这里也解释一下：一般讲述 PE 格式的文章中对 <code>FirstThunk</code> 的解释是这样的：<code>FirstThunk</code> 包含指向一个 <code>IMAGE_THUNK_DATA</code> 结构数组的 RVA 偏移地址，当把 PE 文件装载到内存中时，PE装载器将查找 <code>IMAGE_THUNK_DATA</code> 和 <code>IMAGE_IMPORT_BY_NAME</code> 这些结构数组来决定导入函数的地址，随后用导入函数真实地址来替代由 <code>FirstThunk</code> 指向的 <code>IMAGE_THUNK_DATA</code> 数组里的元素值。</p>
+<p>这样说起来还是让人不明白，我举个例子：比如你有个很要好的朋友，他是个大忙人，虽然你知道他的家庭住址，可他很少回家。如果你哪天想找他，直接去他家，很可能吃个闭门羹，找不到他人。怎么办？幸好你有他的手机号码，你就给他拨了一个电话：“小子，你在哪呢？”，他告诉你：“我正在XXX饭店喝酒呢！”这时你怎么办？（当然是杀到他说的那家饭店去蹭饭了！^_^）这里的 <code>ThunkRVA</code> 就相当于你朋友的手机号码， <code>SendMessageA</code> 就相当于你那个朋友。而 <code>FirstThunk</code> 就是你手机里的号码分组。你把你的多个朋友都放在 <code>FirstThunk</code> 这样的号码分组里，每个 <code>ThunkRVA</code> 就是你一个朋友的手机号码。你要找他们，就是通过 <code>ThunkRVA</code> 这样的手机号码来和他们联系，直接去他家找他你很可能要碰壁。而移动或联通就相当于操作系统，他们负责把你的手机号码和你的朋友对应上。而 <code>FirstThunk</code> 这样的号码分组还有一个好处就是你可以不记你某个朋友的具体号码，只要记得 <code>FirstThunk</code> 号码分组的值，你的朋友会按顺序在里面排列。比如上图中 <code>USER32.dll</code> 中的第一个函数是 <code>SendMessageA</code>，它的 <code>ThunkRVA</code> 值就是 <code>FirstThunk</code> 值。如果还有第二个函数，比如是 <code>MessageBoxA</code>，它的值就是 <code>FirstThunk</code> 值加上 4，其余类推。你只要记住各个函数的位置，也可以通过 <code>FirstThunk</code> 加上位置对应值来找到它。当然这比不上直接看 <code>ThunkRVA</code> 来得方便。</p>
+<p>说了上面这些，我们就要考虑怎么在程序中调用了。你可能会说，我在 OllyDBG 中直接在我们要修改的程序中这样调用：<code>CALL SendMessageA</code>。哦，别这样。这等于我上面说的都是废话，会让我感到伤心的。你这里的 <code>CALL SendMessageA</code> 就相当于也不跟你朋友打个招呼就直接去他家找他，很有可能你会乘兴而去，败兴而归。别忘了他的手机号码，我们只有通过号码才知道他到底在什么地方。我们应该这样：<code>CALL DWORD PTR [40B01A]</code>，这里的 <code>40B01A</code> 就是上面的 <code>SendMessageA</code> 在程序载入后的所在的地方，由基址 <code>00400000</code> 加上 <code>ThunkRVA 0000B01A </code>得到的。这就是你要找的人所在的地方，不管他跑到哪，你有他的手机号码就能找到他。同样道理，你只要记住了 <code>ThunkRVA</code> 值，就按这个来调用你需要的函数，在别的 <code>Windows</code> 系统下也是没有问题的。系统会自动把你要找到函数和 <code>ThunkRVA</code> 值对应上。而你在 OllyDBG 中写 <code>CALL SendMessageA</code>，可能你在你的系统上成功了，可放到别的系统下就要出错了。为什么？因为你找的人已经不在原来的位置了，他跑到别的地方去了。你还到老地方找他，当然看不见人了。说了这么多废话，也不知大家听明白了没有，别越听越糊涂就行了。总之一句话，别像 CALL <code>SendMessageA</code> 这样直接调用某个函数，而应该通过 <code>ThunkRVA</code> 值来调用它。下面我们回到我们要修改的 <code>MyUninstaller</code> 上来，先用 <code>LordPE</code> 打开看一下，呵呵，原来 <code>CreateFontIndirectA</code> 和 <code>SendMessageA</code> 原程序里面都有了，省了我们不少事情。看一下这两个函数的 <code>ThunkRVA</code> 值，<code>CreateFontIndirectA</code> 在 <code>GDI32.dll</code> 里面，<code>ThunkRVA</code> 值是 <code>0000B044</code>，这样我们就知道在程序中调用它的时候就是 <code>CALL DWORD PTR [0040B044]</code>。同样，<code>SendMessageA</code> 的<code>Thunk RVA</code> 值是 <code>0000B23C</code>，调用时应该是这样：<code>CALL DWORD PTR [0040B23C]</code>。了解了这些东西我们就来考虑怎么写代码了。首先我们来看一下 <code>CreateFontIndirectA</code> 和 <code>SendMessageA</code> 这两个函数的定义</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">CreateFontIndirectA：
+HFONT CreateFontIndirect(
+CONST LOGFONT *lplf &#x2F;&#x2F; pointer to logical font structure
+);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>CreateFontIndirect</code>的返回值就是字体的句柄。</p>
+<p>对于这个函数我们需要的参数就是给它一个 <code>LOGFONT</code> 的字体结构指针，我们只要在要修改程序的空白处建一个标准的9号（小五）宋体的 <code>LOGFONT</code> 字体结构，再把指针给 <code>CreateFontIndirectA</code> 就可以了。</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">SendMessageA：
+LRESULT SendMessage(
+HWND hWnd, &#x2F;&#x2F; handle of destination window
+UINT Msg, &#x2F;&#x2F; message to send
+WPARAM wParam, &#x2F;&#x2F; first message parameter
+LPARAM lParam &#x2F;&#x2F; second message parameter
+);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>上面的第一个参数是窗口句柄，我们知道 <code>CreateWindowExA</code> 返回的就是窗口句柄，我们可以直接拿来用。第二个消息参数我们这里是设置字体，选<code>WM_SETFONT</code>，这个值是 30H。第三个参数是字体句柄，可以由上面的 <code>CreateFontIndirectA</code> 获得。第四个参数我们不需要，留空。现在我们准备开始写代码，首先我们要在程序中建一个标准9号宋体的 <code>LOGFONT</code>，以便于我们调用。对于 <code>LOGFONT</code>，我们再来看一下定义：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">typedef struct tagLOGFONT &#123; &#x2F;&#x2F; lf
+LONG lfHeight;
+LONG lfWidth;
+LONG lfEscapement;
+LONG lfOrientation;
+LONG lfWeight;
+BYTE lfItalic;
+BYTE lfUnderline;
+BYTE lfStrikeOut;
+BYTE lfCharSet;
+BYTE lfOutPrecision;
+BYTE lfClipPrecision;
+BYTE lfQuality;
+BYTE lfPitchAndFamily;
+TCHAR lfFaceName[LF_FACESIZE];
+&#125; LOGFONT;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这样我们的标准9号宋体的 <code>LOGFONT</code> 值应该是32字节，16进制就像这样：<code>F4FFFFFF000000000000000000000000900100000000008600000000CBCECCE5</code>。现在在程序中找个空地。我们用 PE iD 来帮助我们寻找，用 PEiD 打开程序，点 EP 段后面的那个 &gt; 号，随便选择一个区段右击，选“搜索全0处”（原版好像是<code>cave</code>什么的）：</p>
+<p><img src="https://i.loli.net/2020/03/22/SOAongZ28jzfBKs.png" alt="搜索全0处"></p>
+<p>我们看到 PEiD 把搜索到的空间都给我们列出来了：</p>
+<p><img src="https://i.loli.net/2020/03/22/DrHwGFpBvxs4kud.png" alt="都给我们列出来了"></p>
+<p>现在我们用 <code>WinHEX</code> 打开我们要修改的程序，转到偏移 9815 处，从 9815 处选择 32 字节（16进制是0X20）的一个选块，把光标定位到 9815 处，右键选择菜单剪贴板数据 -&gt; 写入(从当前位置覆写)，随后的格式选择 <code>ASCII Hex</code>，把我们 <code>LOGFONT</code> 的 16 进制值</p>
+<p><code>F4FFFFFF000000000000000000000000900100000000008600000000CBCECCE5</code></p>
+<p>写入保存。现在我们用 OllyDBG 载入已添加了 LOGFONT 数据的程序，先转到 VA 40A415 处（从上图中看到的）往下看一下：</p>
+<p><img src="https://i.loli.net/2020/03/22/AUWcNsPTdJFhG2k.png" alt="往下看一下"></p>
+<p>因为 <code>SendMessageA</code> 还要用到一个窗口句柄，我们可以通过前面的 <code>CreateWindowExA</code> 来获得。现在我们就把前一张图中的 <code>.rdata</code> 区段中的地址 <code>0040C56E</code> 作为我们保存窗口句柄 <code>HWND</code> 值的临时空间。一切就绪，开始写代码。先回顾一下我们最先说的那两个要修改的地方：</p>
+<p>第一个要改的地方：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">00408F5E |. FF15 98B24000 |CALL DWORD PTR DS:[&lt;&amp;USER32.CreateWindowEx A&gt;] ; \CreateWindowExA
+00408F64 6A 00 PUSH 0 ; 修改前
+00408F66 8945 F4 MOV DWORD PTR SS:[EBP-C],EAX
+00408F69 |. E8 A098FFFF |CALL &lt;myuninst.sub_40280E&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>修改后：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">00408F5E |. FF15 98B24000 |CALL DWORD PTR DS:[&lt;&amp;USER32.CreateWindowEx A&gt;] ; \CreateWindowExA
+00408F64 E9 D5140000 JMP myuninst.0040A43E ; 跳转到我们的补丁代码处
+00408F69 |. E8 A098FFFF |CALL &lt;myuninst.sub_40280E<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>第二个要改的地方：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">00408F91 |. FF15 98B24000 |CALL DWORD PTR DS:[&lt;&amp;USER32.CreateWindowEx A&gt;] ; \CreateWindowExA
+00408F97 8945 F0 MOV DWORD PTR SS:[EBP-10],EAX ; 改这里 00408F9A 8B45 F8 MOV EAX,DWORD PTR SS:[EBP-8]
+00408F9D |. FF30 |PUSH DWORD PTR DS:[EAX] ; &#x2F;&lt;%s&gt;
+00408F9F |. 8D85 B0FEFFFF |LEA EAX,DWORD PTR SS:[EBP-150] ; |
+00408FA5 |. 68 D0D94000 |PUSH myuninst.0040D9D0 ; |forma t &#x3D; &quot;%s:&quot;
+00408FAA |. 50 |PUSH EAX ; |s
+00408FAB |. FF15 90B14000 |CALL DWORD PTR DS:[&lt;&amp;MSVCRT.sprintf&gt;] ; \ sprintf
+00408FB1 |. 8B35 84B24000 |MOV ESI,DWORD PTR DS:[&lt;&amp;USER32.SetWindowText A&gt;] ; USER32.SetWindowTextA<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>修改后</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">00408F91 |. FF15 98B24000 |CALL DWORD PTR DS:[&lt;&amp;USER32.CreateWindowEx A&gt;] ; \CreateWindowExA
+00408F97 E9 D4140000 JMP myuninst.0040A470 ; 跳到我们的第二部分补丁代码处
+00408F9C 90 NOP
+00408F9D |. FF30 |PUSH DWORD PTR DS:[EAX] ; &#x2F;&lt;%s&gt;
+00408F9F |. 8D85 B0FEFFFF |LEA EAX,DWORD PTR SS:[EBP-150] ; |
+00408FA5 |. 68 D0D94000 |PUSH myuninst.0040D9D0 ; |forma t &#x3D; &quot;%s:&quot;
+00408FAA |. 50 |PUSH EAX ; |s
+00408FAB |. FF15 90B14000 |CALL DWORD PTR DS:[&lt;&amp;MSVCRT.sprintf&gt;] ; \ sprintf
+00408FB1 |. 8B35 84B24000 |MOV ESI,DWORD PTR DS:[&lt;&amp;USER32.SetWindowTextA&gt;] ; USER32.SetWindowTextA<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这两个地方的修改都是把原代码改成跳转，跳到我们的补丁代码那继续执行。在修改之前先把原代码复制下来，以便恢复。我们在 OllyDBG 中按 CTRL + G 组合键，来到 <code>0040A43E</code> 地址处，开始输补丁代码：</p>
+<p><img src="https://i.loli.net/2020/03/22/mfXY3KxrpeO4SLh.png" alt="开始输补丁代码"></p>
+<p>同样，我们也在 0040A470 地址处输入我们另一部分的补丁代码。两部分的补丁代码分别如下：</p>
+<p>补丁代码1：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">0040A43E 60 PUSHAD ; 保护现场
+0040A43F A3 6EC54000 MOV DWORD PTR DS:[40C56E],EAX ; 保存窗口句柄
+0040A444 68 15A44000 PUSH myuninst.0040A415 ; 传递字体句柄LOGFONT
+0040A449 FF15 44B04000 CALL DWORD PTR DS:[&lt;&amp;GDI32.CreateFontIndirectA&gt;] ; GDI32.CreateFontIndirectA
+0040A44F 6A 00 PUSH 0 ; lParam 参数留空
+0040A451 50 PUSH EAX ; 字体句柄LOGFONT 0040A452 6A 30 PUSH 30 ; WM_SETFONT
+0040A454 8B0D 6EC54000 MOV ECX,DWORD PTR DS:[40C56E] ; 窗口句柄送ECX
+0040A45A 51 PUSH ECX ; 压入窗口句柄参数
+0040A45B FF15 3CB24000 CALL DWORD PTR DS:[&lt;&amp;USER32.SendMessageA&gt;] ; USER32.SendMessageA
+0040A461 61 POPAD ; 恢复现场
+0040A462 6A 00 PUSH 0 ; 恢复原代码
+0040A464 8945 F4 MOV DWORD PTR SS:[EBP-C],EAX
+0040A467 ^ E9 FDEAFFFF JMP myuninst.00408F69 ; 返回<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>补丁代码2：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">0040A470 &gt; \60 PUSHAD
+0040A471 . A3 6EC54000 MOV DWORD PTR DS:[40C56E],EAX
+0040A476 . 68 15A44000 PUSH myuninst.0040A415 ; &#x2F;pLogfon
+t &#x3D; myuninst.0040A415
+0040A47B . FF15 44B04000 CALL DWORD PTR DS:[&lt;&amp;GDI32.CreateFontIndirect A&gt;] ; \CreateFontIndirectA
+0040A481 . 6A 00 PUSH 0 ; &#x2F;lParam &#x3D; 0
+0040A483 . 50 PUSH EAX ; |wParam
+0040A484 . 6A 30 PUSH 30 ; |Message &#x3D; WM_SET FONT
+0040A486 . 8B0D 6EC54000 MOV ECX,DWORD PTR DS:[40C56E] ; |
+0040A48C . 51 PUSH ECX ; |hWnd &#x3D;&gt; NULL
+0040A48D . FF15 3CB24000 CALL DWORD PTR DS:[&lt;&amp;USER32.SendMessageA&gt;] ; \SendMessageA
+0040A493 . 61 POPAD
+0040A494 . 8945 F0 MOV DWORD PTR SS:[EBP-10],EAX
+0040A497 . 8B45 F8 MOV EAX,DWORD PTR SS:[EBP-8]
+0040A49A .^ E9 FEEAFFFF JMP myuninst.00408F9D<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>因为补丁代码2与补丁代码1类似，我就不做详细解释了。现在我们的代码都写完了，现在我们开始保存我们的工作，选中我们修改的代码，点击鼠标右键，会出来一个菜单：</p>
+<p><img src="https://i.loli.net/2020/03/22/csar69L4KgdfXjB.png" alt="会出来一个菜单"></p>
+<p>们左键选所有修改（当然选它了，要不然只会保存我们选定的这一部分。关于这个地方还要说一下，有的时候我们修改完程序选“复制到可执行文件”时只有“选择”菜单，没有“所有修改”菜单项。按 OllyDBG 帮助里关于备份功能的说法，好像是受内存块限制的，补丁功能也同样是这样。对于备份及补丁功能我用的比较少，并不是很了解，这方面的内容还是大家自己去研究吧，有什么好的心得也希望能共享一下。我遇到不能保存所有修改的情况就是先把补丁代码全部复制下来，同时利用二进制功能复制代码，先选一段补丁代码保存为文件，再用 OllyDBG 打开保存后的文件，转到相应位置分别把我们复制下来的补丁二进制代码粘贴上去后保存。纯属笨办法，当然你也可以用 <code>HexView</code> 这样的工具来修改代码），随后会出来一个“把选中的内容复制到可执行文件”的对话框，我们选“全部复制”，又出来一个对话框，我们在上面点右键，在弹出的菜单上选“保存文件”：</p>
+<p><img src="https://i.loli.net/2020/03/22/k7VzvgsTOFZmURn.png" alt="保存文件"></p>
+<p>这时会出来一个另存文件的对话框，我们另选一个名字如 <code>myuninst1.exe</code> 来保存，不要直接覆盖原文件 <code>myuninst.exe</code>，以便于出错后好修改。现在关闭 OllyDBG，先不要急着运行刚刚修改过的文件，因为我们还有个地方要改一下。大家还记得我们在 <code>.rdata</code> 中用了个地方作为我们保存临时变量的地方吧？原先的 <code>.rdata</code> 段属性设置是不可写的，现在我们写入了数据，运行时是会出错的。现在我们要修改一下 <code>.rdata</code> 段的属性。用 <code>LordPE</code> 的 PE 编辑器打开我们修改后的程序，点“区段”按钮，在弹出的对话框中点击 <code>.rdata</code> 段，右键选择弹出菜单中的“编辑区段”：</p>
+<p><img src="https://i.loli.net/2020/03/22/aL17cJYkNewsSKo.png" alt="编辑区段"></p>
+<p>在弹出的对话框中选标志后面那个“…”按钮：</p>
+<p><img src="https://i.loli.net/2020/03/22/WieCyLUpvPFzTY4.png" alt="编辑区段"></p>
+<p>现在我们把区段标志添加一个可写入的属性：</p>
+<p><img src="https://i.loli.net/2020/03/22/VlUs5XcHWOv87iR.png" alt="可写入的属性"></p>
+<p>完成后按确定保存我们所做的工作，运行一下修改后的程序，呵呵，终于把字体改过来了：</p>
+<p><img src="https://i.loli.net/2020/03/22/d5cEb4q6QTtOG8e.png" alt="终于把字体改过来了"></p>
+<p>如果你运行出错也没关系，用 OllyDBG 调试一下你修改后的程序，看看错在什么地方。这一般都是输入补丁代码时造成的，你只要看一下你补丁代码运行的情况就可以了。到这里我们的任务似乎也完成了，但</p>
+<p>细心的朋友可能会发现补丁代码1和补丁代码2前面的代码基本上是相同的。一个两个这样的补丁还好，如果要是多的话，这样重复就要浪费不少空间了，况且工作量也相应加大了。既然前面有很多代码都是重复的，为什么我们不把这些重复的代码做成一个子程序呢？这样调用起来要方便的多。下面我们把前面的补丁代码修改一下，我们先把补丁代码1的代码改成这样：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">0040A43E 60 PUSHAD ; 保护现场
+0040A43F A3 6EC54000 MOV DWORD PTR DS:[40C56E],EAX ; 保存窗口句柄
+0040A444 68 15A44000 PUSH myuninst.0040A415 ; 我们建的L OGFONT对应指针
+0040A449 FF15 44B04000 CALL DWORD PTR DS:[&lt;&amp;GDI32.CreateFontIndirectA&gt;] ; GDI32.CreateFontIndirectA
+0040A44F 6A 00 PUSH 0 ; lParam 参数留空
+0040A451 50 PUSH EAX ; 字体句柄
+0040A452 6A 30 PUSH 30 ; WM_SETFONT
+0040A454 8B0D 6EC54000 MOV ECX,DWORD PTR DS:[40C56E] ; 窗口句柄
+0040A45A 51 PUSH ECX ; 窗口句柄压栈
+0040A45B FF15 3CB24000 CALL DWORD PTR DS:[&lt;&amp;USER32.SendMessageA&gt;] ; USER32.SendMessageA
+0040A461 61 POPAD ; 恢复现场
+0040A462 C3 RETN ; 返回<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这样我们的子程序代码就写好了。现在我们再在子程序代码后面写上两个补丁代码，当然不要忘了改前面原程序中的跳转：</p>
+<p>修改后的补丁代码1：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">0040A467 E8 D2FFFFFF CALL myuninst.0040A43E ; 调用子程序 0040A46C 6A 00 PUSH 0 ; 恢复前面修改过的代码 0040A46E 8945 F4 MOV DWORD PTR SS:[EBP-C],EAX
+0040A471 ^ E9 F3EAFFFF JMP myuninst.00408F69 ; 返回继续执行<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>修改后的补丁代码2：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">0040A47A E8 BFFFFFFF CALL myuninst.0040A43E
+0040A47F 8945 F0 MOV DWORD PTR SS:[EBP-10],EAX
+0040A482 8B45 F8 MOV EAX,DWORD PTR SS:[EBP-8]
+0040A485 ^ E9 13EBFFFF JMP myuninst.00408F9D<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>我在每个补丁代码片断间留了4个字节来分隔。同样，我们还要修改一下我们前面的跳转：</p>
+<p>第一个要修改跳转的地方：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">00408F5E |. FF15 98B24000 |CALL DWORD PTR DS:[&lt;&amp;USER32.CreateWindowEx A&gt;] ; \断在这里
+00408F64 E9 FE140000 JMP myuninst.0040A467 ; 跳到我们的第一部分补丁代码处
+00408F69 |. E8 A098FFFF |CALL &lt;myuninst.sub_40280E&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>第二个要修改跳转的地方：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">00408F91 |. FF15 98B24000 |CALL DWORD PTR DS:[&lt;&amp;USER32.CreateWindowEx A&gt;] ; \CreateWindowExA
+00408F97 E9 DE140000 JMP myuninst.0040A47A ; 跳到我们的第二部分补丁代码处
+00408F9C 90 NOP
+00408F9D |. FF30 |PUSH DWORD PTR DS:[EAX]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>修改好后保存，同样不要忘了再修改一下 <code>.rdata</code> 区段的属性。运行一下，一切OK！</p>
+<blockquote>
+<p>本文完，再次感谢作者CCDebuger！</p>
+</blockquote>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：OllyDBG 完美教程</li>
+        <li>本文作者：TLHorse</li>
+        <li>创建时间：2020-03-19 13:40:17</li>
+        <li>
+            本文链接：https://tlhorse.github.io/posts/22015/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/posts/24364/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Hopper 一拳搞定 Interface Inspector</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/posts/15507/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">一个故事讲懂 CPU 的工作原理</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+        
+    <div id="gitalk-container"></div>
+    <script 
+            src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+    <script >
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: '88d770a805d27a98e780',
+                    clientSecret: 'c1c798735d6221391048e9225ae064e5e06ecdc8',
+                    repo: 'TLBlogComments',
+                    owner: 'TLHorse',
+                    admin: ['TLHorse'],
+                    id: __gitalk__pathname,
+                    language: 'zh-CN'
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('false') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">TLHorse</a>
+        </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.3.2</a>
+        </div> -->
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8"><span class="nav-text">使用入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OllyDBG-%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="nav-text">OllyDBG 的安装与配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95"><span class="nav-text">基本调试方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A0%B4%E8%A7%A3%E5%AE%9E%E4%BE%8B"><span class="nav-text">破解实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E4%B8%B2%E5%8F%82%E8%80%83"><span class="nav-text">字串参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E5%8F%82%E8%80%83"><span class="nav-text">函数参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E6%96%AD%E7%82%B9"><span class="nav-text">内存断点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E6%96%AD%E7%82%B9%E5%8F%8A-RUN-%E8%B7%9F%E8%B8%AA"><span class="nav-text">消息断点及 RUN 跟踪</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%87%E7%BC%96%E5%8A%9F%E8%83%BD"><span class="nav-text">汇编功能</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/header-shrink.js"></script><script src="/js/back2top.js"></script><script src="/js/dark-light-toggle.js"></script>
+
+
+    <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+<div class="post-scripts">
+    
+        <script src="/js/left-side-toggle.js"></script><script src="/js/libs/anime.min.js"></script><script src="/js/toc.js"></script>
+    
+</div>
+
+
+
+</body>
+</html>

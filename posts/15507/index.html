@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="莫见乎隐，莫显乎微，故君子慎其独也，进其步也。">
+    <meta name="author" content="TLHorse">
+    
+    <title>
+        
+            一个故事讲懂 CPU 的工作原理 |
+        
+        🐴 慎独阁
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/favicon.svg">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"tlhorse.github.io","root":"/","language":"zh-CN","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.png","favicon":"/images/favicon.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"莫见乎隐，莫显乎微，故君子慎其独也，进其步也。"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.3.2"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                🐴 慎独阁
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">一个故事讲懂 CPU 的工作原理</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">TLHorse</span>
+                        <span class="level">Lv3</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2020-03-16 09:16:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">基础知识</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/">工作原理</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <blockquote>
+<p>本篇文章<strong>转载</strong>自知乎<a class="link"   target="_blank" rel="noopener" href="https://www.zhihu.com/question/40571490/answer/718942643" >“CPU 的工作原理是什么？”<i class="fas fa-external-link-alt"></i></a>问题，由知乎<a class="link"   target="_blank" rel="noopener" href="https://www.zhihu.com/people/liu-liang-cong" >@柳两丛<i class="fas fa-external-link-alt"></i></a>回答并撰写。本篇文章讲述了上二年级的小明在上课时联合同学，共同搭建出加法器，解决老师的问题的故事，以一篇故事的方式描述了CPU的ALU内部的加法器原理。CPU的工作原理远远不够一个加法器，但是它让你对加法器了如指掌。值得阅读。</p>
+</blockquote>
+<a id="more"></a>
+<p>上二年级的小明正坐在教室里。现在是数学课，下午第一节，窗外的蝉鸣、缓缓旋转的吊扇让同学们昏昏欲睡。此时，刘老师在黑板上写下一个问题：</p>
+<p>$ 6324 + 244675 = ? $</p>
+<p>小明抬头看了一眼，觉得这两个数字挺眼熟。他昨天翘课去网吧了，因此错过了刘老师讲的竖式计算加法。</p>
+<p>“同学们算一算这道题。”刘老师和蔼可亲地说道。</p>
+<p>小明盯着黑板懵逼。</p>
+<p>小学二年级的他面对这样一道世界级难题，束手无策。小明伸出了自己的左手，打算用一个古老而深邃的方法–掰手指–尝试一下。</p>
+<p>小明发现他的每只手只能输入0-5中的正整数，和的范围仅限于0-10，离6324还十分遥远。</p>
+<p>“慢着！”小明看向了自己的左手。他发现，事情有一点不对劲。</p>
+<p>我们也来看看小明的左手。这只左手有5根手指，我们把5根手指都伸开来记为11111，5根手指握拳记为00000，手背面向我们，左手小指是第一个1/0。</p>
+<p>小明紧紧地握拳，然后伸出大拇指，此时的左手为00001。</p>
+<p>“如果，”小明想，“这样是1”。他缩回拇指，伸出食指，此时的左手为00010；“这样是2”。他又伸出拇指，此时的左手为00011；“那么这样是3”。他缩回拇指和食指，伸出中指，此时的左手为对着自己竖中指00100；“这样就是4！”…..小明的左手飞速运动着，直到五根手指都伸直，像是钢铁侠射了一发掌心炮11111；“这样就是31！一只手可以表示0-31中的任意正整数！”小明为自己的发现感到激动。</p>
+<p>可他不知道怎么表示加法。小明的同桌，英语课代表小红，看他摆弄了半天左手，忍不住问他在干什么。小明解释了他的发现。小红听了小明的一番高论，若有所思，提笔在数学书的封底画了一个表格：</p>
+<table>
+<thead>
+<tr>
+<th>输入x</th>
+<th>输入y</th>
+<th>输入进位</th>
+<th>输出结果</th>
+<th>输出进位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>“如果我们能造一个机器，给它三个输入，它能返回两个结果，那我们就能算出这道题！”小红激动地说。“啥叫进位啊美女？”小明问道。“就是你列竖式的时候画的一小撇，”小红回答。“猎术士是什么，我知道猎魔人和古尔丹。”小红于是讲解了一下怎么列竖式计算十进制加法。</p>
+<p>“我懂了。”小明说着，拿过小红的数学书，补全了表格：</p>
+<table>
+<thead>
+<tr>
+<th>输入x</th>
+<th>输入y</th>
+<th>输入进位</th>
+<th>输出结果</th>
+<th>输出进位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>“是这样吗？”小明问小红。小红拿过来看了看，说：“最后一行写错了，输出结果应该是1。你想啊，1+1+1应该等于11，左边这一位是输出进位，右边这一位是输出结果，都是1，所以输出结果应该是1。”</p>
+<p>“噢。”小明又拿过书来，拿起橡皮铅笔改正：</p>
+<table>
+<thead>
+<tr>
+<th>输入x</th>
+<th>输入y</th>
+<th>输入进位</th>
+<th>输出结果</th>
+<th>输出进位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>“那为什么这个机器能算加法？我还是不懂。”小明问。</p>
+<p>“假设我们已经造出来了这么个机器，长这样”小红继续在封底上画着：<br><img src="https://pic1.zhimg.com/50/v2-8ac43fa600293b3c0f542ce7a03eb21e_hd.jpg" alt="小红画的机器"></p>
+<p>“等会等会，怎么变成英文了，我英语不好。”小明叫道。“hmmm看来你没读双语幼儿园。左边这三个是输入，右边是输出，C是进位，C-in是输入进位，C-out是输出进位，Sum是和的意思，明白了么？”小红解释道。</p>
+<p>“噢好。”</p>
+<p>“假设我们已经造出来了这么个机器，造了好几个，我们这么连起来…诶纸不够大，我写不下了。”小明一听，赶紧从书桌膛里翻出来一本草稿纸，生怕同桌变成费马。</p>
+<p>“谢谢。先这么连起来：”<br><img src="https://pic3.zhimg.com/50/v2-eefb79c87d5a2b45585fb6cbb476ab1c_hd.jpg" alt="小红画图中"></p>
+<p>“哦哦哦我懂了，A和B就是两只手，最右边这个one-bit-adder算得是最小位数的和！”小明说道。</p>
+<p>“正确！”</p>
+<p>“你这样连的话，是说最小位的输出进位就是下一位的输入进位，下一位的输出又是下下一位的输入！天啊，这跟列竖式好像。”小明惊叫。</p>
+<p>“Absolutely!”小红回答道。</p>
+<p>小明又拿过草稿纸，接着画起来：<br><img src="https://pic1.zhimg.com/50/v2-6f6916719595c2fb9d7dfc7472a66a8d_hd.jpg" alt="小明画图中"></p>
+<p>“把对应的每一位连到每一个adder里…”小明念念有词，“…再汇总一下输出”：<br><img src="https://pic4.zhimg.com/50/v2-fb7e6de0ae437c626fac6bc19b0e65f9_hd.jpg" alt="小明画的加法器"></p>
+<p>“成了！这个东西可以算两只手加法的结果！”小明高兴极了。“可是离6324和244675还是太远了，输入5位远远不够呀。”小红皱了皱眉头。</p>
+<p>“不不不！你在掰手指的时候有没有发现，每多一根指头，能表示的数就会多出来一大堆，我觉得只要加那么十几个就够了！1根指头能表示2个数（0，1），2根指头四个数（0，1，2，3），3根8个…”“是2的倍数！”小红接道，“小明，我觉得你的这个记数方法很有意思，要不叫小明式吧！”小红凝望小明的目光中有了一丝羞涩。</p>
+<p>“二进制。”身后忽然传来低沉的声音。两人同时回头，发现数学课代表小刚正直勾勾地盯着那张草稿纸。他好像已聆听多时了。</p>
+<p>“叫二进制吧，我看蓝猫淘气三千问讲过这个，一模一样，蓝猫说这是二进制。”小刚补充道。小刚的数学成绩是班里最好的，一进学而思就上的超常班。小红只能上尖子班，小明一般去网吧。</p>
+<p>“那就叫二进制吧。”小明说。他和小红转过身来，老师让小组讨论的时候他们就这么坐。</p>
+<p>小刚又道：“可是，怎么造出这个one-bit-adder呢？”他的眉头皱成一团，眼镜片看起来更厚了。小明和小红也陷入了沉默，三人一筹莫展，陷入僵局。</p>
+<p>这时，小刚的同桌，物理课代表小兰入局。她忽然说道：“我听物理办公室的陈老师吹牛，他当年在大学里读电子工程，GPA一直是4.3，用实验室的导线开关和小灯泡就能造一个32位的加法器，不知道是怎么做到的。他还说什么与门是and或门是or，再加一个非门not，用它们表示逻辑，就能造出世间千千万万的计算机。”</p>
+<p>小明听迷糊了，“等会等会，什么门？金拱门？”另两人也露出迷茫的表情。</p>
+<p>小兰从桌子里掏出一个黑盒子。“这是下节课要用的教具，陈老师让我先拿着。”她打开盒子，取出三个零件和一个说明书。</p>
+<p>“喏，你们看看这个，”她拿起第一个零件，“这个叫与门，有两个输入和一个输出。如果我们把输出连上小灯泡，接上电源，两个输入分别连上开关，那么是这么个情况：”<br><img src="https://pic3.zhimg.com/50/v2-c70a0dd3d1758d19b446cdf64383c4c4_hd.jpg" alt="小兰画的表格"></p>
+<p>“就是说，只有两个开关都闭合了，小灯泡才亮，有点像串联电路。”小兰补充道。</p>
+<p>“诶，有意思了…”小刚扶了扶眼镜，似乎打算说什么，大家都看向他。</p>
+<p>“没，没什么，我还在想，小兰你接着说。”</p>
+<p>“那好。”小兰接着拿起第二块零件。“这个叫或门，有一个开关开着灯泡就会亮…”“等下！”小刚忽然打断，拿起笔在自己的白纸上画起来：<br><img src="https://pic1.zhimg.com/50/v2-5f00f7158a85626bdb59caafbc3d0bf8_hd.jpg" alt="小刚画的表格"></p>
+<p>“是不是这样！”小刚激动地说，“如果0是关1是开，0是灭1是亮的话，或门的输入输出是不是这样？”小兰看了看道：“正是”。</p>
+<p>她拿起第三个零件，“最后这个叫非门，只有一个输入，一个输出。它会输出一个相反的结果：输入有电流，输出就没有；输入没有电流，输出就有电流。用小刚的话来说，输入0输出则为1，输入1输出则为0。太简单了，懒得画表了。”小兰把非门放在桌上。</p>
+<p>小刚说道：“这三个门可以表示三种逻辑。如果A、B是输入， <img src="https://www.zhihu.com/equation?tex=A%5Cvee+B" alt="A\vee B"> 就是经过或门的结果， <img src="https://www.zhihu.com/equation?tex=A%5Cwedge+B" alt="A\wedge B"> 就是经过与门的结果， <img src="https://www.zhihu.com/equation?tex=%5Cneg+A" alt="\neg A"> 则是A经过非门的结果。”三人纷纷点头。</p>
+<p>“可是，这和加法有什么关系呢？”小明问道。四人再度陷入沉默。</p>
+<p>沉默。</p>
+<p>忽然，小明拿起笔，一边画一边说道：“如果我们回去看小红画的表格，”<br><img src="https://pic3.zhimg.com/50/v2-d39db1ff3791bbfced5c7f73df4f849a_hd.jpg" alt="左三列是输入，右二列是输出"></p>
+<p>“Sum可以写成A、B、Cin的逻辑关系！”</p>
+<p><img src="https://www.zhihu.com/equation?tex=Sum+=+%5Cbar%7BA%7D+B++%5Cbar%7BC%7D+++A%5Cbar%7BB%7D+%5Cbar%7BC%7D+++%5Cbar%7BA%7D+%5Cbar%7BB%7D+C+++ABC" alt="Sum = \bar{A} B  \bar{C} + A\bar{B} \bar{C} + \bar{A} \bar{B} C + ABC"></p>
+<p>“你们看，把 A and B 记作 AB，A or B 记作 A + B，not A 记作 A bar。Sum 输出为1只出现在表格的2、3、5、8行，也就是三个输入中1的个数为奇数的时候。我们把这4种情况记下来，那么这个式子…”</p>
+<p>“<strong>可以拿逻辑门实现！！！</strong>”四人异口同声的叫道。</p>
+<p>小红抢过草稿纸，又看了看物理教具的说明书，边画边说了起来：“说明书上写，这个火车头形状的符号表示 and gate；这个B2轰炸机形状的是or gate；这个小人形状的是not gate…”<br><img src="https://pic3.zhimg.com/50/v2-9c6f955172baf7ca563c872b7b2159ea_hd.jpg" alt="小红画的与门，或门，非门"></p>
+<p>她又看了一眼小明的式子，说道：“这个式子的第一项可以这样…”<br><img src="https://pic3.zhimg.com/50/v2-ea38a720462a6ee674540cc540718718_hd.jpg" alt="小红画的输出和的第一项"></p>
+<p>&#34;你们看你们看，这不就是 <img src="https://www.zhihu.com/equation?tex=%5Cbar%7BA%7D+B++%5Cbar%7BC%7D" alt="\bar{A} B  \bar{C}"> 嘛！&#34;小红自豪地说。</p>
+<p>小明补全了电路：</p>
+<p><img src="https://www.zhihu.com/equation?tex=Sum+=+%5Cbar%7BA%7D+B++%5Cbar%7BC%7D+++A%5Cbar%7BB%7D+%5Cbar%7BC%7D+++%5Cbar%7BA%7D+%5Cbar%7BB%7D+C+++ABC" alt="Sum = \bar{A} B  \bar{C} + A\bar{B} \bar{C} + \bar{A} \bar{B} C + ABC"><br><img src="https://pic4.zhimg.com/50/v2-fa38582869101068980d89b9d1c8f0f4_hd.jpg"></p>
+<p>“先把与门都画了”<br><img src="https://pic3.zhimg.com/50/v2-55b9d772fe15d371cbd41358c576e1ab_hd.jpg"></p>
+<p>“再把或门都加上，搞定。这东西可以算出Sum了，接下来用一样的办法把C-out弄出来。”小明准备继续画。</p>
+<p>“你们看，这里还有几个零件。”小兰指着说明书说道：<br><img src="https://pic1.zhimg.com/50/v2-fe432a72ded4834b19e0946d0ab85810_hd.jpg" alt="与非，或非，异或，同或"></p>
+<p>“与非门：一个与门的输出和一个非门相连，英文是not and，NAND gate。那个小圈圈代表一个非门。或非门是或门 + 非门，not or，NOR gate。第三个叫异或门，只有两个输入中一个为1一个不为1时，才会输出1，exclusive-or，XOR gate。第四个是同或门，也就是一个异或门加上一个非门。”</p>
+<p>“啊哈！”小刚灵机一动，抓起笔来道：“我有一个绝妙的点子。”<br><img src="https://pic4.zhimg.com/50/v2-64b6b52fa8bfb339802b35b3b2477850_hd.jpg" alt="小刚简化后的电路"></p>
+<p>“小明的方案，要用17个门。我只要2个异或门就搞定了，牛逼吧？”三人瞪大了眼睛，仔细思考后纷纷点头道：“牛逼，牛逼。”</p>
+<p>小刚随即画出了完整的one-bit-adder电路：<br><img src="https://pic2.zhimg.com/50/v2-f313968b2608bc5bbc35d2ffa22c2307_hd.jpg" alt="小刚的one-bit-adder"></noscript></p>
+<p>小明从从教具盒里拿出电源、小灯泡、开关和逻辑门，按照设计图制作出了全加器：<a class="link"   target="_blank" rel="noopener" href="https://www.zhihu.com/video/1124302170232877056" >加法器造出来啦！<i class="fas fa-external-link-alt"></i></a></p>
+<p>看到小刚的设计被完整的实现，小明欣喜：“啊哈哈哈，吾有上将小刚，则霸业可成，汉室可兴啊！”他把黑盒子里的零件全拿了出来，四人忙碌地工作着。很快，他们拥有了5个全加器，基于小红的设计连了起来：<br><img src="https://pic3.zhimg.com/50/v2-b799b0b2ecda95693adabe4a7f7bdd80_hd.jpg" alt="小红设计实现"></p>
+<p>“二进制的01100等于十进制的12，01010等于10，12+10=22，等于16+4+2，也就是二进制的10110…”四人人往代表输出结果的5个小灯泡望去：</p>
+<p> 亮，灭，亮，亮，灭；正是10110！</p>
+<p>“<strong>成了</strong>！！！”</p>
+<p>大家激动地拍打课桌。</p>
+<p>为了计算黑板上那道题，四人一共制作了32个一位全加器，将它们连接后，一个三十二位加法器便诞生了。他们历经艰辛，踩着自然规律和人类智慧的肩膀，把自己从枯燥的加法计算中解放出来！</p>
+<p>窗外的蝉鸣渐渐平息，头顶的吊扇不再转动。</p>
+<p>“刘老师，答案是250999！”小明站了起来，声若洪钟大吕，震慑天地。</p>
+<p>他和小红、小刚、小兰分别对视了一眼，收获了坚定的目光——这目光，连同面前的32位加法器，如同新的转机和闪闪星斗，正在缀满没有遮拦的天空。</p>
+<p>刘老师点了点头，欣慰的说道：“很好，看来四位同学对这部分知识掌握的不错！我们再来看几道题！”</p>
+<p>他转过身，拿起板擦，把黑板擦了个精光，又从黑板槽里拾起半截粉笔，写了起来：</p>
+<ol>
+<li> $ 244675 – 6324 = ? $</li>
+<li> $ 3.14159 + 5.535897 = ? $</li>
+<li> $ 17 × 45 = ? $</li>
+<li> $ 3 ÷ 2 = ? $</li>
+</ol>
+<p>一连四道题，让四人组陷入了深思：如何让自己的机器运算减法？乘法？除法？浮点数？</p>
+<p>刘老师并没有停下，手中的粉笔运动得越来越快：</p>
+<ol start="5">
+<li><p>  Fibonacci 数列的第103项？</p>
+</li>
+<li><p> 一圈共有N个人，开始报数，报到M的人出列，然后重新开始报数，问最后出列的人是谁？</p>
+</li>
+</ol>
+<p>……</p>
+<p>疑惑越来越多了：如何存储？怎样实现分支？保证效率？</p>
+<p>刘老师仍未停下，黑板快被写满了：</p>
+<ol start="103">
+<li><p> 方程$ ζ(s) = 0 $的所有有意义的解都在一条直线上吗？</p>
+</li>
+<li><p> 大于2的偶数都可以写成两个质数的和吗？</p>
+</li>
+</ol>
+<p>……</p>
+<ol start="134">
+<li>生命，宇宙及所有事物的答案？</li>
+</ol>
+<p>刘老师放下了粉笔，半截粉笔已经变成硬币的厚度。</p>
+<p>“这些问题，我们能造个机器回答么？”小明撑着头，喃喃自语。</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：一个故事讲懂 CPU 的工作原理</li>
+        <li>本文作者：TLHorse</li>
+        <li>创建时间：2020-03-16 09:16:00</li>
+        <li>
+            本文链接：https://tlhorse.github.io/posts/15507/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/posts/22015/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">OllyDBG 完美教程</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/posts/16190/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">一次意外的 CleanMyMac X 破解</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+        
+    <div id="gitalk-container"></div>
+    <script 
+            src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+    <script >
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: '88d770a805d27a98e780',
+                    clientSecret: 'c1c798735d6221391048e9225ae064e5e06ecdc8',
+                    repo: 'TLBlogComments',
+                    owner: 'TLHorse',
+                    admin: ['TLHorse'],
+                    id: __gitalk__pathname,
+                    language: 'zh-CN'
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('false') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">TLHorse</a>
+        </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.3.2</a>
+        </div> -->
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/header-shrink.js"></script><script src="/js/back2top.js"></script><script src="/js/dark-light-toggle.js"></script>
+
+
+    <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+<div class="post-scripts">
+    
+        <script src="/js/left-side-toggle.js"></script><script src="/js/libs/anime.min.js"></script><script src="/js/toc.js"></script>
+    
+</div>
+
+
+
+</body>
+</html>
