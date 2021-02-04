@@ -9,7 +9,7 @@
     
     <title>
         
-            硬核输密码 |
+            形式论 |
         
         🐴 慎独阁
     </title>
@@ -185,7 +185,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">硬核输密码</span>
+            <span class="title-hover-animation">形式论</span>
         </div>
 
         
@@ -201,7 +201,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2020-06-29 11:51:11
+        <i class="fas fa-edit"></i>&nbsp;2021-02-04 20:23:18
     </span>
     
         <span class="article-categories article-meta-item">
@@ -209,7 +209,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>&nbsp;
+                        <a href="/categories/%E4%BD%9C%E6%96%87/">作文</a>&nbsp;
                     </li>
                 
             </ul>
@@ -221,11 +221,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/">反编译</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/Python/">Python</a>&nbsp;
+                        <a href="/tags/%E6%9D%82%E6%96%87/">杂文</a>&nbsp;
                     </li>
                 
             </ul>
@@ -240,7 +236,7 @@
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>5 分钟</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>4 分钟</span>
         </span>
     
     
@@ -252,129 +248,32 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>好久没写文章了，今天输出一篇。首先，为了防止误判我是标题党，先解释一下在这篇文章里我要做什么。</p>
-<p>以前我在<a class="link"   target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1132170-1-1.html" >《【Mac】一次意外的 CleanMyMac X 破解》<i class="fas fa-external-link-alt"></i></a>里破解过CleanMyMac X（注：这篇帖子已被移动），但是最近CleanMyMac X更新，所以我便把旧版本的CMM删除了，下载了新版本4.6.7的CMM。结果不破不知道，一破吓一跳，动态库注入破解，破解倒是成功了，但是可能因为签名等问题，CMM总会在清理时不断地让我输入root密码，获取我的权限，尽管我已经赋予了CMM完全磁盘访问权限。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2020/6/29/pwd-enter-box.jpg" alt="不断要求输入密码"></p>
-<p>尝试过的解决方法：</p>
-<ul>
-<li><del><code>codesign -f -s - --deep /Applications/CleanMyMac\ X.app</code></del></li>
-<li><del><code>AppleScript</code></del></li>
-<li><del>每一次都手动输一遍密码</del></li>
-<li><del>更换破解框架</del></li>
-</ul>
-<p>都不行。所以我准备写一段<code>Python</code>脚本，模拟键盘和鼠标，每当输入密码框弹出来时，自动输入密码并确认，你可以理解为一个轻量级的按键精灵。</p>
-<h1 id="0x1-编写代码"><a href="#0x1-编写代码" class="headerlink" title="0x1 编写代码"></a>0x1 编写代码</h1><p>首先使用<code>pip install pyuserinput</code>安装<code>PyUserInput</code>，然后导入。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">from pymouse import PyMouse
-from pykeyboard import PyKeyboard
-
-# 定义键盘和鼠标实例
-m &#x3D; PyMouse()
-k &#x3D; PyKeyboard()
-
-def enter_pass(pwd: str, pos&#x3D;(1322, 705), enter_bt_pos&#x3D;(1425, 759)):
-    &#39;&#39;&#39;
-    将输入密码流程封装成函数
-    &#39;&#39;&#39;
-    global m, k
-    m.click(pos[0], pos[1])
-    k.type_string(pwd)
-    m.click(enter_bt_pos[0], enter_bt_pos[1])
-
-if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
-    enter_pass(pwd&#x3D;&quot;password123&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>其中输入框位置(1322, 705)和确认键位置(1425, 759)是我通过macOS自带的截图工具<kbd>Command+Shift+5</kbd>获取的。</p>
-<p>之后我们打开CMM，选择操作&gt;身份验证，然后会弹出一个“安装帮助程序”的弹窗，运行脚本——你会发现，确认键成功被点击，但是脚本却没有成功输入密码。</p>
-<h1 id="0x2-绕过漏洞"><a href="#0x2-绕过漏洞" class="headerlink" title="0x2 绕过漏洞"></a>0x2 绕过漏洞</h1><p>研究了一番后，发现输入密码弹框属于系统层程序，因此无法模拟键盘输入（顺便提一下，<code>PyUserInput</code>是通过<code>pyobjc</code>调用<code>Objective-C</code>代码模拟的）。又试了试，发现密码弹窗有一个漏洞，那就是可以进行粘贴操作（不能复制）。怎么办呢？我们的新思路就是使用<code>pyperclip</code>框架先复制密码，然后点击文本框，再模拟键盘进行<kbd>Command+V</kbd>粘贴操作。</p>
-<p>代码改写如下：</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">from pymouse import PyMouse 
-from pykeyboard import PyKeyboard 
-import pyperclip as clip 
- 
-m &#x3D; PyMouse() 
-k &#x3D; PyKeyboard() 
- 
-def enter_pass(pwd: str, pos&#x3D;(1322, 705), enter_bt_pos&#x3D;(1425, 759)): 
-    global m, k 
-    clip.copy(pwd) 
-    m.click(pos[0], pos[1]) 
-    k.press_keys([&#39;Command&#39;, &#39;V&#39;])  # 快捷键组合函数
-    m.click(enter_bt_pos[0], enter_bt_pos[1]) 
- 
-if __name__ &#x3D;&#x3D; &#39;__main__&#39;: 
-    enter_pass(pwd&#x3D;&quot;password123&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="0x3-优化速度"><a href="#0x3-优化速度" class="headerlink" title="0x3 优化速度"></a>0x3 优化速度</h1><p>上面的脚本运行后发现一切很好，但是太慢，原因是<code>pyperclip.copy()</code>占用的时间太长。怎么办呢？我便把<code>clip.copy(pwd)</code>改成了：</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">if not clip.paste() &#x3D;&#x3D; pwd:
-    clip.copy(pwd)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>检测剪贴板和密码是否相同，如果相同，就不复制了。效果还不错呢：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2020/6/29/pwd-enter-vid.gif" alt="效果"></p>
-<h1 id="0x4-检测弹窗"><a href="#0x4-检测弹窗" class="headerlink" title="0x4 检测弹窗"></a>0x4 检测弹窗</h1><blockquote>
-<p><strong>你坑谁呢？难道每一次弹出密码窗口时我都要运行一遍脚本？</strong></p>
+            <blockquote>
+<p>今天所要说的形式，并非对哲学的专用词汇进行高谈阔论，而是我的一点见解。文章内容不涉及敏感话题。全文用第二人称写，目的是增强代入感，但不要因为觉得作者把读者唯物主义化而生气，鄙人拙笔，敬请斧正。</p>
 </blockquote>
-<p>对于以上问题，我准备使用<code>PIL.ImageGrab</code>来不断捕捉屏幕，如果识别到弹窗，再运行<code>enter_pass:pos:enter_bt_pos:</code>函数。代码如下：</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">from PIL import ImageGrab
-from pymouse import PyMouse 
-from pykeyboard import PyKeyboard 
-import pyperclip as clip 
- 
-m &#x3D; PyMouse() 
-k &#x3D; PyKeyboard() 
- 
-def enter_pass(pwd: str, pos&#x3D;(1322, 705), enter_bt_pos&#x3D;(1425, 759)): 
-    global m, k 
-    if not clip.paste() &#x3D;&#x3D; pwd: 
-        clip.copy(pwd) 
-    m.click(pos[0], pos[1]) 
-    k.press_keys([&#39;Command&#39;, &#39;V&#39;]) 
-    m.click(enter_bt_pos[0], enter_bt_pos[1]) 
- 
-if __name__ &#x3D;&#x3D; &#39;__main__&#39;: 
-    print(&quot;Start grabbing:&quot;) 
-    while True: 
-        screen &#x3D; ImageGrab.grab().convert(&#39;RGB&#39;) # 捕捉屏幕
-        print(f&quot;Screen grabbed.&quot;) 
-        colorls &#x3D; screen.load() # 加载数据
-        # 判断像素
-        if colorls[2222, 1478] &#x3D;&#x3D; (236, 236, 236) and colorls[2153, 1206] &#x3D;&#x3D; (236, 236, 236):
-            # 输入密码
-            enter_pass(pwd&#x3D;&quot;password123&quot;)
-            print(&quot;Password entered.&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>到此，我们的自动填充密码脚本便编写完了。</p>
-<h1 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h1><p>代码如下：</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">from PIL import ImageGrab
-from pymouse import PyMouse
-from pykeyboard import PyKeyboard
-import pyperclip as clip
-
-m &#x3D; PyMouse()
-k &#x3D; PyKeyboard()
-
-def enter_pass(pwd: str, pos&#x3D;(1322, 705), enter_bt_pos&#x3D;(1425, 759)):
-    global m, k
-    if not clip.paste() &#x3D;&#x3D; pwd:
-        clip.copy(pwd)
-    m.click(pos[0], pos[1])
-    k.press_keys([&#39;Command&#39;, &#39;V&#39;])
-    m.click(enter_bt_pos[0], enter_bt_pos[1])
-
-if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
-    no_passbox_count &#x3D; 0
-    idx &#x3D; 1
-    print(&quot;Start grabbing ------&quot;)
-    while True:
-        if no_passbox_count &gt; 4: break
-        screen &#x3D; ImageGrab.grab().convert(&#39;RGB&#39;)
-        colorls &#x3D; screen.load()
-        if colorls[2222, 1478] &#x3D;&#x3D; (236, 236, 236) and colorls[2153, 1206] &#x3D;&#x3D; (236, 236, 236)
-            enter_pass(pwd&#x3D;&quot;password123&quot;)
-            print(&quot;Password entered.&quot;)
-            no_passbox_count &#x3D; 0
-        else:
-            no_passbox_count +&#x3D; 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>运行此<code>Python</code>脚本，之后启动 CleanMyMac X 清理，你就能看到脚本自动为你输密码的壮观景象了。由于截图时延迟比较大，在1秒左右，因此清理运行下来大概需要五分钟……</p>
-<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p>还是<del>去下载别人家的破解</del>买正版软件更好 : )</p>
-<blockquote>
-<p>如果贴友们有更好的方法解决 CleanMyMac 频繁让输入密码的问题（例：<code>codesign</code>），请跟帖留言。</p>
-</blockquote>
+<p>我是一个有神论者，唯心主义者。请放下你的偏见，别总觉得有神论就是迷信。</p>
+<p>“万物皆形式。”这句话你无法否认，因为你们眼前的分子、原子、质子、中子、电子、光子、胶子、夸克，无时无刻不被你们触摸着；但同时你也无法证明，因为只要一个简单的数学公式就能算出来，二分之一的正无穷次幂结果为0。在唯物主义与唯心主义互相纠缠的今天，你们开始自己创造各种学科的分支，尝试支撑自己的理论。但是，扪心自问，真的有用吗？</p>
+<p>尝试解释宇宙是你们的最终幻想，这是好事。这幻想好比搭积木，一直搭到宇宙的最高层。<strong>但是现在你们非但不好好搭，还开始用胶水粘，到最后你们因为一个喜欢用502胶另一个喜欢用AB胶吵起来了。</strong></p>
+<p>“唯物主义认识到上述论断包含矛盾，但是不试图解决这个矛盾，而是把它承认下来，认为万事万物都是包含矛盾的，越矛盾就越真实。”当我读到这句话时，我都想笑。因为<strong>任何创造者都有对其产物的最终解释权。</strong></p>
+<p>当我看见你们有人发表无神论见解，说一切神都没有科学依据，我就急，发火，后颈灼热：<strong>你把科学作为依据也不是不可以，这是大众普遍接受的想法，但是科学也是人创造的，你咋就不说科学本身没有依据呢？</strong>然后我就气冲冲地退掉浏览器，关掉电脑，笔、纸，写作业，一气呵成。</p>
+<p>你振振有词：科学可是人们的实践得来的！眼见为实。我也振振有词：即使是实践也不一定对。通过你的眼球与近视1000度的眼球看，世界不一样；透过三维的角度与四维的角度看，世界不一样；透过显微镜与眼睛看，世界不一样；透过氧气与水看，世界不一样。</p>
+<p>你没听错。你永远和真实世界隔着无限层滤镜。</p>
+<p>你甚至连你自己是谁都不知道，负一岁的时候你和妈妈是一体，一岁的时候你又是独立的个体。你的身体到底是什么，谁也说不清楚。如果你把它定义成独立的一组个体，我从你手上刮掉一层细胞，你就不是你了。同时，意识本身是一个奇迹，不能直接出现在任何物质上，只是你自己创造的，你对你的意识有最终解释权。在人类的有限认知中，意识是通过肉体活动的，而肉体却不断变化，<strong>从手上刮掉细胞与人的死亡不都是肉体变化吗？那你怎么知道前者发生你还活着，后者发生你就没了呢？</strong></p>
+<p>你：心电图是直线。我：心电图展示的是肉体。</p>
+<p>…………</p>
+<p>你可以使用你的思想对世界进行任何解释，无论是主观的，还是客观的；然而世界像一抹孤零零的雾，只在你身边飘着。</p>
+<p>现在你可能知道为什么我是唯心主义者了。别忘了那句话：<strong>任何创造者都有对其产物的最终解释权。</strong></p>
+<h1 id="解读"><a href="#解读" class="headerlink" title="解读"></a>解读</h1><p>我承认上面的大段文字确乎有些高深莫测，因为哲理都是一言难尽的。我简单在这里列举一下我的<strong>个人</strong>主要观点：</p>
+<ol>
+<li><p>文章最主要的线索：<strong>任何创造者都有对其产物的最终解释权。</strong>即一个人主观创造了某个事物，那么他认为事物是怎样的，事物就是怎样的。也就是说事物无论如何都是一个产物，继承创造者的理念。</p>
+</li>
+<li><p>从唯物主义出发，任何事物本身存在，然后构成意识，但是除了意识不能证明物质存在。所以我认为意识先存在，因为意识是个体，它对它的产物有解释权，它可以进行任何创造。这也印证了《心经》中的“色即是空，空即是色”。</p>
+</li>
+<li><p>在文章与前两条思想的基础上，说明了我们无法摘掉滤镜看真正的宇宙，正是因为我们站在物质的角度上，我们在自己的想象中去研究自己想象的东西，而不是想象本身。</p>
+</li>
+<li><p>一切都是递归，万物皆空。</p>
+</li>
+</ol>
 
         </div>
 
@@ -382,11 +281,11 @@ if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>本文标题：硬核输密码</li>
+        <li>本文标题：形式论</li>
         <li>本文作者：TLHorse</li>
-        <li>创建时间：2020-06-29 11:51:11</li>
+        <li>创建时间：2021-02-04 20:23:18</li>
         <li>
-            本文链接：https://tlhorse.github.io/posts/a942e651/
+            本文链接：https://tlhorse.github.io/posts/912a529f/
         </li>
         <li>
             版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh">BY-NC-ND</a> 许可协议。转载请注明出处！
@@ -400,29 +299,14 @@ if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/posts/a1f4eeb7/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">使用零宽字符对文本加密的实现</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/posts/ed6c4c67/"
+                           href="/posts/a1f4eeb7/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">制作一个 Deepin Linux 启动盘</span>
+                                <span class="post-nav-title-item">使用零宽字符对文本加密的实现</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -587,7 +471,7 @@ if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x1-%E7%BC%96%E5%86%99%E4%BB%A3%E7%A0%81"><span class="nav-text">0x1 编写代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x2-%E7%BB%95%E8%BF%87%E6%BC%8F%E6%B4%9E"><span class="nav-text">0x2 绕过漏洞</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x3-%E4%BC%98%E5%8C%96%E9%80%9F%E5%BA%A6"><span class="nav-text">0x3 优化速度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x4-%E6%A3%80%E6%B5%8B%E5%BC%B9%E7%AA%97"><span class="nav-text">0x4 检测弹窗</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C"><span class="nav-text">最终效果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-text">结论</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E8%AF%BB"><span class="nav-text">解读</span></a></li></ol>
     </div>
 </div>
         </aside>
