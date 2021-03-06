@@ -209,7 +209,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/%E4%BD%9C%E6%96%87/">作文</a>&nbsp;
+                        <a href="/categories/%E6%95%A3%E6%96%87/">散文</a>&nbsp;
                     </li>
                 
             </ul>
@@ -248,7 +248,7 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>这是我的个人博客网站，与2020年1月28日建成并发布。其中，我导入了一些我以前写的的优秀作文，撰写了与现在编程与反编译相关的技术文章。在这个网站中，我会给大家呈现出我的最好内容，也会分享一些好文章。博客网站是一个很有趣的东西，有了它，就有了生活感；有了它，就有了时间感；有了它，就有了幸福感；有了它，就有了存在感。</p>
+            <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>这是我的个人博客网站，与2020年1月28日建成并发布。其中，我导入了一些我以前写的的优秀散文，撰写了与现在编程与反编译相关的技术文章。在这个网站中，我会给大家呈现出我的最好内容，也会分享一些好文章。博客网站是一个很有趣的东西，有了它，就有了生活感；有了它，就有了时间感；有了它，就有了幸福感；有了它，就有了存在感。</p>
 <a id="more"></a>
 <p>我离开了我的诸多博客，创建一个自己的网站，现在正式来到这里，发布第1篇（文章其实是第二篇，第一篇是关于自我介绍的）。</p>
 <h1 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h1><p>我从没有博客开始，搬家到微信朋友圈（更专注生活），再搬到<a href="zi.com">字里行间</a>软件（专注于写作），再搬到<a href="csdn.net">CSDN</a>（专注于研究技术），原本想定居于此，但是最近发布了一个关于破解（反编译）的技术文章，审核却没有通过，因为CSDN出的新规“暂时不允许发布破解、激活类的文章”。这样也有道理，毕竟要保护开发者的版权，避免一些人看了这些文章误入歧途，做起盗版。CSDN帮助我提升计算机技术水平，我感谢CSDN，但是这条规定却不能给我自由的空间——我想，我应该搬家了。</p>
@@ -337,44 +337,55 @@
 
         
             <div class="comment-container">
-                if (hexo-config('comment.valine.enable')) {
-  @require "./valine.styl";
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+        
+    <div id="gitalk-container"></div>
+    <script 
+            src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+    <script >
 
-} else if (hexo-config('comment.gitalk.enable')) {
-  @require "./gitalk.styl";
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
 
-} else if (hexo-config('comment.twikoo.enable')) {
-  @require "./twikoo.styl";
+            try {
+                Gitalk && new Gitalk({
+                    clientID: '88d770a805d27a98e780',
+                    clientSecret: 'c1c798735d6221391048e9225ae064e5e06ecdc8',
+                    repo: 'TLBlogComments',
+                    owner: 'TLHorse',
+                    admin: ['TLHorse'],
+                    id: __gitalk__pathname,
+                    language: 'zh-CN'
+                }).render('gitalk-container');
 
-}
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
 
-.comments-container {
-  display: inline-block;
-  margin-top: $component-spacing-value;
-  width: 100%;
+        if ('false') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
 
-  #comment-anchor {
-    width: 100%;
-    height: 10px;
-  }
 
-  .comment-area-title {
-    width: 100%;
-    margin: 10px 0;
-    font-size: 1.38rem;
-    color: var(--default-text-color);
-
-    i {
-      color: var(--default-text-color);
-    }
-
-    +keep-tablet() {
-      margin: 5px 0;
-      font-size: 1.2rem;
-    }
-  }
-
-}
+    
+</div>
 
             </div>
         
@@ -475,80 +486,11 @@
 
     
         <aside class="page-aside">
-            .post-toc-wrap {
-  width: 100%;
-  font-size: 0.92rem;
-  box-sizing: border-box;
-
-  .post-toc {
-
-    ol {
-      list-style: none;
-      margin: 0;
-      padding: 0 2px 12px 10px;
-      text-align: left;
-
-      &:last-child {
-        padding-bottom: 0;
-      }
-
-      > ol {
-        padding-left: 0;
-      }
-
-      a {
-        transition-property: all;
-        transition();
-      }
-    }
-
-
-    .nav-item {
-      line-height: 1.8;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-
-    .nav {
-      .nav-child {
-        display: hexo-config('toc.expand_all') ? block : none;
-      }
-
-      .active > .nav-child {
-        display: block;
-      }
-
-      .active-current > .nav-child {
-        display: block;
-
-        > .nav-item {
-          display: block;
-        }
-      }
-
-
-      .nav-number, .nav-text {
-        color: var(--default-text-color);
-      }
-
-      .active > a {
-        .nav-number, .nav-text {
-          color: var(--primary-color);
-        }
-      }
-
-      .active-current > a {
-        .nav-number, .nav-text {
-          color: var(--primary-color);
-        }
-      }
-    }
-  }
-}
-
-
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%98%E8%B5%B7"><span class="nav-text">缘起</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8D%E9%A6%88%E4%B8%8E%E6%94%B9%E8%BF%9B"><span class="nav-text">反馈与改进</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E"><span class="nav-text">声明</span></a></li></ol>
+    </div>
+</div>
         </aside>
     
 
