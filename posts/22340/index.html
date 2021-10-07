@@ -196,7 +196,7 @@
                 <div class="info">
                     <div class="author">
                         <span class="name">TLHorse</span>
-                        <span class="level">Lv4</span>
+                        <span class="level">Lv5</span>
                     </div>
                     <div class="meta-info">
                         <div class="article-meta-info">
@@ -253,7 +253,6 @@
 
         <div class="article-content markdown-body">
             <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我最近一直在寻找如何使用动态库注入的方法完美 Hook <code>macOS</code> 应用程序的方法。像<code>MonkeyAppMac</code>、<code>EasySIMBL</code>这样的框架都找遍了，可就是找不到真正的香格里拉——要么就是版本太低，要么就是缺少文档。</p>
-<a id="more"></a>
 <p>我刷飘云阁论坛时偶然看到了 tree_fly 大神原创的<a class="link"   target="_blank" rel="noopener" href="https://www.chinapyg.com/forum.php?mod=viewthread&tid=82610&highlight=mac" >这篇帖子<i class="fas fa-external-link-alt"></i></a>，介绍了如何破解<code>AppDelete</code>。它真正让我明白了 <code>macOS</code> 动态库注入的工作原理与注入方法，然而文章有些地方写的却过于跳步、不尽人意。我<del>有感而发</del>，把原帖的某些地方改了改，将不容易理解的地方进一步解释，然后改编成这篇文章。</p>
 <h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><ul>
 <li><a class="link"   target="_blank" rel="noopener" href="http://www.reggieashworth.com/" >AppDelete<i class="fas fa-external-link-alt"></i></a>：<code>AppDelete</code>是Mac的卸载程序，不仅可以删除应用程序，还可以删除小部件，首选项窗格，插件和屏幕保护程序及其关联文件。 如果没有<code>AppDelete</code>，这些关联的项目将被留下来占用空间并可能引起问题。 下载完软件后没你可以先打开软件熟悉一下，</li>

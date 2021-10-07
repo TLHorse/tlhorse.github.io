@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="好看的皮囊千万种，有趣的灵魂万里挑一。">
+    <meta name="author" content="TLHorse">
+    
+    <title>
+        
+            什么？不用中间变量也能交换两个变量的值？ |
+        
+        🐴 慎独阁
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/favicon.svg">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"tlhorse.github.io","root":"/","language":"zh-CN","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.png","favicon":"/images/favicon.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"好看的皮囊千万种，有趣的灵魂万里挑一。"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.3.2"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                🐴 慎独阁
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >
+                                更新日志
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog">更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">什么？不用中间变量也能交换两个变量的值？</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">TLHorse</span>
+                        <span class="level">Lv5</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-07-19 18:36:22
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/C/">C</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.5k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>6 分钟</span>
+        </span>
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>什么？不用中间变量也能交换两个变量的值？当然可以。本文就来深入讨论一下交换变量的那些事。</p>
+<h1 id="使用中间变量"><a href="#使用中间变量" class="headerlink" title="使用中间变量"></a>使用中间变量</h1><p>假设有两个变量a和b，如何交换变量的值？<code>a = b; b = a</code>？不可以。因为计算机的特点是一个周期只能执行一个指令，不可能有两个操作同时发生。所以我们要借助一个中间变量，使两个变量在交换的时候，一个变量有地方等待另一个变量交换完毕，再进行交换。为了行文方便，变量的类型为整数。如下图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2021/07/19/swap_var.gif" alt="使用中间变量（本图原创，严禁盗用）"></p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">void swap_var(int *a, int *b) &#123;
+    int c &#x3D; *a;
+    *a &#x3D; *b;
+    *b &#x3D; c;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这样的代码简洁易懂，是编程的最佳选择。作为一名爱好者，让我们继续探索……</p>
+<h1 id="加减法"><a href="#加减法" class="headerlink" title="加减法"></a>加减法</h1><p>能不能使用简单的加减运算交换数值呢？将a、b两数相加，得到的和减去a得到b，减去b得到a。带着这个理论实践一下：</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">void swap_add(int *a, int *b) &#123;
+    int c &#x3D; *a + *b;
+    *a &#x3D; c - *a; &#x2F;&#x2F; *a &#x3D;&#x3D; *a + *b - *a &#x3D;&#x3D; *b
+    *b &#x3D; c - *a; &#x2F;&#x2F; *b &#x3D;&#x3D; *a + *b - *b &#x3D; *a
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在上述代码中，给<code>*a</code>和<code>*b</code>赋值的都是<code>c - *a</code>，这是因为两次<code>*a</code>的值不同。第一次<code>*a == *a</code>，第二次a的值变为b，即<code>*a == c - *a == *b</code>。</p>
+<p>我们现在想把第三方变量<code>c</code>省去，解决办法是将a与b的和加到a一个人身上。</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">void swap_add(int *a, int *b) &#123;
+    *a +&#x3D; *b; &#x2F;&#x2F; a的值等同于上面的c
+    *b &#x3D; *a - *b; &#x2F;&#x2F; 这里的a是a与b的和，减去b自然等于a，将a赋值给b
+    *a -&#x3D; *b; &#x2F;&#x2F; 这里的a仍然是a与b的和，减去b自然等于a
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>减法与加法原理相同，符号不同，故不再阐述。</p>
+<h1 id="乘除法"><a href="#乘除法" class="headerlink" title="乘除法"></a>乘除法</h1><p>加减法可以实现，乘除法必定也可以实现数值交换。将加减法的原理稍加改变可得：将a、b两数相乘，得到的积除以a得到b，除以b得到a。带着这个理论实践一下：</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">void swap_mul(int *a, int *b) &#123;
+    int c &#x3D; *a * *b;
+    *a &#x3D; c &#x2F; *a; &#x2F;&#x2F; a &#x3D;&#x3D; a * b &#x2F; a &#x3D;&#x3D; b
+    *b &#x3D; c &#x2F; *a; &#x2F;&#x2F; b &#x3D;&#x3D; a * b &#x2F; b &#x3D; a
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>我们将b乘到a上，得：</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">void swap_mul(int *a, int *b) &#123;
+    *a *&#x3D; *b;
+    *b &#x3D; *a &#x2F; *b; &#x2F;&#x2F; 积÷b&#x3D;a
+    *a &#x2F;&#x3D; *b; &#x2F;&#x2F; 积÷a&#x3D;b（这里b值已经变为a）
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>除与乘大同小异，不再阐述。</p>
+<h1 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h1><p>让我们进一步提问：逻辑运算可否实现功能呢？用加减乘除交换数值的原理，是算得与两数都有关的一个结果，已知一数可以求另一个数。那么逻辑运算是否可行？哪种逻辑运算有这一特性？</p>
+<p>为了方便理解，应当使用二进制。我们来观察一下二元逻辑运算的真值表：</p>
+<table>
+<thead>
+<tr>
+<th align="center">a</th>
+<th align="center">b</th>
+<th align="center">与</th>
+<th align="center">或</th>
+<th align="center">异或</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+</tbody></table>
+<p>我们首先排除与运算。因为当结果为0时，无法通过一个参数推断出另一个参数的真假性。</p>
+<p>再排除或运算。当结果为1时，只要有一个参数为1即满足结果，与另一参数无关。</p>
+<p>然而异或值得探讨。异或规定，相同为1，不同为0。我们只有两个参数，所以如果知道一个参数，还知道另一个参数与这个参数是否相同，我们即可求出另一参数。代码如下：</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">void swap_xor(int *a, int *b) &#123;
+    *a ^&#x3D; *b; &#x2F;&#x2F; a存储的是a与b每一位是否相同
+    *b ^&#x3D; *a; &#x2F;&#x2F; b依据相同性还原出a
+    *a ^&#x3D; *b; &#x2F;&#x2F; a依据相同性还原出b
+    &#x2F;&#x2F; 上述代码可简写：*a ^&#x3D; *b ^&#x3D; *a ^&#x3D; *b;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="进一步探讨"><a href="#进一步探讨" class="headerlink" title="进一步探讨"></a>进一步探讨</h1><p>为什么上述方法能实现两个值的交换？它们有什么共同点？</p>
+<p>从代码上来看，每一个方法都是使用了不同的量互相推导，因为一步不能做两件事情是必然的；从逻辑上来看，待交换的数值不管怎样需要一个贮存点，可以是一个第三方变量，也可以与其中一个变量一起储存，前提是一起储存的两个变量可以被第三个变量分离。</p>
+<p>我觉得我们的认知已经达到一个新的高度上了。</p>
+<h1 id="本文代码"><a href="#本文代码" class="headerlink" title="本文代码"></a>本文代码</h1><pre class="line-numbers language-c" data-language="c"><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+void swap_add(int *a, int *b) &#123;
+    *a +&#x3D; *b;
+    *b &#x3D; *a - *b;
+    *a -&#x3D; *b;
+&#125;
+
+void swap_mul(int *a, int *b) &#123;
+    *a *&#x3D; *b;
+    *b &#x3D; *a &#x2F; *b;
+    *a &#x2F;&#x3D; *b;
+&#125;
+
+void swap_xor(int *a, int *b) &#123;
+    &#x2F;&#x2F; *a ^&#x3D; *b;
+    &#x2F;&#x2F; *b ^&#x3D; *a;
+    &#x2F;&#x2F; *a ^&#x3D; *b;
+    *a ^&#x3D; *b ^&#x3D; *a ^&#x3D; *b;
+&#125;
+
+void swap_var(int *a, int *b) &#123;
+    int c &#x3D; *a;
+    *a &#x3D; *b;
+    *b &#x3D; c;
+&#125;
+
+int main() &#123;
+    int a &#x3D; 0b101101;
+    int b &#x3D; 0b1010010101;
+    time_t start, end;
+
+    printf(&quot;------xor-------\n&quot;);
+    printf(&quot;a1: %d\n&quot;, a);
+    printf(&quot;b1: %d\n&quot;, b);
+    start &#x3D; time(NULL);
+    swap_xor(&amp;a, &amp;b);
+    end &#x3D; time(NULL);
+    printf(&quot;a2: %d\n&quot;, a);
+    printf(&quot;b2: %d\n&quot;, b);
+    printf(&quot;time&#x3D;%d\n&quot;,difftime(end,start));
+
+    printf(&quot;------add-------\n&quot;);
+    printf(&quot;a1: %d\n&quot;, a);
+    printf(&quot;b1: %d\n&quot;, b);
+    start &#x3D; time(NULL);
+    swap_add(&amp;a, &amp;b);
+    end &#x3D; time(NULL);
+    printf(&quot;a2: %d\n&quot;, a);
+    printf(&quot;b2: %d\n&quot;, b);
+    printf(&quot;time&#x3D;%d\n&quot;,difftime(end,start));
+
+    printf(&quot;------mul-------\n&quot;);
+    printf(&quot;a1: %d\n&quot;, a);
+    printf(&quot;b1: %d\n&quot;, b);
+    start &#x3D; time(NULL);
+    swap_mul(&amp;a, &amp;b);
+    end &#x3D; time(NULL);
+    printf(&quot;a2: %d\n&quot;, a);
+    printf(&quot;b2: %d\n&quot;, b);
+    printf(&quot;time&#x3D;%d\n&quot;,difftime(end,start));
+
+    printf(&quot;------nor-------\n&quot;);
+    printf(&quot;a1: %d\n&quot;, a);
+    printf(&quot;b1: %d\n&quot;, b);
+    start &#x3D; time(NULL);
+    swap_var(&amp;a, &amp;b);
+    end &#x3D; time(NULL);
+    printf(&quot;a2: %d\n&quot;, a);
+    printf(&quot;b2: %d\n&quot;, b);
+    printf(&quot;time&#x3D;%d\n&quot;,difftime(end,start));
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：什么？不用中间变量也能交换两个变量的值？</li>
+        <li>本文作者：TLHorse</li>
+        <li>创建时间：2021-07-19 18:36:22</li>
+        <li>
+            本文链接：https://tlhorse.github.io/posts/4976cae6/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh">BY-NC-ND</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/posts/fd800af5/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">理发师的温暖</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/posts/ff646565/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">来自高层的烦恼</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+        
+    <div id="gitalk-container"></div>
+    <script 
+            src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+    <script >
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: '88d770a805d27a98e780',
+                    clientSecret: 'c1c798735d6221391048e9225ae064e5e06ecdc8',
+                    repo: 'TLBlogComments',
+                    owner: 'TLHorse',
+                    admin: ['TLHorse'],
+                    id: __gitalk__pathname,
+                    language: 'zh-CN'
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('false') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">TLHorse</a>
+        </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.3.2</a>
+        </div> -->
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E4%B8%AD%E9%97%B4%E5%8F%98%E9%87%8F"><span class="nav-text">使用中间变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E5%87%8F%E6%B3%95"><span class="nav-text">加减法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%98%E9%99%A4%E6%B3%95"><span class="nav-text">乘除法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97"><span class="nav-text">逻辑运算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9B%E4%B8%80%E6%AD%A5%E6%8E%A2%E8%AE%A8"><span class="nav-text">进一步探讨</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AC%E6%96%87%E4%BB%A3%E7%A0%81"><span class="nav-text">本文代码</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/header-shrink.js"></script><script src="/js/back2top.js"></script><script src="/js/dark-light-toggle.js"></script>
+
+
+    <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+<div class="post-scripts">
+    
+        <script src="/js/left-side-toggle.js"></script><script src="/js/libs/anime.min.js"></script><script src="/js/toc.js"></script>
+    
+</div>
+
+
+
+</body>
+</html>

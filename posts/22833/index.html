@@ -196,7 +196,7 @@
                 <div class="info">
                     <div class="author">
                         <span class="name">TLHorse</span>
-                        <span class="level">Lv4</span>
+                        <span class="level">Lv5</span>
                     </div>
                     <div class="meta-info">
                         <div class="article-meta-info">
@@ -235,7 +235,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>2k 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.9k 字</span>
         </span>
     
     
@@ -253,7 +253,6 @@
 
         <div class="article-content markdown-body">
             <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>上次我写过一篇叫做<a class="link"   target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1126808-1-1.html" >Hopper 之 CrossOver 19 破解<i class="fas fa-external-link-alt"></i></a>的文章，那么今天，我再写一篇 CrossOver 19 的破文。上一篇文章里，我用了“直接修改二进制文件”的方法来破解应用，而这次，我则通过动态库注入的方法来破解 CrossOver 19——这是一个巧妙、新奇的方法，说白了就是 hook，你会喜欢上它的。我还要感谢<a class="link"   target="_blank" rel="noopener" href="https://www.52pojie.cn/home.php?mod=space&uid=476930" >@云在天<i class="fas fa-external-link-alt"></i></a>大神在我的<a class="link"   target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1132170-1-1.html" >CleanMyMac X 破解贴<i class="fas fa-external-link-alt"></i></a>里的指导，要不是她，可能我到现在还不知道什么是动态库注入。</p>
-<a id="more"></a>
 <p>前言的最后，我再说一下来意。我只是想教大家“破解方法”，而不是给大家“破解软件”。就拿例子说吧，我现在用的 Hopper Disassembler 可是正版的。因此，如果你喜欢 CrossOver 19，请购买正版。</p>
 <h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><ul>
 <li>从<a class="link"   target="_blank" rel="noopener" href="https://www.crossoverchina.com/" >CrossOver 官网<i class="fas fa-external-link-alt"></i></a>上下载最新版的 CrossOver 19 。</li>
@@ -356,9 +355,7 @@ $ .&#x2F;insert_dylib [dylib的路径] [原来的二进制文件的路径]<span 
 <p>电子权利信息也被修改：</p>
 <img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2020/3/27/hop-co-credits.png" alt="留下足迹" style="zoom:50%;" />
 
-<p>与此同时，你的电脑应该会弹出终端窗口。窗口中赫然显示着四行大字：</p>
-<p><del>花果山福地</del><br><del>水帘洞洞天</del><br><del>齐天大圣到此一游</del></p>
-<p>不好意思，搞错了，是这四行：</p>
+<p>与此同时，你的电脑应该会弹出终端窗口：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; START DYLIB INJECT &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
 &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; GETTING METHOD &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
 &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; METHOD PATCHING &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
