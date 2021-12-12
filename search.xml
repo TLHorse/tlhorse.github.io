@@ -115,7 +115,7 @@ ret<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
   <entry>
     <title>PocketSphinx实现语音识别</title>
     <url>/posts/7ab4abc/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我最近一直在搞一个名叫 A. N. N. A. 的 <code>Python</code> 语音机器人项目（Anna 是什么单词的缩写我就不说了，自己猜去），需要用的强大的语音识别技术。翻看全网教程，没有一篇说的通的，要么就是教会如何购买百度AI会员，要么就是教如何翻墙使用谷歌语音……</p>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我最近一直在搞一个名叫 A.N.N.A. 的 <code>Python</code> 语音机器人项目（Anna 是什么单词的缩写我就不说了，自己猜去），需要用的强大的语音识别技术。翻看全网教程，没有一篇说的通的，要么就是教会如何购买百度AI会员，要么就是教如何翻墙使用谷歌语音……</p>
 <p>我最近发现<code>PocketSphinx</code>语音识别很不错，但是全网还是没有哪篇文章会告诉你，如何从头到尾下载这个库，用这个库进行语音识别，<strong>并且不在电脑上留下任何垃圾</strong>，可以随时删除的安装方法。然后你又会抱怨<code>PocketSphinx</code>有多么垃圾。</p>
 <p>在这篇文章里，我将告诉你如何安装<code>pocketsphinx</code>，并将其嵌入<code>speech_recognition</code>库，来更好地实现最终的语音转文字。</p>
 <h1 id="电脑环境"><a href="#电脑环境" class="headerlink" title="电脑环境"></a>电脑环境</h1><ul>
@@ -142,7 +142,7 @@ ret<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
 <li><p>打开终端，运行如下<code>brew</code>命令：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ brew install pcre
 $ brew install swig<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>其中，<code>swig</code>是<code>pocketsphinx</code>的依赖，<code>pcre</code>是<code>swig</code>的依赖。别听网上瞎说什么<code>swig</code>要自己编译，根本不用，直接用<code>brew</code>安装即可</p>
+<p>其中，<code>swig</code>是<code>pocketsphinx</code>的依赖，<code>pcre</code>是<code>swig</code>的依赖。<code>swig</code>不需要自己编译，直接用<code>brew</code>安装即可。</p>
 </li>
 <li><p>再使用<code>brew</code>安装<code>SphinxBase</code>：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ brew install SphinxBase<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -2371,23 +2371,23 @@ if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
 <p>注：网站里的图片点开即可查看大图。</p>
 </blockquote>
 <h1 id="工具准备"><a href="#工具准备" class="headerlink" title="工具准备"></a>工具准备</h1><ol>
-<li> <a class="link"   href="https://www.hopperapp.com/" >Hopper Disassembler<i class="fas fa-external-link-alt"></i></a>，逆向工程工具，可让反汇编，反编译和调试应用程序。以下Hopper Disassembler简称HDA。</li>
+<li> <a class="link"   href="https://www.hopperapp.com/" >Hopper Disassembler<i class="fas fa-external-link-alt"></i></a>，逆向工程工具，可让反汇编，反编译和调试应用程序。</li>
 <li>迅雷（Thunder）v3.0.9.2892。以下迅雷简称XL。<a class="link"   href="http://down.sandai.net/mac/thunder_3.0.9.2892.dmg" >官方下载链接<i class="fas fa-external-link-alt"></i></a></li>
-<li>一台Mac或iMac，能不用虚拟机就不用。最好是MacOS Catalina，为了保证HDA与XL的正常运行。（其实HDA也有Linux版本，但在虚拟机下不太好使）</li>
+<li>一台Mac或iMac，能不用虚拟机就不用。最好是MacOS Catalina，为了保证Hopper与XL的正常运行。（其实Hopper也有Linux版本，但在虚拟机下不太好使）</li>
 <li>思路清晰且冷静的大脑。</li>
 </ol>
 <h1 id="开始破解"><a href="#开始破解" class="headerlink" title="开始破解"></a>开始破解</h1><h2 id="导入分析"><a href="#导入分析" class="headerlink" title="导入分析"></a>导入分析</h2><p>首先，我们从应用程序里找到<code>Thunder</code>这个App，右键——显示包内容，之后进入目录<code>/Contents/MacOS</code>，可以找到<code>Thunder</code>这个可执行文件。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/1/29/find-exec.png" alt="查找可执行文件"></p>
 <p>这个可执行文件包括着整个App的运行逻辑、顺序、程序等等内容，但是不包括应用的资源。这个文件就是应用运行的关键，也是我们破解的关键。</p>
-<p>接下来，我们打开HDA。进入应用界面后，把可执行文件拖拽到界面的中间部分。<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/1/29/hop-drag-analysis.png" alt="拖动"></p>
-<p>接下来，HDA会弹出提示，保持默认，一路OK即可。<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/1/29/hop-warning.png" alt="提示框"></p>
+<p>接下来，我们打开Hopper。进入应用界面后，把可执行文件拖拽到界面的中间部分。<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/1/29/hop-drag-analysis.png" alt="拖动"></p>
+<p>接下来，Hopper会弹出提示，保持默认，一路OK即可。<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/1/29/hop-warning.png" alt="提示框"></p>
 <p>等着进度条走完（观察窗口右下角的<code>Working</code>字样）。像迅雷这样的小软件，2秒钟就够了。接下来，一幅宏伟壮丽的景象会出现在你眼前。<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/1/29/hop-main-ui.png" alt="主页面"></p>
-<p>这是HDA的主页面。分为5个部分：上面是工具条：</p>
+<p>这是Hopper的主页面。分为5个部分：上面是工具条：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/1/29/hop-toolbar-usage.png" alt="工具条用法"></p>
 <p>左边是搜索区，可以搜索函数、字符串、星标代码等；中间是主要工作区域，里面包含的内容可以通过工具条中按键调整；右边是检索区，可以设置/预览中间的内容，跟Xcode的检索区差不多；下面是Python控制台，可以输入命令操作反编译。</p>
-<p>就先不多讲HDA的使用了，有机会放在别的文章阐述。接下来，进入主题，开始破解！</p>
+<p>就先不多讲Hopper的使用了，有机会放在别的文章阐述。接下来，进入主题，开始破解！</p>
 <h2 id="查找可能的函数"><a href="#查找可能的函数" class="headerlink" title="查找可能的函数"></a>查找可能的函数</h2><p>迅雷想要验证是否是会员，肯定得有函数。按照程序猿千古流传的命名习惯，不用想就猜得到函数名：<code>isVip</code></p>
-<p>打开HDA左边的搜索栏，上面的选择器选<code>Proc.</code>，就是搜索函数。然后搜索<code>isVip</code>，搜索出来，完全包含这个名字的函数有三个：</p>
+<p>打开Hopper左边的搜索栏，上面的选择器选<code>Proc.</code>，就是搜索函数。然后搜索<code>isVip</code>，搜索出来，完全包含这个名字的函数有三个：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/1/29/search-isvip.png" alt="搜索 isvip"></p>
 <p>我们先点开第一个（汇编指令区就会出现），然后在蓝色的那一栏单击，标“星”，方便以后查找。如图：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/1/29/choose-and-add-star.png" alt="标星"></p>
@@ -2442,7 +2442,7 @@ if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
 </ol>
 <p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/1/29/hop-rm-sign.png" alt="移除签名"></p>
 <ol start="3">
-<li> 在接下来的提示小窗中，选择保存位置，名字还是<code>Thunder</code>，如果Hopper给你加了类似<code>.exe</code>的后缀，那么一定要<strong>去掉后缀名</strong>！</li>
+<li> 在接下来的提示小窗中，选择保存位置，名字还是<code>Thunder</code>，如果Hopper给你加了类似<code>.exe</code>的后缀，那么一定要<strong>去掉后缀名</strong>。</li>
 </ol>
 <p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/1/29/hop-save-exec.png" alt="保存"></p>
 <ol start="4">
@@ -4001,6 +4001,116 @@ extension String &#123;
       </categories>
       <tags>
         <tag>记叙文</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>街景一角</title>
+    <url>/posts/f6454479/</url>
+    <content><![CDATA[<p>宽阔的街道、热闹的街景，人行道旁是一排景气的商铺，然而她的小摊只占一角。</p>
+<p>天空中压根就没有月亮，而是乌漆墨黑的一片；嘴边的空气寒冷的如刀锋割人，夹杂着一大把一大把呛鼻的灰。我每晚放学，上了人行道，闭着眼都能猜到，她准在一旁卖零食——一位开三轮车的老奶奶，三轮车就是她琳琅满目的货摊。什么三根葱，什么亲嘴烧辣条，什么可口可乐，什么软糖，尽在货摊中堆成一座座“小山丘”，应有尽有，分门别类，摆放却又稍有凌乱。一个普通的小钨丝灯高悬着，亮白亮白的，货摊上的纸壳子和塑料包装好像都发了光。</p>
+<p>她却躲着那片亮堂堂的白光，在灯泡后的黑暗中静坐着。微弱的亮光打过来：削瘦无比的身子驮着背，微微前倾；古铜色的皮肤上，阴影遍布，呈现出千沟万壑。她沧桑的脸上毫无表情，既无欣喜，也无悲伤；既无期盼，也无失落。我不禁向下看，载着货物的三轮车，同她一样苍老，酷似一只疲惫不堪的骆驼：布满铁锈的钢板，随时要破裂散架；窄小的轮胎，随时要爆裂。</p>
+<p>一个初中生，急匆匆奔跑着过来。他跑到三轮车尾，在食品堆里翻了翻，拿了几条“小样”软糖，与老奶奶交谈了几句，便付钱而去；又有两个同学在一片欢笑中，互相追逐着，经过老奶奶的车子，买两包辣条就扬长离开。一时之间顾客们都走光了，老奶奶只好寂寞地坐在那里，倚着车把托着腮，不时向四处张望。</p>
+<p>走着走着，就走过了这一角。</p>
+<p>老奶奶孤单寂寞的身影，让我愈发感到冬的寒冷。年逾古稀的她，本该儿孙绕膝，在家享受天伦之乐，然而她与冬做伴，孤守着小小的零食摊……</p>
+<p>多么希望在这个严冬中，老奶奶所拥有的，不只是街道的一角，而是温暖幸福的晚年。</p>
+]]></content>
+      <categories>
+        <category>作文</category>
+      </categories>
+      <tags>
+        <tag>记叙文</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>记一次Typora的逆向工程</title>
+    <url>/posts/f4ab0062/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>学业负担逐渐加重，好久没有整逆向工程了。</p>
+<p>正巧最近我用的Markdown编辑器发布了1.0版本，到官网看看，发现开始收费了，售价 $14.99 ，最多三台设备。可以先进行试用，试用期到了，就需要付费。抱着试试看的心态，今天就拿Typora Mac练练手。</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>把Typora丢进Hopper里分析一波。对于这个简单轻量级的软件，我很容易就可以搜到关键词。拿subscription、trial、days、license这些敏感词试一试，就可以发现一些相关的OC类，例如<code>LicenseManager</code>和<code>LicenseWindowController</code>。我将一些之后需要逆向的函数加了黑。</p>
+<img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2021/12/11/typora-search.png" alt="搜索关键词" style="zoom:50%;" />
+
+<p>先打开<code> -[LicenseManager hasLicense]</code>，看上去是判断是否有许可证的函数。生成伪代码，很容易发现是个简单的逻辑判断流程，rax寄存器储存返回值。</p>
+<pre class="line-numbers language-objc" data-language="objc"><code class="language-objc">&#x2F;* @class LicenseManager *&#x2F;
+-(char)hasLicense &#123;
+    rdi &#x3D; self-&gt;_hasLicense;
+    if (rdi !&#x3D; 0x0) &#123;
+            rax &#x3D; [rdi boolValue];
+            rax &#x3D; rax !&#x3D; 0x0 ? 0x1 : 0x0;
+    &#125;
+    else &#123;
+            rax &#x3D; 0x1;
+    &#125;
+    rax &#x3D; rax &amp; 0xff;
+    return rax;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>我们直接在汇编中按下<kbd>Option+A</kbd>，输入<code>mov rax, 0x1; ret</code>进行暴破，如图。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2021/12/11/typora-bp.png" alt="暴破"></p>
+<p>接下来，用调试器运行。很讽刺的一件事是，试用期提醒的弹窗直接消失了。我把系统时间往后调，软件仍然可以正常运行，这不是伪破解。所以，这就破解完了……</p>
+<p>但是，还有一件事。我发现虽然暴破的软件可以正常使用，但是菜单栏上有个“查看许可证”按钮。点开它，软件就会检测出，剩余试用天数已经归零，此时弹出的窗口只有激活和退出两个按钮。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2021/12/11/typora-licensebt.png" alt="“查看许可证”按钮"></p>
+<p>为了防止误触这个键，就得把对话框去掉。我不想再tweak试用天数了，更懒得写注册机，所以我准备让它弹出另一个对话框，显示软件已破解。</p>
+<h1 id="逆向"><a href="#逆向" class="headerlink" title="逆向"></a>逆向</h1><p>既要暴破软件，还要加对话框，我就用了动态库注入破解。我用的是<code>MonkeyDev</code>框架，也就是<code>substrate</code>。先新建<code>MonkeyAppMac</code>工程，命名<code>TyporaTweak</code>，然后将Typora拖进<code>TargetApp</code>，最后打开<code>TyporaTweak.m</code>文件。</p>
+<p>先写两个替代函数：</p>
+<pre class="line-numbers language-objc" data-language="objc"><code class="language-objc">#include &lt;Cocoa&#x2F;Cocoa.h&gt; &#x2F;&#x2F; 记得引入Cocoa
+
+@class LicenseManager; &#x2F;&#x2F; 定义累&#x3D;类
+
+&#x2F;&#x2F; hook是否有许可证
+static char new_hasLicense(LicenseManager* self, SEL _cmd) &#123;
+    return 1;
+&#125;
+
+&#x2F;&#x2F; hook许可证弹窗
+static void new_showLicense(LicenseManager* self, SEL _cmd, char arg2)&#123;
+ 	  &#x2F;&#x2F; 新建一个警告弹窗
+    NSString *message &#x3D; @&quot;您正在使用Typora破解版&quot;;
+    NSAlert *alert &#x3D; [NSAlert new];
+    [alert addButtonWithTitle:@&quot;知道了&quot;];
+    [alert setMessageText:message];
+    [alert setAlertStyle:NSAlertStyleCritical];
+    [alert runModal];
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>然后在动态库加载入口hook（一些基本的语法，可在官网上搜索，不再解释）：</p>
+<pre class="line-numbers language-objc" data-language="objc"><code class="language-objc">static void __attribute__((constructor)) initialize(void) &#123;
+    MSHookMessageEx(objc_getClass(&quot;LicenseManager&quot;), @selector(hasLicense), (IMP)&amp;new_hasLicense, NULL);
+    MSHookMessageEx(objc_getClass(&quot;LicenseManager&quot;), @selector(showLicense:), (IMP)&amp;new_showLicense, NULL);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>所有的代码看起来像这样：</p>
+<pre class="line-numbers language-objc" data-language="objc"><code class="language-objc">#import &quot;TyporaTweak.h&quot;
+#import &quot;substrate.h&quot;
+#include &lt;Cocoa&#x2F;Cocoa.h&gt;
+
+@class LicenseManager;
+
+static char new_hasLicense(LicenseManager* self, SEL _cmd) &#123;
+    return 1;
+&#125;
+
+static void new_showLicense(LicenseManager* self, SEL _cmd, char arg2)&#123;
+    NSString *message &#x3D; @&quot;您正在使用Typora破解版&quot;;
+    NSAlert *alert &#x3D; [NSAlert new];
+    [alert addButtonWithTitle:@&quot;知道了&quot;];
+    [alert setMessageText:message];
+    [alert setAlertStyle:NSAlertStyleCritical];
+    [alert runModal];
+&#125;
+
+static void __attribute__((constructor)) initialize(void) &#123;
+    MSHookMessageEx(objc_getClass(&quot;LicenseManager&quot;), @selector(hasLicense), (IMP)&amp;new_hasLicense, NULL);
+    MSHookMessageEx(objc_getClass(&quot;LicenseManager&quot;), @selector(showLicense:), (IMP)&amp;new_showLicense, NULL);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>运行一下，大功告成！</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2021/12/11/typora-product.png" alt="typora破解后"></p>
+<h1 id="动态库注入"><a href="#动态库注入" class="headerlink" title="动态库注入"></a>动态库注入</h1><p>拿到了<code>libTyporaTweak.lib</code>，就可以对二进制注入了。</p>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">.&#x2F;insert_dylib &lt;动态库路径&gt; &lt;Mach-O&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>但MonkeyDev已经帮我们完成了这一步。将Typora.app从TargetApp文件夹里拖出，即是我们的成品。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>Typora就这么被逆向完了。不得不说，它在反破解方面还有待提高。没有反调试、没有加密加壳，什么都没有。这是值得开发者维护的地方。但就软件本身而言，它的确是个良心的Markdown编辑器，值得我们去购买支持。</p>
+]]></content>
+      <categories>
+        <category>计算机</category>
+      </categories>
+      <tags>
+        <tag>反编译</tag>
       </tags>
   </entry>
 </search>

@@ -258,23 +258,23 @@
 <p>注：网站里的图片点开即可查看大图。</p>
 </blockquote>
 <h1 id="工具准备"><a href="#工具准备" class="headerlink" title="工具准备"></a>工具准备</h1><ol>
-<li> <a class="link"   target="_blank" rel="noopener" href="https://www.hopperapp.com/" >Hopper Disassembler<i class="fas fa-external-link-alt"></i></a>，逆向工程工具，可让反汇编，反编译和调试应用程序。以下Hopper Disassembler简称HDA。</li>
+<li> <a class="link"   target="_blank" rel="noopener" href="https://www.hopperapp.com/" >Hopper Disassembler<i class="fas fa-external-link-alt"></i></a>，逆向工程工具，可让反汇编，反编译和调试应用程序。</li>
 <li>迅雷（Thunder）v3.0.9.2892。以下迅雷简称XL。<a class="link"   target="_blank" rel="noopener" href="http://down.sandai.net/mac/thunder_3.0.9.2892.dmg" >官方下载链接<i class="fas fa-external-link-alt"></i></a></li>
-<li>一台Mac或iMac，能不用虚拟机就不用。最好是MacOS Catalina，为了保证HDA与XL的正常运行。（其实HDA也有Linux版本，但在虚拟机下不太好使）</li>
+<li>一台Mac或iMac，能不用虚拟机就不用。最好是MacOS Catalina，为了保证Hopper与XL的正常运行。（其实Hopper也有Linux版本，但在虚拟机下不太好使）</li>
 <li>思路清晰且冷静的大脑。</li>
 </ol>
 <h1 id="开始破解"><a href="#开始破解" class="headerlink" title="开始破解"></a>开始破解</h1><h2 id="导入分析"><a href="#导入分析" class="headerlink" title="导入分析"></a>导入分析</h2><p>首先，我们从应用程序里找到<code>Thunder</code>这个App，右键——显示包内容，之后进入目录<code>/Contents/MacOS</code>，可以找到<code>Thunder</code>这个可执行文件。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/1/29/find-exec.png" alt="查找可执行文件"></p>
 <p>这个可执行文件包括着整个App的运行逻辑、顺序、程序等等内容，但是不包括应用的资源。这个文件就是应用运行的关键，也是我们破解的关键。</p>
-<p>接下来，我们打开HDA。进入应用界面后，把可执行文件拖拽到界面的中间部分。<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/1/29/hop-drag-analysis.png" alt="拖动"></p>
-<p>接下来，HDA会弹出提示，保持默认，一路OK即可。<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/1/29/hop-warning.png" alt="提示框"></p>
+<p>接下来，我们打开Hopper。进入应用界面后，把可执行文件拖拽到界面的中间部分。<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/1/29/hop-drag-analysis.png" alt="拖动"></p>
+<p>接下来，Hopper会弹出提示，保持默认，一路OK即可。<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/1/29/hop-warning.png" alt="提示框"></p>
 <p>等着进度条走完（观察窗口右下角的<code>Working</code>字样）。像迅雷这样的小软件，2秒钟就够了。接下来，一幅宏伟壮丽的景象会出现在你眼前。<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/1/29/hop-main-ui.png" alt="主页面"></p>
-<p>这是HDA的主页面。分为5个部分：上面是工具条：</p>
+<p>这是Hopper的主页面。分为5个部分：上面是工具条：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/1/29/hop-toolbar-usage.png" alt="工具条用法"></p>
 <p>左边是搜索区，可以搜索函数、字符串、星标代码等；中间是主要工作区域，里面包含的内容可以通过工具条中按键调整；右边是检索区，可以设置/预览中间的内容，跟Xcode的检索区差不多；下面是Python控制台，可以输入命令操作反编译。</p>
-<p>就先不多讲HDA的使用了，有机会放在别的文章阐述。接下来，进入主题，开始破解！</p>
+<p>就先不多讲Hopper的使用了，有机会放在别的文章阐述。接下来，进入主题，开始破解！</p>
 <h2 id="查找可能的函数"><a href="#查找可能的函数" class="headerlink" title="查找可能的函数"></a>查找可能的函数</h2><p>迅雷想要验证是否是会员，肯定得有函数。按照程序猿千古流传的命名习惯，不用想就猜得到函数名：<code>isVip</code></p>
-<p>打开HDA左边的搜索栏，上面的选择器选<code>Proc.</code>，就是搜索函数。然后搜索<code>isVip</code>，搜索出来，完全包含这个名字的函数有三个：</p>
+<p>打开Hopper左边的搜索栏，上面的选择器选<code>Proc.</code>，就是搜索函数。然后搜索<code>isVip</code>，搜索出来，完全包含这个名字的函数有三个：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/1/29/search-isvip.png" alt="搜索 isvip"></p>
 <p>我们先点开第一个（汇编指令区就会出现），然后在蓝色的那一栏单击，标“星”，方便以后查找。如图：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/1/29/choose-and-add-star.png" alt="标星"></p>
@@ -329,7 +329,7 @@
 </ol>
 <p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/1/29/hop-rm-sign.png" alt="移除签名"></p>
 <ol start="3">
-<li> 在接下来的提示小窗中，选择保存位置，名字还是<code>Thunder</code>，如果Hopper给你加了类似<code>.exe</code>的后缀，那么一定要<strong>去掉后缀名</strong>！</li>
+<li> 在接下来的提示小窗中，选择保存位置，名字还是<code>Thunder</code>，如果Hopper给你加了类似<code>.exe</code>的后缀，那么一定要<strong>去掉后缀名</strong>。</li>
 </ol>
 <p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed/2020/1/29/hop-save-exec.png" alt="保存"></p>
 <ol start="4">
@@ -538,80 +538,11 @@
 
     
         <aside class="page-aside">
-            .post-toc-wrap {
-  width: 100%;
-  font-size: 0.92rem;
-  box-sizing: border-box;
-
-  .post-toc {
-
-    ol {
-      list-style: none;
-      margin: 0;
-      padding: 0 2px 12px 10px;
-      text-align: left;
-
-      &:last-child {
-        padding-bottom: 0;
-      }
-
-      > ol {
-        padding-left: 0;
-      }
-
-      a {
-        transition-property: all;
-        transition();
-      }
-    }
-
-
-    .nav-item {
-      line-height: 1.8;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-
-    .nav {
-      .nav-child {
-        display: hexo-config('toc.expand_all') ? block : none;
-      }
-
-      .active > .nav-child {
-        display: block;
-      }
-
-      .active-current > .nav-child {
-        display: block;
-
-        > .nav-item {
-          display: block;
-        }
-      }
-
-
-      .nav-number, .nav-text {
-        color: var(--default-text-color);
-      }
-
-      .active > a {
-        .nav-number, .nav-text {
-          color: var(--primary-color);
-        }
-      }
-
-      .active-current > a {
-        .nav-number, .nav-text {
-          color: var(--primary-color);
-        }
-      }
-    }
-  }
-}
-
-
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%98%E8%B5%B7"><span class="nav-text">缘起</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7%E5%87%86%E5%A4%87"><span class="nav-text">工具准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E7%A0%B4%E8%A7%A3"><span class="nav-text">开始破解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5%E5%88%86%E6%9E%90"><span class="nav-text">导入分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E5%8F%AF%E8%83%BD%E7%9A%84%E5%87%BD%E6%95%B0"><span class="nav-text">查找可能的函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%87%E7%BC%96%E6%80%9D%E8%B7%AF"><span class="nav-text">汇编思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E7%A8%8B%E5%BA%8F"><span class="nav-text">修改程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E8%87%AA%E6%A0%A1%E9%AA%8C%EF%BC%8C%E4%BD%86%E6%98%AF%E4%B8%80%E7%A2%B0%E5%B0%B1%E7%A2%8E"><span class="nav-text">有自校验，但是一碰就碎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E5%87%BA"><span class="nav-text">导出</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A0%B4%E8%A7%A3%E5%AE%8C%E5%B7%A5"><span class="nav-text">破解完工</span></a></li></ol>
+    </div>
+</div>
         </aside>
     
 

@@ -621,80 +621,11 @@ int main() &#123;
 
     
         <aside class="page-aside">
-            .post-toc-wrap {
-  width: 100%;
-  font-size: 0.92rem;
-  box-sizing: border-box;
-
-  .post-toc {
-
-    ol {
-      list-style: none;
-      margin: 0;
-      padding: 0 2px 12px 10px;
-      text-align: left;
-
-      &:last-child {
-        padding-bottom: 0;
-      }
-
-      > ol {
-        padding-left: 0;
-      }
-
-      a {
-        transition-property: all;
-        transition();
-      }
-    }
-
-
-    .nav-item {
-      line-height: 1.8;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-
-    .nav {
-      .nav-child {
-        display: hexo-config('toc.expand_all') ? block : none;
-      }
-
-      .active > .nav-child {
-        display: block;
-      }
-
-      .active-current > .nav-child {
-        display: block;
-
-        > .nav-item {
-          display: block;
-        }
-      }
-
-
-      .nav-number, .nav-text {
-        color: var(--default-text-color);
-      }
-
-      .active > a {
-        .nav-number, .nav-text {
-          color: var(--primary-color);
-        }
-      }
-
-      .active-current > a {
-        .nav-number, .nav-text {
-          color: var(--primary-color);
-        }
-      }
-    }
-  }
-}
-
-
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E4%B8%AD%E9%97%B4%E5%8F%98%E9%87%8F"><span class="nav-text">使用中间变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E5%87%8F%E6%B3%95"><span class="nav-text">加减法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%98%E9%99%A4%E6%B3%95"><span class="nav-text">乘除法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97"><span class="nav-text">逻辑运算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9B%E4%B8%80%E6%AD%A5%E6%8E%A2%E8%AE%A8"><span class="nav-text">进一步探讨</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AC%E6%96%87%E4%BB%A3%E7%A0%81"><span class="nav-text">本文代码</span></a></li></ol>
+    </div>
+</div>
         </aside>
     
 

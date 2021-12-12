@@ -645,80 +645,11 @@ if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
 
     
         <aside class="page-aside">
-            .post-toc-wrap {
-  width: 100%;
-  font-size: 0.92rem;
-  box-sizing: border-box;
-
-  .post-toc {
-
-    ol {
-      list-style: none;
-      margin: 0;
-      padding: 0 2px 12px 10px;
-      text-align: left;
-
-      &:last-child {
-        padding-bottom: 0;
-      }
-
-      > ol {
-        padding-left: 0;
-      }
-
-      a {
-        transition-property: all;
-        transition();
-      }
-    }
-
-
-    .nav-item {
-      line-height: 1.8;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-
-    .nav {
-      .nav-child {
-        display: hexo-config('toc.expand_all') ? block : none;
-      }
-
-      .active > .nav-child {
-        display: block;
-      }
-
-      .active-current > .nav-child {
-        display: block;
-
-        > .nav-item {
-          display: block;
-        }
-      }
-
-
-      .nav-number, .nav-text {
-        color: var(--default-text-color);
-      }
-
-      .active > a {
-        .nav-number, .nav-text {
-          color: var(--primary-color);
-        }
-      }
-
-      .active-current > a {
-        .nav-number, .nav-text {
-          color: var(--primary-color);
-        }
-      }
-    }
-  }
-}
-
-
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF"><span class="nav-text">场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E4%B8%80%EF%BC%9A2%E8%BF%9B%E7%A8%8B%E5%B9%B6%E8%A1%8C%E6%89%A7%E8%A1%8C"><span class="nav-text">需求一：2进程并行执行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E4%BA%8C%EF%BC%9A2-%E8%BF%9B%E7%A8%8B%E5%B9%B6%E8%A1%8C"><span class="nav-text">需求二：2+进程并行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F"><span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E4%B8%89%EF%BC%9A%E4%B8%A4%E8%BF%9B%E7%A8%8B%E5%B9%B6%E8%A1%8C%E4%B8%AD%EF%BC%8C%E5%85%B6%E4%B8%AD%E4%B8%80%E4%B8%AA%E8%BF%9B%E7%A8%8B%E5%81%9C%E6%AD%A2%EF%BC%8C%E5%8F%A6%E5%A4%96%E4%B8%80%E4%B8%AA%E8%BF%9B%E7%A8%8B%E4%B9%9F%E5%81%9C%E6%AD%A2"><span class="nav-text">需求三：两进程并行中，其中一个进程停止，另外一个进程也停止</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#END"><span class="nav-text">END</span></a></li></ol>
+    </div>
+</div>
         </aside>
     
 
