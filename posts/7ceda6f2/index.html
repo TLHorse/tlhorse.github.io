@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="好看的皮囊千万种，有趣的灵魂万里挑一。">
+    <meta name="author" content="TLHorse">
+    
+    <title>
+        
+            从某加速器的逆向中学习调试分析 |
+        
+        🐴 慎独阁
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/favicon.svg">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"tlhorse.github.io","root":"/","language":"zh-CN","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.png","favicon":"/images/favicon.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"好看的皮囊千万种，有趣的灵魂万里挑一。"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.3.2"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                🐴 慎独阁
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >
+                                更新日志
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog">更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">从某加速器的逆向中学习调试分析</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">TLHorse</span>
+                        <span class="level">Lv6</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2022-01-30 14:48:15
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/">反编译</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.4k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>4 分钟</span>
+        </span>
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我电脑上的<code>brew</code>好久没有更新维护了，GitHub也许久没有登录，原因仅有一个，就是登不上去。在这个时代免费、合法的加速器越来越少。好不容易找到了一个加速器，对外声称免费，但打开一看早已因为缺乏资金改成了付费。<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/30/pc-1.png" alt="软件界面"><br>它就是我们今天破解的目标。</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>我们可以事先把二进制用Hopper加载，观察软件不难发现，使用C语言写的，UI框架是Qt，而且大部分的方法和符号已经被混淆。这为我们的逆向增加了难度，因此我们把字符串作为逆向的突破口，进行破解。</p>
+<p>再次启动软件，观察可能有用的字符串：该软件在启动的时候会显示提示框“套参（原软件参字打错了）已使用完毕，请充值<del>”，点击“点我加速”按钮时，又会出现提示框“套参已使用完毕，请充值</del>”。请记住下面的八个字，它们是我们逆向的关键。</p>
+<blockquote>
+<p>套参已使用完毕，请充值~</p>
+</blockquote>
+<p>除了两个弹窗之外，该软件还需要注册。据我观察，在未注册情况下注册弹窗会代替套餐弹窗。（因为一开始下载软件后我直接注册了，所以破解中没发现这一点。）我们希望在不注册的情况下使用。</p>
+<p>综上所述我们的破解目标有4点：</p>
+<ol>
+<li>软件启动时的套餐弹窗；</li>
+<li>软件启动时的注册弹窗；</li>
+<li>点我加速时的套餐弹窗；</li>
+<li>点我加速时的注册弹窗。</li>
+</ol>
+<p>接下来就是破解过程。</p>
+<h1 id="解决编码问题"><a href="#解决编码问题" class="headerlink" title="解决编码问题"></a>解决编码问题</h1><p>我在Hopper中搜索字符串的时候，一无所获。往下翻我发现除了一些英文字符串保持原样之外，剩下的都被编码，类似<code>\x97\xE5\x8F\x82\xE5\xB7\x...</code>。<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/29/hex2str-1.jpg" alt="被编码"><br>这种编码就是<code>utf-8</code>编码，必须转换才能成为中文。频繁地使用第三方工具会大大减慢我们的速度。因此我们不妨写一个Hopper插件（见另一篇文章）：<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/30/pc-2.png" alt="pc-2"><br>此脚本可以将<code>utf-8</code>转中文，以便调试的时候使用。不过要搜索字符串的时候，只能用Python手动将中文转为<code>utf-8</code>了。</p>
+<h1 id="一破点我加速"><a href="#一破点我加速" class="headerlink" title="一破点我加速"></a>一破点我加速</h1><p>如题，这两个弹窗应该（事实也验证了）在一个大进程中，咱们一块搞定。尝试搜索一些关键词，例如我搜的“套参已使用完毕”，可以发现<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/30/pc-3.png" alt="套餐字符串"><br>我们查看行内注释的交叉引用（按<kbd>X</kbd>也可以），可以看到有两个地址在引用：</p>
+<pre class="line-numbers language-asm" data-language="asm"><code class="language-asm">; DATA XREF&#x3D;sub_100015e10+779, sub_10001f070+1545<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这对应的应该是我们之前在软件中看到的两个弹框。<strong>哪个地址是点击一键加速后的进程呢？</strong>首先双击打开第一个引用地址<code>sub_100015e10+779</code>，并跳转到CFG模式。在进程的第一行指令上下断点。运行Debugger，发现软件没有在启动之后立即断下，说明第一个地址的弹窗就是。我们点击点我加速，指令断下，验证了我们的想法。<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/30/pc-4.png" alt="暂停运行"></p>
+<h2 id="套餐弹窗"><a href="#套餐弹窗" class="headerlink" title="套餐弹窗"></a>套餐弹窗</h2><p>确认了该进程是点我加速后出现的进程后，我们把鼠标放到字符串的引用处。<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/30/pc-5.png" alt="调试">如图，<code>0x000000010001611b</code>是出现套餐充值的指令。我们想尽办法不让这条指令所在的代码块运行（<code>loc_1000160f0</code>）。指向<code>loc_1000160f0</code>的有三个箭头，BCD。因此图最右上的代码应当一路下行不跳转直到A，就再不会回到<code>loc_1000160f0</code>了。</p>
+<p>我们直接把BCD上方的三个指令<code>je</code>，<code>jle</code>，<code>je</code>分别反转为<code>jne</code>，<code>jg</code>，<code>jne</code>。我本想用<code>nop</code>，但这对程序有较大的改变。（一开始我只根据调试结果反转了C处的判断指令，然而发现在D处就跳转了，经过多次调试，我得到结论BCD都要改）</p>
+<p>先别急着运行，因为运行后会要求登录。咱们一口气搞定登录问题。<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/30/pc-7.png" alt="要求登录"></p>
+<h2 id="登录弹窗"><a href="#登录弹窗" class="headerlink" title="登录弹窗"></a>登录弹窗</h2><p>因为软件先验证登录，所以我们顺着刚才的地址往上翻：<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/30/pc-8.png" alt="流程图"></p>
+<p>如图，根据字面意思很容易判断出逻辑。一开始我只讲判断是否登录处条件进行反转，后来发现下面有二次判断。将这两处的<code>je</code>都改为<code>jne</code>，登录解除。运行，逆向成功！<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/30/pc-6.png" alt="逆向成功"></p>
+<h1 id="二破启动弹窗"><a href="#二破启动弹窗" class="headerlink" title="二破启动弹窗"></a>二破启动弹窗</h1><p>搞定了“一破”，基本功能可以使用了，但是瑕疵是启动还会弹出注册的弹窗。到哪找呢？还记得这个图吗？<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/30/pc-8.png" alt="流程图"><br>右下角我们可以看到一个<code>call</code>：</p>
+<pre class="line-numbers language-asm" data-language="asm"><code class="language-asm">0x00000001000160c5         call       __ZN10CentralMgr15ShowLoginDialogEv<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>call后的函数就是全局定义的弹窗。查看这个符号的交叉引用，有7处。双击跳转到这个打开弹窗的函数，然后在首行下断点，并运行。<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/30/pc-9.png" alt="callstack"><br>刚运行就断下了，调用堆栈中第一行就是弹窗函数，第二行就是调用它的进程：<code>CentralMgr::onAfterInit()</code>。通过交叉引用找到这个进程里的<code>call</code>：</p>
+<pre class="line-numbers language-asm" data-language="asm"><code class="language-asm">                       loc_10000856d:
+0x000000010000856d         mov        rdi, r15 ; CODE XREF&#x3D;__ZN10CentralMgr11onAfterInitEv+1369
+0x0000000100008570         call       __ZN10CentralMgr15ShowLoginDialogEv ; CentralMgr::ShowLoginDialog()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>在CFG中代码块往上走一层，把逻辑判断<code>je</code>改<code>jne</code>，破解成功。</p>
+<p>运行一下，令我们惊奇的是，启动时的套餐充值弹窗，也消失了！大功告成！</p>
+<p>END</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：从某加速器的逆向中学习调试分析</li>
+        <li>本文作者：TLHorse</li>
+        <li>创建时间：2022-01-30 14:48:15</li>
+        <li>
+            本文链接：https://tlhorse.github.io/posts/7ceda6f2/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh">BY-NC-ND</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/posts/a8e6a89/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">零基础写一个Hopper插件hex2str</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+        
+    <div id="gitalk-container"></div>
+    <script 
+            src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+    <script >
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: '88d770a805d27a98e780',
+                    clientSecret: 'c1c798735d6221391048e9225ae064e5e06ecdc8',
+                    repo: 'TLBlogComments',
+                    owner: 'TLHorse',
+                    admin: ['TLHorse'],
+                    id: __gitalk__pathname,
+                    language: 'zh-CN'
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('false') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">TLHorse</a>
+        </div>
+        
+        <!-- <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.3.2</a>
+        </div> -->
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E6%9E%90"><span class="nav-text">分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98"><span class="nav-text">解决编码问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E7%A0%B4%E7%82%B9%E6%88%91%E5%8A%A0%E9%80%9F"><span class="nav-text">一破点我加速</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A5%97%E9%A4%90%E5%BC%B9%E7%AA%97"><span class="nav-text">套餐弹窗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%99%BB%E5%BD%95%E5%BC%B9%E7%AA%97"><span class="nav-text">登录弹窗</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E7%A0%B4%E5%90%AF%E5%8A%A8%E5%BC%B9%E7%AA%97"><span class="nav-text">二破启动弹窗</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/header-shrink.js"></script><script src="/js/back2top.js"></script><script src="/js/dark-light-toggle.js"></script>
+
+
+    <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+<div class="post-scripts">
+    
+        <script src="/js/left-side-toggle.js"></script><script src="/js/libs/anime.min.js"></script><script src="/js/toc.js"></script>
+    
+</div>
+
+
+
+</body>
+</html>

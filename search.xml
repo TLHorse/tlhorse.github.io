@@ -1398,12 +1398,11 @@ Started tracing 3 functions. Press Ctrl+C to stop.<span aria-hidden="true" class
     var_2A8 &#x3D; var_328;
     sub_100392510(&quot;DM_ENABLE_DEBUG_LOGGING_ACTIVATION&quot;, @&quot;_get_: %p&quot;, var_2A8, 0x0, r8, r9, stack[-1704]);
     if ((var_2A8 &#x3D;&#x3D; 0x0) || (var_2A0 &#x3D;&#x3D; 0x0)) goto loc_1003349b4;
-  &#x2F;&#x2F; ......
-  &#x2F;&#x2F; Plethora ommitted...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>代码很长，就不全部展示了。<kbd>Shift</kbd><kbd>X</kbd>查看交叉引用，让我们“顺瓜摸藤”，结果让我眼前大吃一惊，好多啊……</p>
+  &#x2F;&#x2F; ......<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>代码很长，就不全部展示了。<kbd>Shift</kbd><kbd>X</kbd>查看交叉引用，顺藤摸瓜，结果让我眼前大吃一惊，好多啊……</p>
 <p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2021/02/08/cmmnew-subx.png" alt="搜索交叉引用"></p>
 <p>原来，这个sub是个判断激活的进程<strong>，不止<code>isAppActivated</code>调用了它，还有许许多多的类和方法，包括<code>EntryPoint</code>。</strong></p>
-<p>想要hook这个sub，还需获取在内存中的地址，着实麻烦，就不写<code>frida</code>了。<strong>Hopper直接改返回值。</strong>双击空格，切到ASM模式，让我们：</p>
+<p>想要hook这个sub，还需获取在内存中的地址，着实麻烦，就不写<code>frida</code>了。<strong>Hopper直接改返回值。</strong>双击空格，切到ASM模式：</p>
 <pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">mov rax, 0x1
 ret<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><kbd>Cmd</kbd><kbd>Shift</kbd><kbd>E</kbd>，生成可执行文件，给源文件改名，替换——三步走，之后打开<code>CleanMyMac X</code>：</p>
@@ -4007,9 +4006,9 @@ extension String &#123;
     <title>街景一角</title>
     <url>/posts/f6454479/</url>
     <content><![CDATA[<p>宽阔的街道、热闹的街景，人行道旁是一排景气的商铺，然而她的小摊只占一角。</p>
-<p>天空中压根就没有月亮，而是乌漆墨黑的一片；嘴边的空气寒冷的如刀锋割人，夹杂着一大把一大把呛鼻的灰。我每晚放学，上了人行道，闭着眼都能猜到，她准在一旁卖零食——一位开三轮车的老奶奶，三轮车就是她琳琅满目的货摊。什么三根葱，什么亲嘴烧辣条，什么可口可乐，什么软糖，尽在货摊中堆成一座座“小山丘”，应有尽有，分门别类，摆放却又稍有凌乱。一个普通的小钨丝灯高悬着，亮白亮白的，货摊上的纸壳子和塑料包装好像都发了光。</p>
-<p>她却躲着那片亮堂堂的白光，在灯泡后的黑暗中静坐着。微弱的亮光打过来：削瘦无比的身子驮着背，微微前倾；古铜色的皮肤上，阴影遍布，呈现出千沟万壑。她沧桑的脸上毫无表情，既无欣喜，也无悲伤；既无期盼，也无失落。我不禁向下看，载着货物的三轮车，同她一样苍老，酷似一只疲惫不堪的骆驼：布满铁锈的钢板，随时要破裂散架；窄小的轮胎，随时要爆裂。</p>
-<p>一个初中生，急匆匆奔跑着过来。他跑到三轮车尾，在食品堆里翻了翻，拿了几条“小样”软糖，与老奶奶交谈了几句，便付钱而去；又有两个同学在一片欢笑中，互相追逐着，经过老奶奶的车子，买两包辣条就扬长离开。一时之间顾客们都走光了，老奶奶只好寂寞地坐在那里，倚着车把托着腮，不时向四处张望。</p>
+<p>天空中压根就没有月亮，而是乌漆墨黑的一片；嘴边的空气寒冷得如刀锋割人，夹杂着一大把一大把呛鼻的灰。我每晚放学，上了人行道，闭着眼都能猜到，她准在一旁卖零食——一位开三轮车的老奶奶，三轮车就是她琳琅满目的货摊。什么三根葱，什么亲嘴烧辣条，什么可口可乐，什么软糖，尽在货摊中堆成一座座“小山丘”，应有尽有，分门别类，摆放却又稍有凌乱。一个普通的小钨丝灯高悬着，亮白亮白的，货摊上的纸壳子和塑料包装好像都发了光。</p>
+<p>她却躲着那片亮堂堂的白光，在灯泡后的黑暗中静坐着。微弱的亮光打过来：削瘦无比的身子驮着背，微微前倾；古铜色的皮肤上，阴影遍布，呈现出千沟万壑。她沧桑的脸上毫无表情，既无欣喜，也无悲伤；既无期盼，也无失落。我不禁向下看，载着货物的三轮车，同她一样苍老，酷似一只疲惫不堪的骆驼：布满铁锈的钢板，随时要破裂散架；窄小的轮子，随时可能爆胎。</p>
+<p>一个初中生，急匆匆奔跑着过来。他跑到三轮车尾，在食品堆里翻了翻，拿了几条“小样”软糖，与老奶奶交谈了几句，付钱而去；又有两个同学在一片欢笑中，互相追逐，经过老奶奶的车子，买两包辣条就扬长离开。顾客走光了，老奶奶只好寂寞地坐在那里，倚着车把托着腮，不时向四处张望。</p>
 <p>走着走着，就走过了这一角。</p>
 <p>老奶奶孤单寂寞的身影，让我愈发感到冬的寒冷。年逾古稀的她，本该儿孙绕膝，在家享受天伦之乐，然而她与冬做伴，孤守着小小的零食摊……</p>
 <p>多么希望在这个严冬中，老奶奶所拥有的，不只是街道的一角，而是温暖幸福的晚年。</p>
@@ -4019,6 +4018,21 @@ extension String &#123;
       </categories>
       <tags>
         <tag>记叙文</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>破解一下学校的微机练习软件</title>
+    <url>/posts/1ec14cb6/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>如题，这次我来破解一下学校的微机练习软件。众所周知，我的逆向技术帖主要面向macOS和Linux，Windows逆向接触比较少，这次也是第一次破解Windows软件。因此技术方面的问题还请论坛的大佬指点。</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>说句没用的，学校的微机练习软件是用来练习微机中考的（我们这个省有）。这个软件是给中考微机出题的中标公司开发的，寒假学校让我们购买使用，30块钱。注册方式是购买注册码。在注册购买之前可以试用，每个题库只能做第一套试卷，如果点后面的会出现提示框，如图<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/20/ec-unregistered.png" alt="仅能答第一套题"><br>除此之外，如果想使用软件的其他功能，例如随机抽取试卷，也需要注册码，如图<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/20/ec-unregistered-random.png" alt="不能随机抽卷">但是这个软件注册过程比较复杂，需要先填写注册码，再到微信小程序中验证。<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/20/ec-reg.png" alt="注册">因此我不在注册过程中花时间分析破解，而是从弹窗弹出的地方入手，绕过判断是否注册。</p>
+<h1 id="逆向"><a href="#逆向" class="headerlink" title="逆向"></a>逆向</h1><p>这次我选择的反编译工具是x64dbg（实际上是x32dbg），爱盘里有。先打开工具，拖入程序分析。右键搜索&gt;所有模块&gt;字符串，查找所有字符串，搜索关键词“注册”，找到如下几个目标（红框）：<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/20/ec-search.png" alt="搜索关键词">咱们随便点开一个分析，双击跳转到“尚未注册，仅能答第一套题”的位置，再往上移动几行，键盘按G，生成流程图：<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/20/ec-cfg.png" alt="流程图"><br>很明显可以看出此处是个判断流程，并且绿色为验证成功分支，红色为失败分支。通过调试，再次验证了我的猜测（调试过程略）。把鼠标放到判断指令<code>jle</code>上，键盘按<kbd>G</kbd>跳回汇编，按空格将<code>jle</code>改成<code>jmp</code>，回车。如图：<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/20/ec-asm.png" alt="汇编">我们将搜索关键词找到的剩下几个目标也一一打开，发现判断流程全部一模一样，同上方法都把<code>jle</code>改成<code>jmp</code>。再次按下F9运行，在未注册的情况下，所有功能正常使用，弹窗消失，成功破解。如图：<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/20/ec-success.png" alt="成功"></p>
+<h1 id="成品生成"><a href="#成品生成" class="headerlink" title="成品生成"></a>成品生成</h1><p><kbd>Ctrl+P</kbd>补丁，选择修补文件，生成<code>.exe</code>文件，替换程序目录中的即可。</p>
+]]></content>
+      <categories>
+        <category>计算机</category>
+      </categories>
+      <tags>
+        <tag>反编译</tag>
       </tags>
   </entry>
   <entry>
@@ -4053,7 +4067,7 @@ extension String &#123;
 <p>先写两个替代函数：</p>
 <pre class="line-numbers language-objc" data-language="objc"><code class="language-objc">#include &lt;Cocoa&#x2F;Cocoa.h&gt; &#x2F;&#x2F; 记得引入Cocoa
 
-@class LicenseManager; &#x2F;&#x2F; 定义累&#x3D;类
+@class LicenseManager; &#x2F;&#x2F; 定义类
 
 &#x2F;&#x2F; hook是否有许可证
 static char new_hasLicense(LicenseManager* self, SEL _cmd) &#123;
@@ -4105,6 +4119,115 @@ static void __attribute__((constructor)) initialize(void) &#123;
 <pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">.&#x2F;insert_dylib &lt;动态库路径&gt; &lt;Mach-O&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>但MonkeyDev已经帮我们完成了这一步。将Typora.app从TargetApp文件夹里拖出，即是我们的成品。</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>Typora就这么被逆向完了。不得不说，它在反破解方面还有待提高。没有反调试、没有加密加壳，什么都没有。这是值得开发者维护的地方。但就软件本身而言，它的确是个良心的Markdown编辑器，值得我们去购买支持。</p>
+]]></content>
+      <categories>
+        <category>计算机</category>
+      </categories>
+      <tags>
+        <tag>反编译</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>零基础写一个Hopper插件hex2str</title>
+    <url>/posts/a8e6a89/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>之所以这么说，是因为我也是零基础写的。今天上午本来想搞一搞某个软件，放到Hopper里一看：<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/29/hex2str-1.jpg" alt="满眼16进制">满眼的十六进制！这可怎么转换……</p>
+<h1 id="方法一：Python"><a href="#方法一：Python" class="headerlink" title="方法一：Python"></a>方法一：Python</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python">&gt;&gt;&gt; hexstr &#x3D; b&quot;\xe5\xa5\x97\xe5\x8f\x82\xe5\xb7\xb2\xe4\xbd\xbf\xe7\x94\xa8\xe5\xae\x8c\xe6\xaf\x95&quot;
+&gt;&gt;&gt; hexstr.decode(&quot;utf-8&quot;)
+&#39;套参已使用完毕&#39;
+&gt;&gt;&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>先定义字符串byte，然后使用<code>Python</code>自带的<code>decode</code>。最多像这样封装一个函数：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def hex2str(inp):
+    return inp.encode(&#39;raw_unicode_escape&#39;).decode(&#39;utf-8&#39;)
+
+print(hex2str(&quot;\xe5\xa5\x97\xe5\x8f\x82\xe5\xb7\xb2\xe4\xbd\xbf\xe7\x94\xa8\xe5\xae\x8c\xe6\xaf\x95&quot;))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如果还是觉得麻烦，最最最多用<code>input</code>封装成循环，写成转换小程序：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def hex2str(inp):
+    return inp.encode(&#39;raw_unicode_escape&#39;).decode(&#39;utf-8&#39;)
+while True:
+    inp &#x3D; input(&quot;&gt;&gt;&gt; &quot;)
+    print(hex2str(inp))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>紧接着打开Hopper，复制，打开终端，粘贴，然后就陷入了无穷的复制粘贴之中……</p>
+<h1 id="方法二：Hopper插件"><a href="#方法二：Hopper插件" class="headerlink" title="方法二：Hopper插件"></a>方法二：Hopper插件</h1><p>Hopper插件终于闪亮登场！IDA插件我们耳熟能详，但是Hopper插件几乎没有用过。按下<kbd>Cmd</kbd><kbd>Shift</kbd><kbd>P</kbd>，点击加号，即可创建新脚本，打开编辑。<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/29/hex2str-2.png" alt="创建新脚本"><br>我们需要制作一个选中文本，按下快捷键就可以进行转换的插件。</p>
+<p>Hopper插件编写的思想是：先有文件，再对文件进行操作。操作的过程也是先确定地址，再读取或写入字节。</p>
+<p>既然是对文件进行操作，所以首先要定义一个文件常量。所有的操作都依靠这个常量（以下是文档）：</p>
+<blockquote>
+<p><strong>getCurrentDocument()</strong><br><em>[static]</em><br>Returns the current document.</p>
+</blockquote>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">doc &#x3D; Document.getCurrentDocument()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>紧接着我们需要获取三个常量：鼠标所在地址、所在段（便于写注释）、选中代码的区间。</p>
+<blockquote>
+<p><strong>getCurrentAddress()</strong><br>Returns the address where the cursor currently is.<br><strong>getCurrentSegment()</strong><br>Returns the segment where the cursor is. Returns None if the current segment cannot be located.<br><strong>getSelectionAddressRange()</strong><br>Returns a list, containing two addresses. Those address represents the range of bytes covered by the selection.</p>
+</blockquote>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">addr &#x3D; doc.getCurrentAddress()
+seg &#x3D; doc.getCurrentSegment()
+sel &#x3D; doc.getSelectionAddressRange()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>有了鼠标所在的地址，我们就要读取这个地址的信息，进行转换。利用如下函数：</p>
+<blockquote>
+<p><strong>readBytes(addr,length)</strong><br>Read bytes at a given address range. Returns False if the byte is read outside of the segment.<br>我们将基地址给到第一个参数中，长度给到第二个参数中，再用<code>Python</code>的库编码。</p>
+</blockquote>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">bytes &#x3D; doc.readBytes(addr, sel[1] - 1 - sel[0])
+chinese &#x3D; str(bytes, encoding&#x3D;&#39;utf-8&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>最后我们需要在对应的地址上写注释：</p>
+<blockquote>
+<p><strong>setCommentAtAddress(addr,comment)</strong><br>Set the prefix comment at a given address.</p>
+</blockquote>
+<p>注意，这个方法是Class Segment类的，所以应该是<code>seg.xxx</code>。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">seg.setCommentAtAddress(sel[0], chinese)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>所有代码仅仅七行：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">doc &#x3D; Document.getCurrentDocument()
+addr &#x3D; doc.getCurrentAddress()
+seg &#x3D; doc.getCurrentSegment()
+sel &#x3D; doc.getSelectionAddressRange()
+
+bytes &#x3D; doc.readBytes(addr, sel[1] - 1 - sel[0])
+chinese &#x3D; str(bytes, encoding&#x3D;&#39;utf-8&#39;)
+seg.setCommentAtAddress(sel[0], chinese)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>我们现在随便在汇编文件中找到一行16进制字符串。由于Hopper的特性，只需把鼠标点击那一行，就会自动选择整行。然后再到Scripts中按下对应的插件快捷键，运行：<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/29/hex2str-3.png" alt="运行效果"><br>如此，我们就完成了插件的制作！</p>
+]]></content>
+      <categories>
+        <category>计算机</category>
+      </categories>
+      <tags>
+        <tag>反编译</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>从某加速器的逆向中学习调试分析</title>
+    <url>/posts/7ceda6f2/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我电脑上的<code>brew</code>好久没有更新维护了，GitHub也许久没有登录，原因仅有一个，就是登不上去。在这个时代免费、合法的加速器越来越少。好不容易找到了一个加速器，对外声称免费，但打开一看早已因为缺乏资金改成了付费。<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/30/pc-1.png" alt="软件界面"><br>它就是我们今天破解的目标。</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>我们可以事先把二进制用Hopper加载，观察软件不难发现，使用C语言写的，UI框架是Qt，而且大部分的方法和符号已经被混淆。这为我们的逆向增加了难度，因此我们把字符串作为逆向的突破口，进行破解。</p>
+<p>再次启动软件，观察可能有用的字符串：该软件在启动的时候会显示提示框“套参（原软件参字打错了）已使用完毕，请充值<del>”，点击“点我加速”按钮时，又会出现提示框“套参已使用完毕，请充值</del>”。请记住下面的八个字，它们是我们逆向的关键。</p>
+<blockquote>
+<p>套参已使用完毕，请充值~</p>
+</blockquote>
+<p>除了两个弹窗之外，该软件还需要注册。据我观察，在未注册情况下注册弹窗会代替套餐弹窗。（因为一开始下载软件后我直接注册了，所以破解中没发现这一点。）我们希望在不注册的情况下使用。</p>
+<p>综上所述我们的破解目标有4点：</p>
+<ol>
+<li>软件启动时的套餐弹窗；</li>
+<li>软件启动时的注册弹窗；</li>
+<li>点我加速时的套餐弹窗；</li>
+<li>点我加速时的注册弹窗。</li>
+</ol>
+<p>接下来就是破解过程。</p>
+<h1 id="解决编码问题"><a href="#解决编码问题" class="headerlink" title="解决编码问题"></a>解决编码问题</h1><p>我在Hopper中搜索字符串的时候，一无所获。往下翻我发现除了一些英文字符串保持原样之外，剩下的都被编码，类似<code>\x97\xE5\x8F\x82\xE5\xB7\x...</code>。<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/29/hex2str-1.jpg" alt="被编码"><br>这种编码就是<code>utf-8</code>编码，必须转换才能成为中文。频繁地使用第三方工具会大大减慢我们的速度。因此我们不妨写一个Hopper插件（见另一篇文章）：<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/30/pc-2.png" alt="pc-2"><br>此脚本可以将<code>utf-8</code>转中文，以便调试的时候使用。不过要搜索字符串的时候，只能用Python手动将中文转为<code>utf-8</code>了。</p>
+<h1 id="一破点我加速"><a href="#一破点我加速" class="headerlink" title="一破点我加速"></a>一破点我加速</h1><p>如题，这两个弹窗应该（事实也验证了）在一个大进程中，咱们一块搞定。尝试搜索一些关键词，例如我搜的“套参已使用完毕”，可以发现<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/30/pc-3.png" alt="套餐字符串"><br>我们查看行内注释的交叉引用（按<kbd>X</kbd>也可以），可以看到有两个地址在引用：</p>
+<pre class="line-numbers language-asm" data-language="asm"><code class="language-asm">; DATA XREF&#x3D;sub_100015e10+779, sub_10001f070+1545<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这对应的应该是我们之前在软件中看到的两个弹框。<strong>哪个地址是点击一键加速后的进程呢？</strong>首先双击打开第一个引用地址<code>sub_100015e10+779</code>，并跳转到CFG模式。在进程的第一行指令上下断点。运行Debugger，发现软件没有在启动之后立即断下，说明第一个地址的弹窗就是。我们点击点我加速，指令断下，验证了我们的想法。<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/30/pc-4.png" alt="暂停运行"></p>
+<h2 id="套餐弹窗"><a href="#套餐弹窗" class="headerlink" title="套餐弹窗"></a>套餐弹窗</h2><p>确认了该进程是点我加速后出现的进程后，我们把鼠标放到字符串的引用处。<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/30/pc-5.png" alt="调试">如图，<code>0x000000010001611b</code>是出现套餐充值的指令。我们想尽办法不让这条指令所在的代码块运行（<code>loc_1000160f0</code>）。指向<code>loc_1000160f0</code>的有三个箭头，BCD。因此图最右上的代码应当一路下行不跳转直到A，就再不会回到<code>loc_1000160f0</code>了。</p>
+<p>我们直接把BCD上方的三个指令<code>je</code>，<code>jle</code>，<code>je</code>分别反转为<code>jne</code>，<code>jg</code>，<code>jne</code>。我本想用<code>nop</code>，但这对程序有较大的改变。（一开始我只根据调试结果反转了C处的判断指令，然而发现在D处就跳转了，经过多次调试，我得到结论BCD都要改）</p>
+<p>先别急着运行，因为运行后会要求登录。咱们一口气搞定登录问题。<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/30/pc-7.png" alt="要求登录"></p>
+<h2 id="登录弹窗"><a href="#登录弹窗" class="headerlink" title="登录弹窗"></a>登录弹窗</h2><p>因为软件先验证登录，所以我们顺着刚才的地址往上翻：<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/30/pc-8.png" alt="流程图"></p>
+<p>如图，根据字面意思很容易判断出逻辑。一开始我只讲判断是否登录处条件进行反转，后来发现下面有二次判断。将这两处的<code>je</code>都改为<code>jne</code>，登录解除。运行，逆向成功！<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/30/pc-6.png" alt="逆向成功"></p>
+<h1 id="二破启动弹窗"><a href="#二破启动弹窗" class="headerlink" title="二破启动弹窗"></a>二破启动弹窗</h1><p>搞定了“一破”，基本功能可以使用了，但是瑕疵是启动还会弹出注册的弹窗。到哪找呢？还记得这个图吗？<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/30/pc-8.png" alt="流程图"><br>右下角我们可以看到一个<code>call</code>：</p>
+<pre class="line-numbers language-asm" data-language="asm"><code class="language-asm">0x00000001000160c5         call       __ZN10CentralMgr15ShowLoginDialogEv<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>call后的函数就是全局定义的弹窗。查看这个符号的交叉引用，有7处。双击跳转到这个打开弹窗的函数，然后在首行下断点，并运行。<br><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2022/01/30/pc-9.png" alt="callstack"><br>刚运行就断下了，调用堆栈中第一行就是弹窗函数，第二行就是调用它的进程：<code>CentralMgr::onAfterInit()</code>。通过交叉引用找到这个进程里的<code>call</code>：</p>
+<pre class="line-numbers language-asm" data-language="asm"><code class="language-asm">                       loc_10000856d:
+0x000000010000856d         mov        rdi, r15 ; CODE XREF&#x3D;__ZN10CentralMgr11onAfterInitEv+1369
+0x0000000100008570         call       __ZN10CentralMgr15ShowLoginDialogEv ; CentralMgr::ShowLoginDialog()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>在CFG中代码块往上走一层，把逻辑判断<code>je</code>改<code>jne</code>，破解成功。</p>
+<p>运行一下，令我们惊奇的是，启动时的套餐充值弹窗，也消失了！大功告成！</p>
+<p>END</p>
 ]]></content>
       <categories>
         <category>计算机</category>

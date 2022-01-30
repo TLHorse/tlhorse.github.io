@@ -196,7 +196,7 @@
                 <div class="info">
                     <div class="author">
                         <span class="name">TLHorse</span>
-                        <span class="level">Lv5</span>
+                        <span class="level">Lv6</span>
                     </div>
                     <div class="meta-info">
                         <div class="article-meta-info">
@@ -231,7 +231,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>998 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>988 字</span>
         </span>
     
     
@@ -294,12 +294,11 @@ Started tracing 3 functions. Press Ctrl+C to stop.<span aria-hidden="true" class
     var_2A8 &#x3D; var_328;
     sub_100392510(&quot;DM_ENABLE_DEBUG_LOGGING_ACTIVATION&quot;, @&quot;_get_: %p&quot;, var_2A8, 0x0, r8, r9, stack[-1704]);
     if ((var_2A8 &#x3D;&#x3D; 0x0) || (var_2A0 &#x3D;&#x3D; 0x0)) goto loc_1003349b4;
-  &#x2F;&#x2F; ......
-  &#x2F;&#x2F; Plethora ommitted...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>代码很长，就不全部展示了。<kbd>Shift</kbd><kbd>X</kbd>查看交叉引用，让我们“顺瓜摸藤”，结果让我眼前大吃一惊，好多啊……</p>
+  &#x2F;&#x2F; ......<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>代码很长，就不全部展示了。<kbd>Shift</kbd><kbd>X</kbd>查看交叉引用，顺藤摸瓜，结果让我眼前大吃一惊，好多啊……</p>
 <p><img src="https://cdn.jsdelivr.net/gh/TLHorse/TLBlogBed@master/2021/02/08/cmmnew-subx.png" alt="搜索交叉引用"></p>
 <p>原来，这个sub是个判断激活的进程<strong>，不止<code>isAppActivated</code>调用了它，还有许许多多的类和方法，包括<code>EntryPoint</code>。</strong></p>
-<p>想要hook这个sub，还需获取在内存中的地址，着实麻烦，就不写<code>frida</code>了。<strong>Hopper直接改返回值。</strong>双击空格，切到ASM模式，让我们：</p>
+<p>想要hook这个sub，还需获取在内存中的地址，着实麻烦，就不写<code>frida</code>了。<strong>Hopper直接改返回值。</strong>双击空格，切到ASM模式：</p>
 <pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">mov rax, 0x1
 ret<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><kbd>Cmd</kbd><kbd>Shift</kbd><kbd>E</kbd>，生成可执行文件，给源文件改名，替换——三步走，之后打开<code>CleanMyMac X</code>：</p>
@@ -436,7 +435,7 @@ ret<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
             
               <span>2020</span>&nbsp;-&nbsp;
             
-            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">TLHorse</a>
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">TLHorse</a>
         </div>
         
         <!-- <div class="theme-info info-item">
